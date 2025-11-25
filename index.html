@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <title>Odbojkarski camp Alan Košenina</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif }
+    body { color: #222; background-color: #f5f5f5; line-height: 1.6 }
+
+    header { position: relative; height: 100vh; background-image: url("igrisce.JPEG"); background-size: cover; background-position: center; background-repeat: no-repeat }
+    header::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.75) }
+
+    .hero-content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 20px }
+    .hero-title { font-size: 2.8rem; font-weight: bold; margin-bottom: 10px }
+    .hero-subtitle { font-size: 1.2rem; margin-bottom: 30px }
+
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center }
+    .btn { display: inline-block; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; border: none; cursor: pointer; font-size: 1rem }
+    .btn-primary { background-color: #0077b6; color: white }
+    .btn-secondary { background-color: white; color: #0077b6; border: 2px solid #0077b6 }
+
+    main { max-width: 1000px; margin: 40px auto 60px auto; padding: 0 20px }
+    section { margin-bottom: 50px }
+    h2 { font-size: 2rem; margin-bottom: 15px; color: #0077b6 }
+    p { margin-bottom: 10px }
+
+    .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px }
+    .about-card { background: white; border-radius: 6px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06) }
+    .info-list { list-style: none }
+    .info-list li { margin-bottom: 6px }
+    .info-label { font-weight: bold }
+
+    form { background: white; padding: 20px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.06) }
+    .form-row { display: flex; flex-wrap: wrap; gap: 20px }
+    .form-group { margin-bottom: 15px; flex: 1; min-width: 220px }
+
+    label { display: block; margin-bottom: 5px; font-weight: bold }
+    input, select, textarea { width: 100%; padding: 8px 10px; border-radius: 4px; border: 1px solid #ccc; font-size: 0.95rem }
+    textarea { resize: vertical; min-height: 80px }
+    .small-text { font-size: 0.85rem; color: #555 }
+
+    .payment-box { margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee }
+    .paypal-button { display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #ffc439; color: #111; text-decoration: none; border-radius: 4px; font-weight: bold }
+
+    footer { text-align: center; padding: 20px; background: #111; color: white; font-size: 0.9rem }
+    #form-status { min-height: 18px }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.1rem }
+      .hero-subtitle { font-size: 1rem }
+      .about-grid { grid-template-columns: 1fr }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="top">
+    <div class="hero-content">
+      <h1 class="hero-title">Odbojkarski camp Alan Košenina</h1>
+      <p class="hero-subtitle">Poletni beach volley camp za otroke in odrasle</p>
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-secondary">Več o meni</a>
+        <a href="#registration" class="btn btn-primary">Prijava na camp</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="about">
+      <h2>O meni</h2>
+      <div class="about-grid">
+
+        <div class="about-card">
+          <p>Pozdravljen, sem Alan Košenina. Organiziram odbojkarski camp na mivki za igralce, ki želijo izboljšati tehniko in igro v paru.</p>
+          <p>Treningi potekajo v majhnih skupinah. Program prilagodimo starosti in znanju udeleženca.</p>
+          <p>Na campu delamo na</p>
+          <ul class="info-list">
+            <li>servis, sprejem, napad</li>
+            <li>gibanje po igrišču in taktika</li>
+            <li>moč, koordinacija in preventiva pred poškodbami</li>
+          </ul>
+        </div>
+
+        <div class="about-card">
+          <ul class="info-list">
+            <li><span class="info-label">Lokacija:</span> Plaža, igrišče za odbojko na mivki</li>
+            <li><span class="info-label">Termini:</span> Dodaj svoje datume</li>
+            <li><span class="info-label">Starost:</span> Skupine za otroke, mladino in odrasle</li>
+            <li><span class="info-label">Kontakt:</span> tvoj.email@domena.si</li>
+            <li><span class="info-label">Telefon:</span> +386 XX XXX XXX</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="registration">
+      <h2>Prijava na camp</h2>
+      <p>Izpolni prijavnico. Po prijavi uredi plačilo kotizacije s PayPal ali po dogovoru z menoj.</p>
+
+      <form id="registration-form" method="POST">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">Ime</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Priimek</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">E pošta</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ageGroup">Starostna skupina</label>
+            <select id="ageGroup" name="ageGroup" required>
+              <option value="">Izberi</option>
+              <option value="otrok">Otrok</option>
+              <option value="mladina">Mladina</option>
+              <option value="odrasli">Odrasli</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="level">Znanje odbojke</label>
+            <select id="level" name="level" required>
+              <option value="">Izberi</option>
+              <option value="zacetnik">Začetnik</option>
+              <option value="srednji">Srednji</option>
+              <option value="napreden">Napreden</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="session">Termin</label>
+            <select id="session" name="session" required>
+              <option value="">Izberi termin</option>
+              <option value="termin1">Termin 1</option>
+              <option value="termin2">Termin 2</option>
+              <option value="termin3">Termin 3</option>
+            </select>
+            <p class="small-text">Dodaj svoje datume.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="shirtSize">Velikost majice</label>
+            <select id="shirtSize" name="shirtSize">
+              <option value="">Izberi</option>
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Opombe</label>
+          <textarea id="notes" name="notes"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="consent" required>
+            Strinjam se s pogoji udeležbe in obdelavo osebnih podatkov.
+          </label>
+        </div>
+
+        <div class="payment-box">
+          <p class="small-text">Po oddani prijavi uredi plačilo kotizacije.</p>
+          <a class="paypal-button" href="https://paypal.me/zakljucekprva" target="_blank" rel="noopener">Plačaj s PayPal</a>
+        </div>
+
+        <div style="margin-top:20px">
+          <button type="submit" class="btn btn-primary">Pošlji prijavo</button>
+        </div>
+
+        <div id="form-status" class="small-text" style="margin-top:10px"></div>
+
+      </form>
+    </section>
+
+  </main>
+
+  <footer>Odbojkarski camp Alan Košenina</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const form = document.getElementById('registration-form');
+    const statusEl = document.getElementById('form-status');
+
+    const supabaseUrl = 'https://jaxyaijogfqbtqvxcstg.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpheHlhaWpvZ2ZxYnRxdnhjc3RnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNzU2NDYsImV4cCI6MjA3OTY1MTY0Nn0.R_gondo41sqtnokkhjiqKRbmX_d2KTaTAe4C76tRePU';
+
+    const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      statusEl.textContent = 'Pošiljam prijavo';
+
+      const data = {
+        first_name: form.firstName.value,
+        last_name: form.lastName.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        age_group: form.ageGroup.value,
+        level: form.level.value,
+        session: form.session.value,
+        shirt_size: form.shirtSize.value,
+        notes: form.notes.value
+      };
+
+      const result = await supabaseClient.from('registrations').insert([data]);
+
+      if (result.error) {
+        statusEl.textContent = 'Napaka. Poskusi znova ali me kontaktiraj.';
+        console.log(result.error);
+      } else {
+        statusEl.textContent = 'Prijava uspešna. Hvala.';
+        form.reset();
+      }
+    });
+  </script>
+
+</body>
+</html>
