@@ -1,489 +1,340 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-  <meta charset="UTF-8">
-  <title>Odbojkarski camp Alan Košenina</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Odbojkarski camp Alan Košenina</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif }
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif }
 
-    body {
-      color: #f5f5f5;
-      background-color: #0b4f9c;
-      background-image:
-        linear-gradient(to bottom, #0b4f9c 0%, #0f68c0 40%, #0b4f9c 100%),
-        repeating-linear-gradient(
-          to right,
-          rgba(255,255,255,0.12) 0,
-          rgba(255,255,255,0.12) 2px,
-          transparent 2px,
-          transparent 120px
-        );
-      line-height: 1.6;
-    }
+body {
+  color: #f5f5f5;
+  background: linear-gradient(to bottom,#0b4f9c,#0f68c0,#0b4f9c);
+  line-height: 1.6;
+}
 
-    header {
-      position: relative;
-      height: 100vh;
-      background-image: url("igrisce.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
+header {
+  position: relative;
+  height: 100vh;
+  background-image: url("igrisce.jpg");
+  background-size: cover;
+  background-position: center;
+}
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.4);
+}
 
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(255,255,255,0.4);
-    }
+.hero-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #003566;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 20px;
-      color: #003566;
-    }
+.hero-title { font-size: 2.6rem; font-weight: bold }
+.hero-subtitle { margin: 16px 0 30px }
 
-    .hero-title {
-      font-size: 2.8rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+.btn {
+  padding: 12px 26px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: #0077b6;
+  color: white;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
 
-    .hero-subtitle {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
+main { max-width: 1100px; margin: 70px auto; padding: 0 20px }
+section { margin-bottom: 70px }
+h2 { color: #ffe066; margin-bottom: 20px }
 
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-    }
+/* about */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 40px;
+  align-items: center;
+}
+.coach-photo {
+  max-width: 260px;
+  filter: drop-shadow(0 10px 25px rgba(0,0,0,0.5));
+}
+.about-card {
+  background: rgba(0,0,0,0.25);
+  padding: 26px;
+  border-radius: 10px;
+}
+.info-list { list-style: none; margin-top: 12px }
+.info-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+}
+.info-list li::before {
+  content: "➜";
+  position: absolute;
+  left: 0;
+  color: #ffe066;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      text-decoration: none;
-      border-radius: 4px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
+/* terms boxes */
+.term-selector { display: flex; gap: 20px; margin-bottom: 25px }
+.term-box {
+  flex: 1;
+  padding: 18px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  background: rgba(0,0,0,0.15);
+}
+.term-box.active {
+  background: rgba(255,255,255,0.15);
+  border-color: #ffe066;
+}
+.term-content {
+  background: rgba(0,0,0,0.25);
+  padding: 22px;
+  border-radius: 10px;
+}
 
-    .btn-primary {
-      background-color: #0077b6;
-      color: white;
-    }
+/* FORM */
+form {
+  background: rgba(0,0,0,0.25);
+  padding: 26px;
+  border-radius: 10px;
+}
+.form-row { display: flex; gap: 20px; flex-wrap: wrap }
+.form-group { flex: 1; min-width: 220px; margin-bottom: 18px }
 
-    .btn-secondary {
-      background-color: white;
-      color: #0077b6;
-      border: 2px solid #0077b6;
-    }
+label { display: block; margin-bottom: 8px }
 
-    main {
-      max-width: 1100px;
-      margin: 40px auto 60px auto;
-      padding: 0 20px;
-    }
+/* custom radios */
+.radio-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
-    section {
-      margin-bottom: 60px;
-    }
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #ffe066;
-    }
+.radio input {
+  display: none;
+}
 
-    p {
-      margin-bottom: 10px;
-    }
+.radio span {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #ffe066;
+  display: inline-block;
+  position: relative;
+}
 
-    .about-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 40px;
-      align-items: center;
-    }
+.radio input:checked + span::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffe066;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 
-    .coach-photo-wrapper {
-      display: flex;
-      justify-content: center;
-    }
+input, textarea {
+  width: 100%;
+  padding: 9px;
+  border-radius: 4px;
+  border: none;
+}
+textarea { min-height: 100px }
 
-    .coach-photo {
-      max-width: 260px;
-      width: 100%;
-      height: auto;
-      filter: drop-shadow(0 10px 25px rgba(0,0,0,0.5));
-    }
+footer {
+  background: rgba(0,0,0,0.7);
+  padding: 40px 20px;
+  text-align: center;
+}
+footer a { color: #ffe066; text-decoration: none }
 
-    .about-text-card {
-      background: rgba(0, 0, 0, 0.25);
-      border-radius: 10px;
-      padding: 20px 24px;
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-
-    .about-text-card p {
-      margin-bottom: 12px;
-    }
-
-    .info-list {
-      list-style: none;
-      margin-top: 10px;
-    }
-
-    .info-list li {
-      margin-bottom: 8px;
-      position: relative;
-      padding-left: 26px;
-    }
-
-    .info-list li::before {
-      content: "➜";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #ffe066;
-      font-weight: bold;
-    }
-
-    .info-label {
-      font-weight: bold;
-    }
-
-    form {
-      background: rgba(0, 0, 0, 0.2);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.15);
-      backdrop-filter: blur(4px);
-    }
-
-    .form-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-      flex: 1;
-      min-width: 220px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 8px 10px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      font-size: 0.95rem;
-      color: #111;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .small-text {
-      font-size: 0.85rem;
-      color: #d0e4ff;
-    }
-
-    .payment-box {
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid rgba(255,255,255,0.2);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.6);
-      color: white;
-      font-size: 0.9rem;
-    }
-
-    #form-status {
-      min-height: 18px;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateX(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    @media (max-width: 900px) {
-      .about-layout {
-        grid-template-columns: 1fr;
-        text-align: left;
-      }
-
-      .coach-photo-wrapper {
-        order: -1;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.1rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1rem;
-      }
-    }
-  </style>
+@media (max-width:900px) {
+  .about-layout { grid-template-columns: 1fr }
+}
+</style>
 </head>
 
 <body>
 
-  <header id="top">
-    <div class="hero-content">
-      <h1 class="hero-title">Odbojkarski camp Alan Košenina</h1>
-      <p class="hero-subtitle">Poletni beach volley camp za otroke in odrasle</p>
-      <div class="hero-buttons">
-        <a href="#about" class="btn btn-secondary">Več o meni</a>
-        <a href="#registration" class="btn btn-primary">Prijava na camp</a>
-      </div>
-    </div>
-  </header>
+<header>
+  <div class="hero-content">
+    <h1 class="hero-title">Odbojkarski camp Alan Košenina</h1>
+    <p class="hero-subtitle">Poletni beach volley camp</p>
+    <a href="#registration" class="btn">Prijava na camp</a>
+  </div>
+</header>
 
-  <main>
+<main>
 
-    <section id="about">
-      <h2>O meni</h2>
-      <div class="about-layout">
-        <div class="coach-photo-wrapper reveal">
-          <!-- Slika tebe brez ozadja. Zamenjaj ime datoteke, če je drugačno. -->
-          <img src="alan-kosenina.png" alt="Trener Alan Košenina" class="coach-photo">
-        </div>
+<section id="about">
+<h2>O meni</h2>
+<div class="about-layout">
+  <img src="alan-kosenina.png" class="coach-photo" alt="Alan Košenina">
+  <div class="about-card">
+    <p>Sem Alan Košenina, trener beach odbojke. Camp je namenjen resnemu napredku.</p>
+    <ul class="info-list">
+      <li>majhne skupine</li>
+      <li>individualen pristop</li>
+      <li>konkreten trening</li>
+    </ul>
+  </div>
+</div>
+</section>
 
-        <div class="about-text-card reveal">
-          <p>
-            Pozdravljen, sem Alan Košenina. Organiziram odbojkarski camp na mivki za igralce, ki želijo
-            napredovati v tehniki, igri v paru in telesni pripravi.
-          </p>
-          <p>
-            Treningi potekajo v majhnih skupinah. Program prilagodim starosti, znanju in ciljem vsakega igralca.
-          </p>
-          <p>
-            Na campu delamo na ključnih elementih igre.
-          </p>
-          <ul class="info-list">
-            <li class="reveal">servis, sprejem in napad</li>
-            <li class="reveal">gibanje po igrišču in taktika</li>
-            <li class="reveal">moč, koordinacija in preventiva pred poškodbami</li>
-          </ul>
-          <ul class="info-list" style="margin-top: 18px;">
-            <li class="reveal"><span class="info-label">Lokacija:</span> igrišče za odbojko na mivki</li>
-            <li class="reveal"><span class="info-label">Termini:</span> prilagojeni poletnim počitnicam</li>
-            <li class="reveal"><span class="info-label">Starost:</span> skupine za otroke, mladino in odrasle</li>
-            <li class="reveal"><span class="info-label">Kontakt:</span> tvoj.email@domena.si</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<section id="terms">
+<h2>Termini campa</h2>
+<div class="term-selector">
+  <div class="term-box active" onclick="showTerm(1)">Termin 1</div>
+  <div class="term-box" onclick="showTerm(2)">Termin 2</div>
+</div>
+<div class="term-content" id="termText">
+  <p><strong>Termin 1</strong></p>
+  <p>Osnove beach odbojke in tehnika.</p>
+</div>
+</section>
 
-    <section id="registration">
-      <h2>Prijava na camp</h2>
-      <p class="reveal">Izpolni prijavnico. Po uspešni prijavi se odpre Stripe plačilna stran kot pri spletni trgovini.</p>
+<section id="registration">
+<h2>Prijava</h2>
 
-      <form id="registration-form" method="POST" class="reveal">
+<form id="registration-form">
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName">Ime</label>
-            <input type="text" id="firstName" name="firstName" required>
-          </div>
+<div class="form-row">
+  <div class="form-group">
+    <label>Ime</label>
+    <input name="firstName" required>
+  </div>
+  <div class="form-group">
+    <label>Priimek</label>
+    <input name="lastName" required>
+  </div>
+</div>
 
-          <div class="form-group">
-            <label for="lastName">Priimek</label>
-            <input type="text" id="lastName" name="lastName" required>
-          </div>
-        </div>
+<div class="form-row">
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" name="email" required>
+  </div>
+  <div class="form-group">
+    <label>Telefon</label>
+    <input name="phone" required>
+  </div>
+</div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">E pošta</label>
-            <input type="email" id="email" name="email" required>
-          </div>
+<div class="form-group">
+<label>Raven znanja</label>
+<div class="radio-group">
+  <label class="radio">
+    <input type="radio" name="level" value="zacetnik" required>
+    <span></span> Začetnik
+  </label>
+  <label class="radio">
+    <input type="radio" name="level" value="srednji">
+    <span></span> Srednji
+  </label>
+  <label class="radio">
+    <input type="radio" name="level" value="napreden">
+    <span></span> Napreden
+  </label>
+</div>
+</div>
 
-          <div class="form-group">
-            <label for="phone">Telefon</label>
-            <input type="tel" id="phone" name="phone" required>
-          </div>
-        </div>
+<div class="form-group">
+<label>Izberi termin</label>
+<div class="radio-group">
+  <label class="radio">
+    <input type="radio" name="session" value="termin1" required>
+    <span></span> Termin 1
+  </label>
+  <label class="radio">
+    <input type="radio" name="session" value="termin2">
+    <span></span> Termin 2
+  </label>
+</div>
+</div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="ageGroup">Starostna skupina</label>
-            <select id="ageGroup" name="ageGroup" required>
-              <option value="">Izberi</option>
-              <option value="otrok">Otrok</option>
-              <option value="mladina">Mladina</option>
-              <option value="odrasli">Odrasli</option>
-            </select>
-          </div>
+<div class="form-group">
+<label>Opombe</label>
+<textarea name="notes"></textarea>
+</div>
 
-          <div class="form-group">
-            <label for="level">Znanje odbojke</label>
-            <select id="level" name="level" required>
-              <option value="">Izberi</option>
-              <option value="zacetnik">Začetnik</option>
-              <option value="srednji">Srednji</option>
-              <option value="napreden">Napreden</option>
-            </select>
-          </div>
-        </div>
+<button type="submit" class="btn">Nadaljuj na plačilo</button>
+<div id="form-status"></div>
+</form>
+</section>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="session">Termin</label>
-            <select id="session" name="session" required>
-              <option value="">Izberi termin</option>
-              <option value="termin1">Termin 1</option>
-              <option value="termin2">Termin 2</option>
-              <option value="termin3">Termin 3</option>
-            </select>
-            <p class="small-text">Dodaj dejanske datume v opis terminov.</p>
-          </div>
+</main>
 
-          <div class="form-group">
-            <label for="shirtSize">Velikost majice</label>
-            <select id="shirtSize" name="shirtSize">
-              <option value="">Izberi</option>
-              <option value="XS">XS</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-            </select>
-          </div>
-        </div>
+<footer>
+<p>Kontakt</p>
+<p>Email: <a href="mailto:tvoj.email@domena.si">tvoj.email@domena.si</a></p>
+<p>Telefon: +386 XX XXX XXX</p>
+</footer>
 
-        <div class="form-group">
-          <label for="notes">Opombe</label>
-          <textarea id="notes" name="notes" placeholder="Alergije, zdravstvene posebnosti, želje glede partnerja v paru in podobno"></textarea>
-        </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const supabase = window.supabase.createClient(
+  'https://jaxyaijogfqbtqvxcstg.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpheHlhaWpvZ2ZxYnRxdnhjc3RnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNzU2NDYsImV4cCI6MjA3OTY1MTY0Nn0.R_gondo41sqtnokkhjiqKRbmX_d2KTaTAe4C76tRePU'
+);
 
-        <div class="form-group">
-          <label>
-            <input type="checkbox" name="consent" required>
-            Strinjam se s pogoji udeležbe in obdelavo osebnih podatkov.
-          </label>
-        </div>
+document.getElementById('registration-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  document.getElementById('form-status').innerText = 'Pošiljam...';
+  const f = e.target;
 
-        <div class="payment-box">
-          <p class="small-text">
-            Ko klikneš Pošlji prijavo, se prijava zapiše v bazo, nato pa se odpre Stripe Checkout za plačilo kotizacije.
-          </p>
-        </div>
+  const res = await supabase.from('registrations').insert([{
+    first_name: f.firstName.value,
+    last_name: f.lastName.value,
+    email: f.email.value,
+    phone: f.phone.value,
+    level: f.level.value,
+    session: f.session.value,
+    notes: f.notes.value
+  }]);
 
-        <div style="margin-top:20px">
-          <button type="submit" class="btn btn-primary">Pošlji prijavo in nadaljuj na plačilo</button>
-        </div>
+  if (!res.error) {
+    window.location.href = 'https://buy.stripe.com/test_cNi4gseYW9iTdBo3WI6EU00';
+  } else {
+    document.getElementById('form-status').innerText = 'Napaka pri prijavi';
+  }
+});
 
-        <div id="form-status" class="small-text" style="margin-top:10px"></div>
-
-      </form>
-    </section>
-
-  </main>
-
-  <footer>Odbojkarski camp Alan Košenina</footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    const form = document.getElementById('registration-form')
-    const statusEl = document.getElementById('form-status')
-
-    const supabaseUrl = 'https://jaxyaijogfqbtqvxcstg.supabase.co'
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpheHlhaWpvZ2ZxYnRxdnhjc3RnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNzU2NDYsImV4cCI6MjA3OTY1MTY0Nn0.R_gondo41sqtnokkhjiqKRbmX_d2KTaTAe4C76tRePU'
-
-    const paymentUrl = 'https://buy.stripe.com/test_cNi4gseYW9iTdBo3WI6EU00'
-
-    const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey)
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault()
-      statusEl.textContent = 'Pošiljam prijavo'
-
-      const data = {
-        first_name: form.firstName.value,
-        last_name: form.lastName.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        age_group: form.ageGroup.value,
-        level: form.level.value,
-        session: form.session.value,
-        shirt_size: form.shirtSize.value,
-        notes: form.notes.value
-      }
-
-      const result = await supabaseClient.from('registrations').insert([data])
-
-      if (result.error) {
-        statusEl.textContent = 'Napaka. Poskusi znova ali me kontaktiraj.'
-        console.log(result.error)
-      } else {
-        statusEl.textContent = 'Prijava uspešna. Preusmerjam na Stripe plačilo.'
-        setTimeout(function () {
-          window.location.href = paymentUrl
-        }, 1200)
-      }
-    })
-
-    const revealElements = document.querySelectorAll('.reveal')
-
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible')
-          }
-        })
-      },
-      {
-        threshold: 0.15
-      }
-    )
-
-    revealElements.forEach(el => observer.observe(el))
-  </script>
+function showTerm(t) {
+  document.querySelectorAll('.term-box').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.term-box')[t-1].classList.add('active');
+  document.getElementById('termText').innerHTML =
+    t === 1
+      ? '<p><strong>Termin 1</strong></p><p>Osnove beach odbojke in tehnika.</p>'
+      : '<p><strong>Termin 2</strong></p><p>Intenzivna igra in taktika.</p>';
+}
+</script>
 
 </body>
 </html>
