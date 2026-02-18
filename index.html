@@ -942,6 +942,218 @@
       gap: 10px !important;
     }
 
+  
+    /* Mobile navbar: single line */
+    @media (max-width: 768px){
+      .topbar-inner{
+        flex-wrap: nowrap !important;
+      }
+      .nav{
+        flex-wrap: nowrap !important;
+        white-space: nowrap !important;
+      }
+      .nav a{
+        white-space: nowrap !important;
+      }
+      .brand small{
+        display: none !important;
+      }
+      .nav{
+        gap: 8px !important;
+      }
+      .lang-switch > img{
+        width: 26px !important;
+        height: 18px !important;
+      }
+      .lang-dropdown img{
+        width: 26px !important;
+        height: 18px !important;
+      }
+    }
+
+    @media (max-width: 420px){
+      .nav a{
+        font-size: 0.76rem !important;
+        padding: 3px 5px !important;
+      }
+      .nav .cta{
+        padding: 5px 9px !important;
+        font-size: 0.76rem !important;
+      }
+      .brand div{
+        font-size: 0.85rem !important;
+      }
+      .nav{
+        gap: 6px !important;
+      }
+    }
+
+  
+    /* Signup form: single column on mobile */
+    @media (max-width: 768px){
+      .form-grid{
+        grid-template-columns: 1fr !important;
+      }
+      .form-grid .field{
+        width: 100% !important;
+      }
+      input, select, textarea{
+        width: 100% !important;
+      }
+      .form-actions{
+        display: block !important;
+      }
+      #btnSend{
+        width: 100% !important;
+      }
+    }
+
+  
+    /* Fix: prevent right-side background gap on mobile */
+    html, body{
+      width: 100%;
+      overflow-x: hidden;
+    }
+    .topbar, header.hero, .hero, section, footer{
+      width: 100%;
+    }
+    header.hero, .hero{
+      left: 0;
+      right: 0;
+    }
+    /* Make hero background full-bleed even if wrapped */
+    .hero{
+      width: 100vw !important;
+      margin-left: calc(50% - 50vw) !important;
+      margin-right: calc(50% - 50vw) !important;
+    }
+    .topbar{
+      width: 100vw !important;
+      margin-left: calc(50% - 50vw) !important;
+      margin-right: calc(50% - 50vw) !important;
+    }
+    footer{
+      width: 100vw !important;
+      margin-left: calc(50% - 50vw) !important;
+      margin-right: calc(50% - 50vw) !important;
+    }
+
+  
+    /* Ultra-compact mobile navbar */
+    @media (max-width: 768px){
+
+      .topbar{
+        padding: 6px 10px !important;
+      }
+
+      .topbar-inner{
+        gap: 6px !important;
+      }
+
+      .brand img{
+        width: 22px !important;
+      }
+
+      .brand div{
+        font-size: 0.78rem !important;
+        font-weight: 600 !important;
+      }
+
+      .nav{
+        gap: 6px !important;
+      }
+
+      .nav a{
+        font-size: 0.72rem !important;
+        padding: 2px 4px !important;
+      }
+
+      .nav .cta{
+        font-size: 0.72rem !important;
+        padding: 4px 8px !important;
+      }
+
+      .lang-switch > img{
+        width: 22px !important;
+        height: 16px !important;
+      }
+    }
+
+    @media (max-width: 380px){
+      .brand div{
+        font-size: 0.72rem !important;
+      }
+      .nav a{
+        font-size: 0.68rem !important;
+      }
+      .nav .cta{
+        font-size: 0.68rem !important;
+        padding: 3px 6px !important;
+      }
+    }
+
+  
+    /* Mobile: show only logo, hide brand text */
+    @media (max-width: 768px){
+
+      .brand div{
+        display: none !important;
+      }
+
+      .brand small{
+        display: none !important;
+      }
+
+      .brand img{
+        width: 34px !important;
+      }
+
+      .topbar-inner{
+        gap: 8px !important;
+      }
+
+      .nav{
+        gap: 8px !important;
+      }
+    }
+
+  
+    /* Bigger mobile logo */
+    @media (max-width: 768px){
+      .brand img{
+        width: 44px !important;
+      }
+    }
+
+    /* Signup form: always single column */
+    .form-grid{
+      grid-template-columns: 1fr !important;
+    }
+
+  
+    /* Bigger mobile logo */
+    @media (max-width: 768px){
+      .brand img{
+        width: 54px !important;
+      }
+    }
+
+    /* Signup form: ONE field per row everywhere */
+    .form-grid{
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 14px !important;
+    }
+    .form-grid .field{
+      grid-column: 1 / -1 !important;
+    }
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea{
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
   </style>
 </head>
 <body>
@@ -961,10 +1173,10 @@
         <a href="#prijava" class="cta" id="navSignup">Prijava</a>
       </nav>
       <div class="lang-switch">
-        <img src="27111.JPG" alt="Slovenščina" id="currentLang" />
+        <img src="27111.jpg" alt="Slovenščina" id="currentLang" />
         <div class="lang-dropdown" id="langDropdown">
-          <img src="27111.JPG" data-lang="sl" alt="Slovenščina" />
-          <img src="18166.JPG" data-lang="en" alt="English" />
+          <img src="27111.jpg" data-lang="sl" alt="Slovenščina" />
+          <img src="18166.jpg" data-lang="en" alt="English" />
         </div>
       </div>
 </div>
