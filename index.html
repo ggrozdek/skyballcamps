@@ -1,385 +1,1348 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-<meta charset="UTF-8">
-<title>Odbojkarski camp Alan Košenina</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <title>Skyball beach camps</title>
+  <meta name="description" content="Beach volleyball camp. Termini, trenerji, program in prijava." />
+  <style>
+    :root{
+      --bg: #f4efe6;
+      --paper: rgba(255,255,255,0.82);
+      --text: #0c1b2b;
+      --muted: rgba(12,27,43,0.70);
+      --line: rgba(12,27,43,0.10);
+      --blue: #0b4aa2;
+      --blue2: #1c64c6;
+      --radius: 18px;
+      --shadow: 0 16px 38px rgba(0,0,0,0.18);
+      --shadow2: 0 10px 24px rgba(0,0,0,0.12);
+      --max: 1120px;
+    }
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    
+    
+    
+    body{
+      margin: 0;
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
 
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif }
+      /* Short transition from hero to texture */
+      background-image:
+        linear-gradient(180deg,
+          rgba(239,231,215,1) 0%,
+          rgba(239,231,215,0.95) 8%,
+          rgba(239,231,215,0.75) 14%,
+          rgba(239,231,215,0.6) 18%),
+        url("background.png");
+      background-repeat: no-repeat, repeat;
+      background-size: cover, auto;
+      background-position: top center, top left;
+    }
+    
+    
+    
+    a{ color: var(--blue); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(244,239,230,0.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 0;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+    .logo-mark{
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      background: linear-gradient(180deg, var(--blue) 0%, var(--blue2) 100%);
+      box-shadow: 0 10px 18px rgba(11,74,162,0.22);
+      position: relative;
+      overflow: hidden;
+    }
+    .logo-mark::before{
+      content: "";
+      position: absolute;
+      inset: -8px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.55), transparent 55%);
+      transform: rotate(18deg);
+    }
+    .brand small{
+      display: block;
+      font-weight: 800;
+      color: var(--muted);
+      letter-spacing: 0.1px;
+      margin-top: 1px;
+      font-size: 0.78rem;
+    }
+    .nav{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav a{
+      color: rgba(12,27,43,0.72);
+      font-weight: 900;
+      padding: 8px 10px;
+      border-radius: 12px;
+    }
+    .nav a:hover{ background: rgba(12,27,43,0.06); text-decoration: none; }
+    .nav .cta{
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 10px 20px rgba(11,74,162,0.18);
+    }
+    .nav .cta:hover{ background: var(--blue2); }
+    header.hero{
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 42px 0 34px;
+      position: relative;
+      overflow: hidden;
+    }
+    header.hero::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(244,239,230,0.08) 0%, rgba(244,239,230,0.78) 64%, rgba(244,239,230,0.98) 100%),
+        url("igrisce.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05);
+    }
+    .hero-inner{ position: relative; z-index: 1; }
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      align-items: center;
+    }
+    .hero h1{
+      font-family: Georgia, "Times New Roman", serif;
+      margin: 0 0 12px;
+      font-size: clamp(2.3rem, 4.2vw, 3.6rem);
+      line-height: 1.08;
+      letter-spacing: -0.4px;
+    }
+    .hero p{
+      margin: 0 0 14px;
+      color: rgba(12,27,43,0.78);
+      font-size: 1.05rem;
+      max-width: 62ch;
+      font-weight: 700;
+    }
+    .hero-pills{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .pill{
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(12,27,43,0.10);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      color: rgba(12,27,43,0.76);
+    }
+    .hero-card{
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(12,27,43,0.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .hero-card h3{ margin: 0 0 6px; font-size: 1.05rem; }
+    .hero-card p{ margin: 0 0 12px; color: var(--muted); font-weight: 700; }
+    .actions{ display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn{
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .btn.primary{ background: var(--blue); color: white; }
+    .btn.primary:hover{ background: var(--blue2); text-decoration: none; }
+    .btn.ghost{
+      background: rgba(12,27,43,0.06);
+      border: 1px solid rgba(12,27,43,0.10);
+      color: var(--text);
+    }
+    .btn.ghost:hover{ background: rgba(12,27,43,0.08); text-decoration: none; }
+    main{ padding: 34px 0 64px; }
+    section{ padding: 26px 0; }
+    .section-head{
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 0 0 16px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+    .section-head h2{
+      margin: 0;
+      font-size: 1.7rem;
+      letter-spacing: -0.2px;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    .section-head p{
+      margin: 0;
+      color: var(--muted);
+      max-width: 76ch;
+      font-weight: 700;
+    }
+    .card{
+      background: var(--paper);
+      border: 1px solid rgba(12,27,43,0.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+    }
+    .about-stack{
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .about-text p{ margin: 0 0 10px; color: rgba(12,27,43,0.80); font-weight: 700; }
+    .bullets{
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      display: grid;
+      gap: 8px;
+    }
+    .bullets li{
+      padding-left: 20px;
+      position: relative;
+      color: rgba(12,27,43,0.74);
+      font-weight: 800;
+    }
+    .bullets li::before{
+      content: "•";
+      position: absolute;
+      left: 6px;
+      top: 0;
+      color: var(--blue);
+    }
+    .trainers-title{
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(12,27,43,0.10);
+    }
+    .trainers-title h3{
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: -0.1px;
+    }
+    .trainers-title p{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .trainer-grid{
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .trainer-card{ padding: 14px; }
+    .trainer-card img{
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(12,27,43,0.10);
+      background: rgba(12,27,43,0.04);
+    }
+    .trainer-card h4{ margin: 12px 0 4px; font-size: 1.05rem; }
+    .trainer-card .role{ color: var(--muted); font-weight: 800; margin: 0 0 10px; }
+    .trainer-card ul{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(12,27,43,0.74);
+      font-weight: 700;
+    }
+    .trainer-card li{ margin: 6px 0; }
+    .camp-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .camp-card{
+      background: linear-gradient(180deg, rgba(11,74,162,0.10) 0%, rgba(255,255,255,0.86) 55%, rgba(255,255,255,0.90) 100%);
+      border: 1px solid rgba(12,27,43,0.10);
+      border-radius: 22px;
+      box-shadow: var(--shadow2);
+      overflow: hidden;
+    }
+    .camp-hero{
+      height: 160px;
+      background:
+        linear-gradient(180deg, rgba(11,74,162,0.05) 0%, rgba(11,74,162,0.20) 100%),
+        url("igrisce.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+    .camp-body{ padding: 16px; }
+    .camp-week{
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: rgba(11,74,162,0.10);
+      color: rgba(12,27,43,0.85);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-weight: 900;
+      margin-bottom: 10px;
+      border: 1px solid rgba(12,27,43,0.10);
+    }
+    .camp-body h3{
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -0.2px;
+    }
+    .camp-body p{ margin: 0 0 10px; color: var(--muted); font-weight: 700; }
+    .camp-body ul{ margin: 0 0 14px; padding-left: 18px; color: rgba(12,27,43,0.74); font-weight: 700; }
+    .camp-body li{ margin: 6px 0; }
+    .camp-actions{ padding: 0 16px 16px; }
+    .camp-actions .btn{ width: 100%; }
+    footer{
+      background: rgba(12,27,43,0.92);
+      color: rgba(255,255,255,0.92);
+      padding: 28px 0;
+      margin-top: 40px;
+    }
+    footer a{ color: white; text-decoration: underline; }
+    footer .wrap{ display: grid; gap: 10px; }
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .about-stack{ grid-template-columns: 1fr; }
+      .trainer-grid{ grid-template-columns: 1fr; }
+      .camp-grid{ grid-template-columns: 1fr; }
+      .nav a{ padding: 8px 8px; }
+    }
+  
+    .hero-simple{
+      max-width: 640px;
+    }
+    .hero-simple h1{
+      margin: 0 0 12px;
+    }
+    .hero-simple p{
+      margin: 0 0 16px;
+    }
 
-body {
-  color: #ffffff;
-  background-color: #083b73;
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      rgba(0,0,0,0.12),
-      rgba(0,0,0,0.12) 20px,
-      transparent 20px,
-      transparent 40px
-    ),
-    linear-gradient(to bottom,#083b73 0%,#0a4a8a 45%,#083b73 100%);
-  line-height: 1.6;
-}
+  
+    /* Trainers carousel */
+    .trainer-carousel{
+      margin-top: 14px;
+    }
+    .trainer-tabs{
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0 12px;
+    }
+    .trainer-tab{
+      border: 1px solid rgba(12,27,43,0.12);
+      background: rgba(12,27,43,0.05);
+      color: rgba(12,27,43,0.82);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+    .trainer-tab.active{
+      background: var(--blue);
+      color: white;
+      border-color: transparent;
+    }
 
-/* HERO */
-header {
-  position: relative;
-  height: 100vh;
-  background-image: url("igrisce.jpg");
-  background-size: cover;
-  background-position: center;
-}
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.35);
-}
-.hero-content {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #00294f;
-}
-.hero-title { font-size: 2.7rem; font-weight: bold }
-.hero-subtitle { margin: 16px 0 30px }
-.btn {
-  padding: 12px 28px;
-  border-radius: 4px;
-  font-weight: bold;
-  background: #4bb3ff;
-  color: #00294f;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-}
+    .trainer-stage{
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.40);
+      border: 1px solid rgba(12,27,43,0.10);
+      padding: 14px;
+    }
+    .trainer-slides{
+      display: block;
+      min-height: 1px;
+    }
+    .trainer-slide{
+      display: none;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .trainer-slide.active{
+      display: block;
+    }
+    .trainer-card img{
+      height: 360px;
+      object-position: center;
+    }
 
-/* LAYOUT */
-main { max-width: 1100px; margin: 70px auto; padding: 0 20px }
-section { margin-bottom: 70px }
-h2 { margin-bottom: 20px }
+    .trainer-arrow{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(12,27,43,0.12);
+      background: rgba(255,255,255,0.85);
+      color: rgba(12,27,43,0.85);
+      font-weight: 900;
+      font-size: 24px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.10);
+      user-select: none;
+    }
+    .trainer-arrow:hover{
+      background: rgba(255,255,255,0.95);
+    }
+    .trainer-arrow.left{ left: 10px; }
+    .trainer-arrow.right{ right: 10px; }
 
-/* ABOUT */
-.about-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 40px;
-  align-items: center;
-}
-.coach-photo {
-  max-width: 260px;
-  filter: drop-shadow(0 12px 25px rgba(0,0,0,0.6));
-}
-.about-card {
-  background: #06325f;
-  padding: 28px;
-  border-radius: 12px;
-}
-.info-list { list-style: none; margin-top: 14px }
-.info-list li {
-  position: relative;
-  padding-left: 26px;
-  margin-bottom: 10px;
-}
-.info-list li::before {
-  content: "➜";
-  position: absolute;
-  left: 0;
-}
+    .trainer-dots{
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .trainer-dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(12,27,43,0.22);
+      cursor: pointer;
+    }
+    .trainer-dot.active{
+      background: var(--blue);
+    }
 
-/* TERMINI */
-.term-selector { display: flex; gap: 22px; margin-bottom: 28px }
-.term-box {
-  flex: 1;
-  padding: 26px;
-  border-radius: 14px;
-  text-align: center;
-  cursor: pointer;
-  font-weight: 800;
-  font-size: 1.35rem;
-  background: #0d4d8f;
-  border: 4px solid #4bb3ff;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.term-box:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
-}
-.term-box.active {
-  background: #4bb3ff;
-  color: #00294f;
-  border-color: #ffffff;
-}
+    @media (max-width: 980px){
+      .trainer-card img{ height: 300px; }
+      .trainer-arrow{ width: 42px; height: 42px; }
+    }
 
-.term-content {
-  background: #06325f;
-  padding: 26px;
-  border-radius: 12px;
-  margin-bottom: 25px;
-}
+  
+    /* Trainer slide split layout */
+    .trainer-card{
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .trainer-card img{
+      width: 100%;
+      height: 420px;
+      object-fit: contain;
+      border: 0;
+      background: transparent;
+    }
+    .trainer-card h4{ margin-top: 0; }
+    @media (max-width: 980px){
+      .trainer-card{
+        grid-template-columns: 1fr;
+      }
+      .trainer-card img{
+        height: 340px;
+      }
+    }
 
-/* MAP */
-.map-card {
-  background: #06325f;
-  border-radius: 12px;
-  overflow: hidden;
-}
-.map-card iframe {
-  width: 100%;
-  height: 280px;
-  border: 0;
-}
-.map-actions {
-  padding: 15px;
-  text-align: right;
-}
-.map-actions a {
-  background: #4bb3ff;
-  color: #00294f;
-  padding: 10px 18px;
-  border-radius: 4px;
-  font-weight: bold;
-  text-decoration: none;
-}
+  
+    .trainer-stage{
+      max-width: 920px;
+      margin: 0 auto;
+    }
 
-/* FORM */
-form {
-  background: #06325f;
-  padding: 28px;
-  border-radius: 12px;
-}
-.form-row { display: flex; gap: 22px; flex-wrap: wrap }
-.form-group { flex: 1; min-width: 220px; margin-bottom: 20px }
-.radio-group { display: flex; gap: 22px; flex-wrap: wrap }
-.radio {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  font-weight: bold;
-}
-.radio input { display: none }
-.radio span {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2px solid #4bb3ff;
-  position: relative;
-}
-.radio input:checked + span::after {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #4bb3ff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 4px;
-  border: none;
-}
-textarea { min-height: 110px }
+  
+    .camp-location{
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(12,27,43,0.10);
+      background: rgba(255,255,255,0.70);
+      color: rgba(12,27,43,0.82);
+      font-weight: 800;
+      display: grid;
+      gap: 6px;
+    }
 
-/* FOOTER */
-footer {
-  background: #052a4d;
-  padding: 45px 20px;
-  text-align: center;
-}
-footer a { color: #4bb3ff; text-decoration: none }
+  
+    /* Ensure only carousel trainer is visible */
+    .trainer-card:not(.trainer-slide){
+      display: none !important;
+    }
 
-@media (max-width:900px) {
-  .about-layout { grid-template-columns: 1fr }
-}
-</style>
+  
+    .trainer-slide{
+      display: none !important;
+    }
+    .trainer-slide.active{
+      display: grid !important;
+    }
+
+  
+    /* Remove white boxes for trainers */
+    .trainer-stage{
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+
+    .trainer-slide{
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+
+    /* Keep text in white boxes only */
+    .trainer-card h4,
+    .trainer-card .role,
+    .trainer-card ul{
+      background: white;
+      padding: 10px 14px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .trainer-card ul{
+      display: block;
+    }
+
+  
+    /* Trainers: one info box on the right */
+    .trainer-card{
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+    .trainer-card img{
+      width: 100%;
+      height: 520px;
+      object-fit: contain;
+      background: transparent;
+      border: 0;
+    }
+
+    .trainer-info{
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(12,27,43,0.10);
+      border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.10);
+      padding: 16px 18px;
+    }
+    .trainer-info h4{
+      margin: 0 0 6px;
+      font-size: 1.2rem;
+    }
+    .trainer-info .role{
+      margin: 0 0 12px;
+      color: rgba(12,27,43,0.72);
+      font-weight: 900;
+    }
+    .trainer-info ul{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(12,27,43,0.78);
+      font-weight: 800;
+    }
+
+    /* Remove earlier per-element boxes if they exist */
+    .trainer-card h4,
+    .trainer-card .role,
+    .trainer-card ul{
+      background: transparent !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      display: block !important;
+    }
+
+    /* Keep arrows usable on wide layout */
+    .trainer-stage{
+      padding: 8px 0 !important;
+    }
+
+    @media (max-width: 980px){
+      .trainer-card{
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+      .trainer-card img{
+        height: 360px;
+      }
+    }
+
+  
+    /* Softer transparent sections */
+    .about-stack > .card,
+    .trainer-info{
+      background: rgba(255,255,255,0.82) !important;
+      backdrop-filter: blur(2px);
+    }
+
+    /* Remove any large empty white blocks */
+    .about-extra{
+      display: none !important;
+    }
+
+  
+    /* Hero logo */
+    .hero-logo{
+      margin-bottom: 18px;
+    }
+    .hero-logo img{
+      width: 120px;
+      height: auto;
+      display: block;
+    }
+
+  
+    /* Top navigation logo */
+    .nav-logo{
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      margin-right: 10px;
+    }
+
+    /* Hero center logo */
+    .hero-logo{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .hero-logo img{
+      width: 140px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.15));
+    }
+
+  
+    .trainer-info{
+      background: rgba(255,255,255,0.78) !important;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(12,27,43,0.08);
+    }
+
+  
+    /* About: single column and slightly transparent */
+    .about-one{
+      display: block;
+    }
+    .card.about-text{
+      background: rgba(255,255,255,0.80) !important;
+      border: 1px solid rgba(12,27,43,0.08);
+      backdrop-filter: blur(2px);
+    }
+
+    /* Trainer info box: slightly more transparent */
+    .trainer-info{
+      background: rgba(255,255,255,0.74) !important;
+      border: 1px solid rgba(12,27,43,0.08);
+      backdrop-filter: blur(4px);
+    }
+
+  
+    /* Big hero logo */
+    .hero-logo-big{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .hero-logo-big img{
+      width: 220px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.18));
+    }
+
+    @media (max-width: 768px){
+      .hero-logo-big img{
+        width: 160px;
+      }
+    }
+
+  
+    /* Big hero logo (above text) */
+    .hero-logo-big{
+      display: flex;
+      justify-content: center;
+      margin: 0 0 26px;
+    }
+    .hero-logo-big img{
+      width: 260px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 10px 28px rgba(0,0,0,0.22));
+    }
+    @media (max-width: 768px){
+      .hero-logo-big img{ width: 180px; }
+    }
+
+  
+    /* O campu main box more transparent */
+    .card.about-text{
+      background: rgba(255,255,255,0.68) !important;
+      backdrop-filter: blur(3px);
+      border: 1px solid rgba(12,27,43,0.06);
+    }
+
+  
+    /* O campu even more transparent */
+    .card.about-text{
+      background: rgba(255,255,255,0.55) !important;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(12,27,43,0.05);
+    }
+
+  
+    /* Camp embedded map */
+    .camp-map{
+      margin-top: 14px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    }
+    .camp-map iframe{
+      width: 100%;
+      height: 300px;
+      border: 0;
+      display: block;
+    }
+
+  
+    /* Language switch */
+    .lang-switch{
+      position: relative;
+      margin-left: 16px;
+      cursor: pointer;
+    }
+    .lang-switch > img{
+      width: 28px;
+      height: 20px;
+      object-fit: cover;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.15);
+    }
+    .lang-dropdown{
+      position: absolute;
+      top: 36px;
+      right: 0;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 8px;
+      padding: 6px;
+      display: none;
+      gap: 6px;
+    }
+    .lang-dropdown img{
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+    }
+    .lang-switch.open .lang-dropdown{
+      display: flex;
+      flex-direction: column;
+    }
+
+  
+    .credit{
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    .credit a{
+      color: rgba(0,0,0,0.6);
+      text-decoration: none;
+    }
+    .credit a:hover{
+      text-decoration: underline;
+    }
+
+  </style>
 </head>
-
 <body>
-
-<header>
-  <div class="hero-content">
-    <h1 class="hero-title">Odbojkarski camp Alan Košenina</h1>
-    <p class="hero-subtitle">Poletni beach volley camp</p>
-    <a href="#registration" class="btn">Prijava na camp</a>
-  </div>
-</header>
-
-<main>
-
-<section id="about">
-<h2>O meni</h2>
-<div class="about-layout">
-  <img src="alan-kosenina.png" class="coach-photo" alt="Alan Košenina">
-  <div class="about-card">
-    <p>Sem Alan Košenina, trener beach odbojke. Camp je namenjen resnemu napredku v tehniki, taktiki in igri.</p>
-    <ul class="info-list">
-      <li>majhne skupine</li>
-      <li>individualen pristop</li>
-      <li>jasen napredek</li>
-    </ul>
-  </div>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <img src="favicon.png" alt="Logo" class="nav-logo" />
+        <div>
+          <div id="brandName">Skyball beach camps</div>
+          <small id="brandTagline">Odbojka na mivki</small>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Navigacija">
+        <a href="#o-nas" id="navAbout">O campu</a>
+        <a href="#trenerji" id="navTrainers">Trenerji</a>
+        <a href="#campi" id="navCamps">Termini</a>
+        <a href="#prijava" class="cta" id="navSignup">Prijava</a>
+      </nav>
+      <div class="lang-switch">
+        <img src="27111.JPG" alt="Slovenščina" id="currentLang" />
+        <div class="lang-dropdown" id="langDropdown">
+          <img src="27111.JPG" data-lang="sl" alt="Slovenščina" />
+          <img src="18166.JPG" data-lang="en" alt="English" />
+        </div>
+      </div>
 </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="wrap hero-inner">
+      <div class="hero-simple">
+        <div class="hero-logo-big">
+          <img src="favicon.png" alt="Logo" />
+        </div>
+        <h1 id="heroTitle">Treniraj. Poveži se.<br>Doživi odbojko na mivki.</h1>
+        <p id="heroText">Butični campi odbojke na mivki. Fokus na kakovostnem treningu, dobri družbi in nepozabnih dnevih na slovenski obali.</p>
+        <div class="actions">
+          <a class="btn primary" id="heroJoin" href="#prijava">Pridruži se campu</a>
+          <a class="btn ghost" id="heroScroll" href="#campi">Pomakni se do terminov</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="o-nas" aria-label="O campu in trenerji">
+  <div class="section-head">
+    <div>
+      <h2 id="aboutTitle">O campu</h2>
+      <p id="aboutLead">Camp je za igralce, ki hočejo jasen plan, dober tempo in merljiv napredek.</p>
+    </div>
+  </div>
+
+  <div class="about-one">
+    <div class="card about-text">
+      <p id="aboutP1">Treningi so praktični. Veliko dotikov. Jasne naloge. Kratki popravki.</p>
+      <p id="aboutP2">Dobiš rutino, ki jo lahko ponavljaš tudi po campu. Dobiš feedback, ki ga lahko uporabiš takoj.</p>
+      <ul class="bullets">
+        <li id="aboutLi1">Tehnika podaje, sprejema, napada, bloka</li>
+        <li id="aboutLi2">Taktika, izbira udarca, postavitev v obrambi</li>
+        <li id="aboutLi3">Igranje situacij in organiziran sparing</li>
+      </ul>
+
+      <div class="trainers-title" id="trenerji">
+        <h3 id="trainersTitle">Spoznaj trenerje</h3>
+        <p id="trainersLead">Spodaj imaš profile trenerjev. Dodaj še ostale po istem vzorcu.</p>
+      </div>
+
+      <div class="trainer-carousel" aria-label="Trenerji">
+            <div class="trainer-tabs" role="tablist" aria-label="Izberi trenerja">
+              <button class="trainer-tab active" type="button" data-index="0" role="tab" aria-selected="true">Alan Košenina</button>
+              <button class="trainer-tab" type="button" data-index="1" role="tab" aria-selected="false">Trener 2</button>
+              <button class="trainer-tab" type="button" data-index="2" role="tab" aria-selected="false">Trener 3</button>
+            </div>
+
+            <div class="trainer-stage" id="trainerStage" tabindex="0" aria-label="Prikaz trenerja">
+              <button class="trainer-arrow left" type="button" aria-label="Prejšnji trener">‹</button>
+
+              <div class="trainer-slides">
+                <article class="card trainer-card trainer-slide active" data-index="0" aria-label="Alan Košenina">
+                  <img src="alan-kosenina.png" alt="Alan Košenina" />
+                  <div class="trainer-info">
+                    <h4>Alan Košenina</h4>
+                    <p class="role" id="t0Role">Trener in vodja campa</p>
+                    <ul>
+                    <li id="t0Li1">Trening tehnike in taktike</li>
+                    <li id="t0Li2">Plan za napredek po nivojih</li>
+                    <li id="t0Li3">Video analiza in feedback</li>
+                  </ul>
+                  </div>
+                </article>
+
+                <article class="card trainer-card trainer-slide" data-index="1" aria-label="Trener 2">
+                  <img src="alan-kosenina.png" alt="Trener 2" />
+                  <div class="trainer-info">
+                    <h4>Trener 2</h4>
+                    <p class="role" id="t1Role">Dodaj ime in vlogo</p>
+                    <ul>
+                    <li id="t1Li1">Dodaj 3 točke</li>
+                    <li id="t1Li2">Dodaj 3 točke</li>
+                    <li id="t1Li3">Dodaj 3 točke</li>
+                  </ul>
+                  </div>
+                </article>
+
+                <article class="card trainer-card trainer-slide" data-index="2" aria-label="Trener 3">
+                  <img src="alan-kosenina.png" alt="Trener 3" />
+                  <div class="trainer-info">
+                    <h4>Trener 3</h4>
+                    <p class="role" id="t2Role">Dodaj ime in vlogo</p>
+                    <ul>
+                    <li id="t2Li1">Dodaj 3 točke</li>
+                    <li id="t2Li2">Dodaj 3 točke</li>
+                    <li id="t2Li3">Dodaj 3 točke</li>
+                  </ul>
+                  </div>
+                </article>
+              </div>
+
+              <button class="trainer-arrow right" type="button" aria-label="Naslednji trener">›</button>
+
+              <div class="trainer-dots" aria-label="Indikator trenerjev">
+                <button class="trainer-dot active" type="button" data-index="0" aria-label="Alan Košenina"></button>
+                <button class="trainer-dot" type="button" data-index="1" aria-label="Trener 2"></button>
+                <button class="trainer-dot" type="button" data-index="2" aria-label="Trener 3"></button>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
 </section>
 
-<section id="terms">
-<h2>Termini campa</h2>
+    <section id="campi">
+      <div class="section-head">
+        <div>
+          <h2 id="campsTitle">Termini</h2>
+          <p id="campsLead">Dva programa. En standard. Izberi nivo in termin.</p>
+        </div>
+      </div>
 
-<div class="term-selector">
-  <div class="term-box active" onclick="showTerm(1)">Termin 1</div>
-  <div class="term-box" onclick="showTerm(2)">Termin 2</div>
-</div>
-
-<div class="term-content" id="termText">
-  <p><strong>Termin 1</strong></p>
-  <p>Prvomajske počitnice 2026. Hrvaška, Pag.</p>
-  <p>Camp Straško. Intenzivni beach volley treningi.</p>
-</div>
-
-<div class="map-card">
-  <iframe id="mapFrame"
-    src="https://www.google.com/maps?q=Camp+Stra%C5%A1ko+Pag&output=embed">
+      <div class="camp-grid">
+        <article class="camp-card">
+          <div class="camp-hero"></div>
+          <div class="camp-body">
+            <div class="camp-week" id="c1Week">Teden 1 • Open Termin</div>
+            <h3 id="c1Title">Za vse nivoje</h3>
+            <p id="c1Desc">Če hočeš stabilno osnovo in več samozavesti v igri.</p>
+            <ul>
+              <li id="c1Li1">Osnove tehnike in stabilnost</li>
+              <li id="c1Li2">Branje igre in postavitev</li>
+              <li id="c1Li3">Veliko igre in situacij</li>
+            </ul>
+            <div class="camp-location">
+              <div><strong id="locLabel">Lokacija:</strong> Camp Straško, otok Pag, Hrvaška</div>
+<div class="camp-map">
+  <iframe 
+    src="https://www.google.com/maps?q=Camp+Strasko+Pag+Croatia&output=embed"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
   </iframe>
-  <div class="map-actions">
-    <a id="mapLink" href="https://maps.google.com/?q=Camp+Straško+Pag" target="_blank">
-      Poglej na mapi
-    </a>
-  </div>
 </div>
 
-</section>
+              <div><a href="https://www.google.com/maps?q=Slovenia+coast" target="_blank" rel="noopener"><span id="mapsOpen">Odpri v Google Maps</span></a></div>
+            </div>
+    
+          </div>
+          <div class="camp-actions">
+            <a class="btn primary" id="c1Btn" href="#prijava">Prijavi se na Teden 1</a>
+          </div>
+        </article>
 
-<section id="registration">
-<h2>Prijava</h2>
-
-<form id="registration-form">
-
-<div class="form-row">
-  <div class="form-group">
-    <label>Ime</label>
-    <input name="firstName" required>
-  </div>
-  <div class="form-group">
-    <label>Priimek</label>
-    <input name="lastName" required>
-  </div>
+        <article class="camp-card">
+          <div class="camp-hero"></div>
+          <div class="camp-body">
+            <div class="camp-week" id="c2Week">Teden 2 • Train Like a Pro</div>
+            <h3 id="c2Title">Za napredne</h3>
+            <p id="c2Desc">Če hočeš več intenzivnosti, več taktike in bolj zahtevne naloge.</p>
+            <ul>
+              <li id="c2Li1">Napad, blok, obramba po sistemu</li>
+              <li id="c2Li2">Odločanje pod pritiskom</li>
+              <li id="c2Li3">Sparing z jasnimi cilji</li>
+            </ul>
+            <div class="camp-location">
+              <div><strong>Lokacija:</strong> Portorož, Slovenija</div>
+<div class="camp-map">
+  <iframe 
+    src="https://www.google.com/maps?q=Portoroz+Slovenia&output=embed"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
 </div>
 
-<div class="form-row">
-  <div class="form-group">
-    <label>Email</label>
-    <input type="email" name="email" required>
-  </div>
-  <div class="form-group">
-    <label>Telefon</label>
-    <input name="phone" required>
-  </div>
-</div>
+              <div><a href="https://www.google.com/maps?q=Slovenia+coast" target="_blank" rel="noopener">Odpri v Google Maps</a></div>
+            </div>
+    
+          </div>
+          <div class="camp-actions">
+            <a class="btn primary" id="c2Btn" href="#prijava">Prijavi se na Teden 2</a>
+          </div>
+        </article>
+      </div>
+    </section>
 
-<div class="form-group">
-<label>Raven znanja</label>
-<div class="radio-group">
-  <label class="radio"><input type="radio" name="level" value="zacetnik" required><span></span> Začetnik</label>
-  <label class="radio"><input type="radio" name="level" value="srednji"><span></span> Srednji</label>
-  <label class="radio"><input type="radio" name="level" value="napreden"><span></span> Napreden</label>
-</div>
-</div>
+    <section id="prijava">
+      <div class="section-head">
+        <div>
+          <h2 id="signupTitle">Prijava</h2>
+          <p id="signupLead">Izpolni obrazec. Odgovor dobiš po emailu.</p>
+        </div>
+      </div>
 
-<div class="form-group">
-<label>Izberi termin</label>
-<div class="radio-group">
-  <label class="radio"><input type="radio" name="session" value="termin1" required><span></span> Termin 1</label>
-  <label class="radio"><input type="radio" name="session" value="termin2"><span></span> Termin 2</label>
-</div>
-</div>
+      <div class="card">
+        <form id="signupForm">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div style="display:flex; flex-direction:column; gap: 8px;">
+              <label for="name" id="lblName">Ime in priimek</label>
+              <input id="name" name="name" autocomplete="name" required />
+            </div>
+            <div style="display:flex; flex-direction:column; gap: 8px;">
+              <label for="email" id="lblEmail">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div style="display:flex; flex-direction:column; gap: 8px;">
+              <label for="phone" id="lblPhone">Telefon</label>
+              <input id="phone" name="phone" autocomplete="tel" />
+            </div>
+            <div style="display:flex; flex-direction:column; gap: 8px;">
+              <label for="week" id="lblWeek">Termin</label>
+              <select id="week" name="week" required>
+                <option value="" id="optChoose">Izberi</option>
+                <option id="optW1">Teden 1 (Open Termin)</option>
+                <option id="optW2">Teden 2 (Train Like a Pro)</option>
+              </select>
+            </div>
+            <div style="display:flex; flex-direction:column; gap: 8px; grid-column: 1 / -1;">
+              <label for="msg" id="lblMsg">Sporočilo</label>
+              <textarea id="msg" name="msg" placeholder="Nivo, izkušnje, cilji." id="msg"></textarea>
+            </div>
+          </div>
 
-<div class="form-group">
-<label>Opombe</label>
-<textarea name="notes"></textarea>
-</div>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-top: 12px;">
+            <button class="btn primary" id="btnSend" type="submit">Pošlji</button>
+            <div id="status" style="font-weight:900; color: var(--muted);">Obrazec je lokalen. Poveži ga na email ali Supabase.</div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
 
-<button type="submit" class="btn">Nadaljuj na plačilo</button>
-<div id="form-status"></div>
-
-</form>
-</section>
-
-</main>
-
-<footer>
+  <footer>
 <p>Kontakt</p>
 <p>Email: <a href="mailto:tvoj.email@domena.si">tvoj.email@domena.si</a></p>
 <p>Telefon: +386 XX XXX XXX</p>
+
+<div class="credit">
+  <p>
+    <a href="http://www.freepik.com" target="_blank">
+      Designed by rawpixel.com / Freepik
+    </a>
+  </p>
+</div>
+
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const supabase = window.supabase.createClient(
-  'https://jaxyaijogfqbtqvxcstg.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpheHlhaWpvZ2ZxYnRxdnhjc3RnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNzU2NDYsImV4cCI6MjA3OTY1MTY0Nn0.R_gondo41sqtnokkhjiqKRbmX_d2KTaTAe4C76tRePU'
-);
+  <script>
+  // Form (demo)
+  const form = document.getElementById("signupForm");
+  const statusEl = document.getElementById("status");
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    statusEl.textContent = i18n[currentLang]?.statusSent || "Hvala. Prijava je zabeležena.";
+  });
 
-document.getElementById('registration-form').addEventListener('submit', async e => {
-  e.preventDefault();
-  document.getElementById('form-status').innerText = 'Pošiljam...';
-  const f = e.target;
+  // Trainers carousel
+  const slides = Array.from(document.querySelectorAll(".trainer-slide"));
+  const tabs = Array.from(document.querySelectorAll(".trainer-tab"));
+  const dots = Array.from(document.querySelectorAll(".trainer-dot"));
+  const stage = document.getElementById("trainerStage");
+  const btnPrev = document.querySelector(".trainer-arrow.left");
+  const btnNext = document.querySelector(".trainer-arrow.right");
 
-  const res = await supabase.from('registrations').insert([{
-    first_name: f.firstName.value,
-    last_name: f.lastName.value,
-    email: f.email.value,
-    phone: f.phone.value,
-    level: f.level.value,
-    session: f.session.value,
-    notes: f.notes.value
-  }]);
+  let current = 0;
+  function setActive(index){
+    const total = slides.length;
+    if (total === 0) return;
+    current = (index + total) % total;
 
-  if (!res.error) {
-    window.location.href = 'https://buy.stripe.com/test_cNi4gseYW9iTdBo3WI6EU00';
-  } else {
-    document.getElementById('form-status').innerText = 'Napaka pri prijavi';
+    slides.forEach(s => s.classList.remove("active"));
+    tabs.forEach(t => { t.classList.remove("active"); t.setAttribute("aria-selected","false"); });
+    dots.forEach(d => d.classList.remove("active"));
+
+    slides[current].classList.add("active");
+    tabs[current].classList.add("active");
+    tabs[current].setAttribute("aria-selected","true");
+    dots[current].classList.add("active");
   }
-});
+  function next(){ setActive(current + 1); }
+  function prev(){ setActive(current - 1); }
 
-function showTerm(t) {
-  document.querySelectorAll('.term-box').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.term-box')[t-1].classList.add('active');
+  tabs.forEach(t => t.addEventListener("click", () => setActive(parseInt(t.dataset.index, 10))));
+  dots.forEach(d => d.addEventListener("click", () => setActive(parseInt(d.dataset.index, 10))));
+  btnNext?.addEventListener("click", next);
+  btnPrev?.addEventListener("click", prev);
 
-  const text = document.getElementById('termText');
-  const map = document.getElementById('mapFrame');
-  const link = document.getElementById('mapLink');
-
-  if (t === 1) {
-    text.innerHTML = `
-      <p><strong>Termin 1</strong></p>
-      <p>Prvomajske počitnice 2026. Hrvaška, Pag.</p>
-      <p>Camp Straško. Intenzivni beach volley treningi.</p>
-    `;
-    map.src = 'https://www.google.com/maps?q=Camp+Stra%C5%A1ko+Pag&output=embed';
-    link.href = 'https://maps.google.com/?q=Camp+Straško+Pag';
-  } else {
-    text.innerHTML = `
-      <p><strong>Termin 2</strong></p>
-      <p>Konec avgusta. Slovenija, Portorož.</p>
-      <p>Napredni treningi in igra na mivki.</p>
-    `;
-    map.src = 'https://www.google.com/maps?q=Portoro%C5%BE+Slovenija&output=embed';
-    link.href = 'https://maps.google.com/?q=Portorož+Slovenija';
+  // Swipe: left = next, right = prev
+  let startX = null;
+  let tracking = false;
+  function onStart(x){ startX = x; tracking = true; }
+  function onEnd(x){
+    if (!tracking || startX === null) return;
+    const dx = x - startX;
+    const threshold = 40;
+    tracking = false;
+    startX = null;
+    if (dx <= -threshold) next();
+    if (dx >= threshold) prev();
   }
-}
+  stage?.addEventListener("touchstart", (e) => onStart(e.touches[0].clientX), { passive: true });
+  stage?.addEventListener("touchend", (e) => onEnd(e.changedTouches[0].clientX), { passive: true });
+  stage?.addEventListener("mousedown", (e) => onStart(e.clientX));
+  stage?.addEventListener("mouseup", (e) => onEnd(e.clientX));
+  stage?.addEventListener("mouseleave", () => { tracking = false; startX = null; });
+
+  // i18n
+  const i18n = {
+    sl: {
+      pageTitle: "Skyball beach camps",
+      pageDesc: "Odbojka na mivki. Termini, trenerji, program in prijava.",
+      brandTagline: "Odbojka na mivki",
+      navAbout: "O campu",
+      navTrainers: "Trenerji",
+      navCamps: "Termini",
+      navSignup: "Prijava",
+      heroTitle: "Treniraj. Poveži se.<br>Doživi odbojko na mivki.",
+      heroText: "Butični campi odbojke na mivki. Fokus na kakovostnem treningu, dobri družbi in nepozabnih dnevih na slovenski obali.",
+      heroJoin: "Pridruži se kampu",
+      heroScroll: "Pomakni se do terminov",
+      aboutTitle: "O campu",
+      aboutLead: "Camp je za igralce, ki hočejo jasen plan, dober tempo in merljiv napredek.",
+      aboutP1: "Treningi so praktični. Veliko dotikov. Jasne naloge. Kratki popravki.",
+      aboutP2: "Dobiš rutino, ki jo lahko ponavljaš tudi po campu. Dobiš feedback, ki ga lahko uporabiš takoj.",
+      aboutLi1: "Tehnika podaje, sprejema, napada, bloka",
+      aboutLi2: "Taktika, izbira udarca, postavitev v obrambi",
+      aboutLi3: "Igranje situacij in organiziran sparing",
+      trainersTitle: "Spoznaj trenerje",
+      trainersLead: "Spodaj imaš profile trenerjev. Dodaj še ostale po istem vzorcu.",
+      t0Role: "Trener in vodja campa",
+      t0Li1: "Trening tehnike in taktike",
+      t0Li2: "Plan za napredek po nivojih",
+      t0Li3: "Video analiza in feedback",
+      t1Role: "Dodaj ime in vlogo",
+      t1Li1: "Dodaj 3 točke",
+      t1Li2: "Dodaj 3 točke",
+      t1Li3: "Dodaj 3 točke",
+      t2Role: "Dodaj ime in vlogo",
+      t2Li1: "Dodaj 3 točke",
+      t2Li2: "Dodaj 3 točke",
+      t2Li3: "Dodaj 3 točke",
+      campsTitle: "Termini",
+      campsLead: "Dva programa. En standard. Izberi nivo in termin.",
+      c1Week: "Teden 1 • Open Termin",
+      c1Title: "Za vse nivoje",
+      c1Desc: "Če hočeš stabilno osnovo in več samozavesti v igri.",
+      c1Li1: "Osnove tehnike in stabilnost",
+      c1Li2: "Branje igre in postavitev",
+      c1Li3: "Veliko igre in situacij",
+      c1Btn: "Prijavi se na Teden 1",
+      c2Week: "Teden 2 • Train Like a Pro",
+      c2Title: "Za napredne",
+      c2Desc: "Če hočeš več intenzivnosti, več taktike in bolj zahtevne naloge.",
+      c2Li1: "Napad, blok, obramba po sistemu",
+      c2Li2: "Odločanje pod pritiskom",
+      c2Li3: "Sparing z jasnimi cilji",
+      c2Btn: "Prijavi se na Teden 2",
+      locLabel: "Lokacija:",
+      mapsOpen: "Odpri v Google Maps",
+      signupTitle: "Prijava",
+      signupLead: "Izpolni obrazec. Odgovor dobiš po emailu.",
+      lblName: "Ime in priimek",
+      lblEmail: "Email",
+      lblPhone: "Telefon",
+      lblWeek: "Termin",
+      optChoose: "Izberi",
+      optW1: "Teden 1 (Open Termin)",
+      optW2: "Teden 2 (Train Like a Pro)",
+      lblMsg: "Sporočilo",
+      msgPlaceholder: "Nivo, izkušnje, cilji.",
+      btnSend: "Pošlji",
+      statusDefault: "Obrazec je lokalen. Poveži ga na email ali Supabase.",
+      statusSent: "Hvala. Prijava je zabeležena."
+    },
+    en: {
+      pageTitle: "Skyball beach camps",
+      pageDesc: "Beach volleyball camp. Weeks, coaches, program and sign up.",
+      brandTagline: "Beach volleyball",
+      navAbout: "About",
+      navTrainers: "Coaches",
+      navCamps: "Weeks",
+      navSignup: "Sign up",
+      heroTitle: "Train. Connect.<br>Experience Beach Volleyball.",
+      heroText: "Boutique beach volleyball camps. Focus on quality coaching, great people and unforgettable days by the sea.",
+      heroJoin: "Join the camp",
+      heroScroll: "See camp weeks",
+      aboutTitle: "About the camp",
+      aboutLead: "A camp for players who want a clear plan, good tempo and measurable progress.",
+      aboutP1: "Practical sessions. Many touches. Clear tasks. Quick corrections.",
+      aboutP2: "You get a routine you can repeat after camp. You get feedback you can use immediately.",
+      aboutLi1: "Technique, serve receive, attack, block",
+      aboutLi2: "Tactics, shot selection, defensive positioning",
+      aboutLi3: "Game scenarios and organized sparring",
+      trainersTitle: "Meet the coaches",
+      trainersLead: "Coach profiles are below. Add more using the same template.",
+      t0Role: "Head coach and camp lead",
+      t0Li1: "Technique and tactics training",
+      t0Li2: "Progress plan by level",
+      t0Li3: "Video analysis and feedback",
+      t1Role: "Add name and role",
+      t1Li1: "Add 3 points",
+      t1Li2: "Add 3 points",
+      t1Li3: "Add 3 points",
+      t2Role: "Add name and role",
+      t2Li1: "Add 3 points",
+      t2Li2: "Add 3 points",
+      t2Li3: "Add 3 points",
+      campsTitle: "Weeks",
+      campsLead: "Two programs. One standard. Choose your level and week.",
+      c1Week: "Week 1 • Open Camp",
+      c1Title: "All levels",
+      c1Desc: "For a strong base and more confidence in your game.",
+      c1Li1: "Fundamentals and stability",
+      c1Li2: "Reading the game and positioning",
+      c1Li3: "Lots of play and situations",
+      c1Btn: "Sign up for Week 1",
+      c2Week: "Week 2 • Train Like a Pro",
+      c2Title: "Advanced",
+      c2Desc: "More intensity, more tactics and tougher tasks.",
+      c2Li1: "Attack, block and defense system",
+      c2Li2: "Decision making under pressure",
+      c2Li3: "Sparring with clear goals",
+      c2Btn: "Sign up for Week 2",
+      locLabel: "Location:",
+      mapsOpen: "Open in Google Maps",
+      signupTitle: "Sign up",
+      signupLead: "Fill out the form. We will reply by email.",
+      lblName: "Full name",
+      lblEmail: "Email",
+      lblPhone: "Phone",
+      lblWeek: "Week",
+      optChoose: "Select",
+      optW1: "Week 1 (Open Camp)",
+      optW2: "Week 2 (Train Like a Pro)",
+      lblMsg: "Message",
+      msgPlaceholder: "Level, experience, goals.",
+      btnSend: "Send",
+      statusDefault: "This form is local. Connect it to email or Supabase.",
+      statusSent: "Thanks. Your sign up was recorded."
+    }
+  };
+
+  let currentLang = "sl";
+
+  function applyLang(lang){
+    currentLang = lang;
+    document.documentElement.lang = lang;
+
+    // Title + meta
+    document.title = i18n[lang].pageTitle;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", i18n[lang].pageDesc);
+
+    const htmlIds = ["heroTitle"];
+    htmlIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = i18n[lang][id];
+    });
+
+    const ids = [
+      "brandTagline","navAbout","navTrainers","navCamps","navSignup",
+      "heroText","heroJoin","heroScroll",
+      "aboutTitle","aboutLead","aboutP1","aboutP2","aboutLi1","aboutLi2","aboutLi3",
+      "trainersTitle","trainersLead",
+      "t0Role","t0Li1","t0Li2","t0Li3","t1Role","t1Li1","t1Li2","t1Li3","t2Role","t2Li1","t2Li2","t2Li3",
+      "campsTitle","campsLead","c1Week","c1Title","c1Desc","c1Li1","c1Li2","c1Li3","c1Btn",
+      "c2Week","c2Title","c2Desc","c2Li1","c2Li2","c2Li3","c2Btn",
+      "locLabel","mapsOpen",
+      "signupTitle","signupLead","lblName","lblEmail","lblPhone","lblWeek","optChoose","optW1","optW2","lblMsg","btnSend"
+    ];
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = i18n[lang][id];
+    });
+
+    const msg = document.getElementById("msg");
+    if (msg) msg.setAttribute("placeholder", i18n[lang].msgPlaceholder);
+
+    if (statusEl) statusEl.textContent = i18n[lang].statusDefault;
+
+    // Aria labels that matter
+    const nav = document.querySelector(".nav");
+    if (nav) nav.setAttribute("aria-label", lang === "sl" ? "Navigacija" : "Navigation");
+    const tablist = document.querySelector(".trainer-tabs");
+    if (tablist) tablist.setAttribute("aria-label", lang === "sl" ? "Izberi trenerja" : "Choose a coach");
+    const left = document.querySelector(".trainer-arrow.left");
+    const right = document.querySelector(".trainer-arrow.right");
+    if (left) left.setAttribute("aria-label", lang === "sl" ? "Prejšnji trener" : "Previous coach");
+    if (right) right.setAttribute("aria-label", lang === "sl" ? "Naslednji trener" : "Next coach");
+  }
+
+  // Language switcher
+  const switcher = document.querySelector(".lang-switch");
+  const dropdown = document.getElementById("langDropdown");
+  const currentFlag = document.getElementById("currentLang");
+
+  switcher?.addEventListener("click", () => {
+    switcher.classList.toggle("open");
+  });
+
+  dropdown?.querySelectorAll("img").forEach(flag => {
+    flag.addEventListener("click", (e) => {
+      const lang = e.target.dataset.lang;
+      if (!lang) return;
+      currentFlag.src = e.target.src;
+      applyLang(lang);
+      switcher.classList.remove("open");
+    });
+  });
+
+  // Init
+  setActive(0);
+  applyLang("sl");
 </script>
-
 </body>
 </html>
