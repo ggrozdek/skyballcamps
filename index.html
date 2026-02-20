@@ -1344,7 +1344,7 @@
 </div>
 <div class="about-one">
 <div class="card about-text">
-<h3 id="aboutSubtitle">O campu</h3>
+<h3 id="aboutSubtitle">Predstavitev</h3>
 <p id="aboutShort1">Organiziramo butične campe odbojke na mivki v Portorožu.</p>
 <p id="aboutShort2">Fokus je na kakovostnem treningu, jasnem napredku in dobri energiji v skupini.</p>
 <ul class="bullets">
@@ -1389,7 +1389,7 @@
 <button class="btn ghost comments-toggle" data-i18n="commentsReadAll" data-state="collapsed" type="button">PREBERI VSE</button>
 </div>
 </article>
-<article aria-label="Trener 2" class="card trainer-card trainer-slide" data-index="1" data-trainer-id="alan-kosenina">
+<article aria-label="Trener 2" class="card trainer-card trainer-slide" data-index="1" data-trainer-id="trener-2">
 <img alt="Trener 2" src="alan-kosenina.png"/>
 <div class="trainer-info">
 <h4>Trener 2</h4>
@@ -1409,7 +1409,7 @@
 <button class="btn ghost comments-toggle" data-i18n="commentsReadAll" data-state="collapsed" type="button">PREBERI VSE</button>
 </div>
 </article>
-<article aria-label="Trener 3" class="card trainer-card trainer-slide" data-index="2" data-trainer-id="trener-2">
+<article aria-label="Trener 3" class="card trainer-card trainer-slide" data-index="2" data-trainer-id="trener-3">
 <img alt="Trener 3" src="alan-kosenina.png"/>
 <div class="trainer-info">
 <h4>Trener 3</h4>
@@ -1444,14 +1444,14 @@
 <div class="section-head">
 <div>
 <h2 id="campsTitle">Termini</h2>
-<p id="campsLead">Dva programa. En standard. Izberi nivo in termin.</p>
+<p id="campsLead">Več programov, za vsakega se nekaj najde.</p>
 </div>
 </div>
 <div aria-label="Termini" class="camp-carousel">
 <div aria-label="Izberi termin" class="camp-tabs" role="tablist">
-<button aria-selected="true" class="camp-tab active" data-index="0" role="tab" type="button">Teden 1</button>
-<button aria-selected="false" class="camp-tab" data-index="1" role="tab" type="button">Teden 2</button>
-<button aria-selected="false" class="camp-tab" data-index="2" role="tab" type="button">Teden 3</button>
+<button aria-selected="true" class="camp-tab active" data-index="0" role="tab" type="button" data-i18n="campTab1">Teden 1</button>
+<button aria-selected="false" class="camp-tab" data-index="1" role="tab" type="button" data-i18n="campTab2">Teden 2</button>
+<button aria-selected="false" class="camp-tab" data-index="2" role="tab" type="button" data-i18n="campTab3">Teden 3</button>
 </div>
 <div class="camp-stage" id="campStage">
 <button aria-label="Prejšnji termin" class="camp-arrow left" type="button">‹</button>
@@ -1558,7 +1558,7 @@
 </div>
 <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-top: 12px;">
 <button class="btn primary" id="btnSend" type="submit">Pošlji</button>
-<div id="status" style="font-weight:900; color: var(--muted);">Obrazec je lokalen. Poveži ga na email ali Supabase.</div>
+<div id="status" style="font-weight:900; color: var(--muted);"></div>
 </div>
 </form>
 </div>
@@ -1567,12 +1567,12 @@
 <div aria-hidden="true" class="modal-overlay" id="aboutModalOverlay">
 <div aria-labelledby="aboutModalTitle" aria-modal="true" class="modal" id="aboutModal" role="dialog" tabindex="-1">
 <div class="modal-header">
-<div class="modal-title" id="aboutModalTitle">O campu</div>
+<div class="modal-title" id="aboutModalTitle">Predstavitev</div>
 <button aria-label="Zapri" class="modal-close" id="aboutModalClose" type="button">×</button>
 </div>
 <div class="modal-body">
 <div data-lang-block="sl">
-<h3>About us</h3>
+<h3>O nas</h3>
 <p>Verjamemo, da je najboljši beach volleyball camp zgrajen na kakovosti, ne na količini.</p>
 <p>Zato so naši campi butični in namenoma manjši, običajno 30 do 40 udeležencev. Tako lahko ponudimo natančen trening, več feedbacka in boljšo izkušnjo za vsakega igralca.</p>
 <p>Poleg treninga dajemo veliko poudarka tudi na povezovanju. Skupne večerje, izleti in sproščeni trenutki niso dodatek, ampak del koncepta.</p>
@@ -1694,7 +1694,7 @@
       return;
     }
 
-    statusEl.textContent = (lang === "en") ? "Sending..." : "Pošiljam...";
+    statusEl.textContent = (lang === "en" || lang==="de") ? "Sending..." : "Pošiljam...";
 
     try{
       await insertSignup({
@@ -1705,11 +1705,11 @@
         message: message || null
       });
 
-      statusEl.textContent = (lang === "en") ? "Thanks. Sign up sent." : "Hvala. Prijava je poslana.";
+      statusEl.textContent = (lang === "en" || lang==="de") ? "Thanks. Sign up sent." : "Hvala. Prijava je poslana.";
       form.reset();
     }catch(err){
       console.error(err);
-      statusEl.textContent = (lang === "en") ? "Send failed. Try again." : "Napaka pri pošiljanju. Poskusi znova.";
+      statusEl.textContent = (lang === "en" || lang==="de") ? "Send failed. Try again." : "Napaka pri pošiljanju. Poskusi znova.";
     }
   });
 
@@ -1929,6 +1929,9 @@
       c2Li3: "Sparing z jasnimi cilji",
       c2Btn: "Prijavi se na Teden 2",
       c3Week: "Teden 3 • Intensive Clinic",
+      campTab1: "Teden 1",
+      campTab2: "Teden 2",
+      campTab3: "Teden 3",
       c3Title: "Za tekmovalce",
       c3Desc: "Če hočeš tempo, veliko ponovitev in jasne cilje za turnirje.",
       c3Li1: "Igra proti močnejšim parom",
@@ -1953,6 +1956,7 @@
       commentsTitle: "Mnenja",
       commentsReadAll: "PREBERI VSE",
       commentsHide: "ZAPRI"
+
     },
     en: {
       pageTitle: "Skyball beach camps",
@@ -1998,6 +2002,9 @@
       campsTitle: "Weeks",
       campsLead: "Two programs. One standard. Choose your level and week.",
       c1Week: "Week 1 • Open Camp",
+      campTab1: "Week 1",
+      campTab2: "Week 2",
+      campTab3: "Week 3",
       c1Title: "All levels",
       c1Desc: "For a strong base and more confidence in your game.",
       c1Li1: "Fundamentals and stability",
@@ -2092,6 +2099,9 @@
       c1Li3: "Viel Spiel und Situationen",
       c1Btn: "Für Woche 1 anmelden",
       c2Week: "Woche 2 • Train Like a Pro",
+      campTab1: "Woche 1",
+      campTab2: "Woche 2",
+      campTab3: "Woche 3",
       c2Title: "Für Fortgeschrittene",
       c2Desc: "Wenn du mehr Intensität, mehr Taktik und anspruchsvollere Aufgaben willst.",
       c2Li1: "Angriff, Block, Abwehr im System",
@@ -2153,7 +2163,7 @@
       "trainersTitle","trainersLead",
       "t0Role","t0Li1","t0Li2","t0Li3","t1Role","t1Li1","t1Li2","t1Li3","t2Role","t2Li1","t2Li2","t2Li3",
       "campsTitle","campsLead","c1Week","c1Title","c1Desc","c1Li1","c1Li2","c1Li3","c1Btn",
-      "c2Week","c2Title","c2Desc","c2Li1","c2Li2","c2Li3","c2Btn",
+      "c2Week","c2Title","c2Desc","c2Li1","c2Li2","c2Li3","c2Btn", "c3Week", "c3Title", "c3Desc", "c3Li1", "c3Li2", "c3Li3", "c3Btn",
       "signupTitle","signupLead","lblName","lblEmail","lblPhone","lblWeek","optChoose","optW1","optW2","optW3","lblMsg","btnSend"
     ];
     ids.forEach(id => {
