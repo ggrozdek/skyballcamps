@@ -898,10 +898,32 @@
 
     @media (max-width: 768px){
       .program-arrow{
+        position:absolute;
         width: 40px;
         height: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 5;
+        opacity: 0.95;
         font-size: 22px;
       }
+      .program-view{
+        position: relative;
+        display: block;
+      }
+      .program-window{
+        width: 100%;
+      }
+      .program-arrow[data-dir="-1"]{
+        left: -5px;
+      }
+      .program-arrow[data-dir="1"]{
+        right: -5px;
+      }
+      .program-slide .card{
+        padding-top: 56px;
+      }
+    
     }
  </style>
 </head>
