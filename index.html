@@ -10,7 +10,7 @@
 <style>
     :root{
       --bg: #f4efe6;
-      --paper: rgba(255,255,255,0.82);
+      --paper: rgba(255,255,255,0.45);
       --text: #0c1b2b;
       --muted: rgba(12,27,43,0.70);
       --line: rgba(12,27,43,0.10);
@@ -73,6 +73,16 @@
       letter-spacing: 0.2px;
       white-space: nowrap;
     }
+    .brand img{
+     width: 34px;
+     height: 34px;
+     max-width: 34px; 
+      max-height: 34px;
+      object-fit: contain;
+      flex-shrink: 0;
+      display: block;
+   }
+
     .logo-mark{
       width: 34px;
       height: 34px;
@@ -164,7 +174,7 @@
       margin-top: 14px;
     }
     .pill{
-      background: rgba(255,255,255,0.62);
+      background: rgba(255,255,255,0.42);
       border: 1px solid rgba(12,27,43,0.10);
       padding: 8px 12px;
       border-radius: 999px;
@@ -172,7 +182,7 @@
       color: rgba(12,27,43,0.76);
     }
     .hero-card{
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.52);
       border: 1px solid rgba(12,27,43,0.10);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -260,91 +270,10 @@
       top: 0;
       color: var(--blue);
     }
-    .trainers-title{
-      margin-top: 20px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(12,27,43,0.10);
-    }
-    .trainers-title h3{
-      margin: 0;
-      font-size: 1.25rem;
-      font-weight: 900;
-      letter-spacing: -0.1px;
-    }
-    .trainers-title p{
-      margin: 6px 0 0;
-      color: var(--muted);
-      font-weight: 700;
-    }
-    .trainer-grid{
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    .trainer-card{ padding: 14px; }
-    .trainer-card img{
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 16px;
-      border: 1px solid rgba(12,27,43,0.10);
-      background: rgba(12,27,43,0.04);
-    }
-    .trainer-card h4{ margin: 12px 0 4px; font-size: 1.05rem; }
-    .trainer-card .role{ color: var(--muted); font-weight: 800; margin: 0 0 10px; }
-    .trainer-card ul{
-      margin: 0;
-      padding-left: 18px;
-      color: rgba(12,27,43,0.74);
-      font-weight: 700;
-    }
-    .trainer-card li{ margin: 6px 0; }
-    .camp-grid{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      align-items: stretch;
-    }
-    .camp-card{
-      background: linear-gradient(180deg, rgba(11,74,162,0.10) 0%, rgba(255,255,255,0.86) 55%, rgba(255,255,255,0.90) 100%);
-      border: 1px solid rgba(12,27,43,0.10);
-      border-radius: 22px;
-      box-shadow: var(--shadow2);
-      overflow: hidden;
-    }
-    .camp-hero{
-      height: 160px;
-      background:
-        linear-gradient(180deg, rgba(11,74,162,0.05) 0%, rgba(11,74,162,0.20) 100%),
-        url("igrisce.jpg");
-      background-size: cover;
-      background-position: center;
-    }
-    .camp-body{ padding: 16px; }
-    .camp-week{
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      background: rgba(11,74,162,0.10);
-      color: rgba(12,27,43,0.85);
-      padding: 8px 10px;
-      border-radius: 999px;
-      font-weight: 900;
-      margin-bottom: 10px;
-      border: 1px solid rgba(12,27,43,0.10);
-    }
-    .camp-body h3{
-      margin: 0 0 8px;
-      font-size: 1.35rem;
-      font-family: Georgia, "Times New Roman", serif;
-      letter-spacing: -0.2px;
-    }
-    .camp-body p{ margin: 0 0 10px; color: var(--muted); font-weight: 700; }
-    .camp-body ul{ margin: 0 0 14px; padding-left: 18px; color: rgba(12,27,43,0.74); font-weight: 700; }
-    .camp-body li{ margin: 6px 0; }
-    .camp-actions{ padding: 0 16px 16px; }
-    .camp-actions .btn{ width: 100%; }
+    #navTrainers{
+      display: none;
+      }
+    
     footer{
       background: rgba(12,27,43,0.92);
       color: rgba(255,255,255,0.92);
@@ -356,8 +285,6 @@
     @media (max-width: 980px){
       .hero-grid{ grid-template-columns: 1fr; }
       .about-stack{ grid-template-columns: 1fr; }
-      .trainer-grid{ grid-template-columns: 1fr; }
-      .camp-grid{ grid-template-columns: 1fr; }
       .nav a{ padding: 8px 8px; }
     }
   
@@ -372,461 +299,10 @@
     }
 
   
-    /* Trainers carousel */
-    .trainer-carousel{
-      margin-top: 14px;
-    }
-    .trainer-tabs{
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 12px 0 12px;
-    }
-    .trainer-tab{
-      border: 1px solid rgba(12,27,43,0.12);
-      background: rgba(12,27,43,0.05);
-      color: rgba(12,27,43,0.82);
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-weight: 900;
-      cursor: pointer;
-    }
-    .trainer-tab.active{
-      background: var(--blue);
-      color: white;
-      border-color: transparent;
-    }
-
-    .trainer-stage{
-      position: relative;
-      border-radius: 22px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.40);
-      border: 1px solid rgba(12,27,43,0.10);
-      padding: 14px;
-    }
-    .trainer-slides{
-      display: block;
-      min-height: 1px;
-    }
-    .trainer-slide{
-      display: none;
-      width: 100%;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .trainer-slide.active{
-      display: block;
-    }
-    .trainer-card img{
-      height: 360px;
-      object-position: center;
-    }
-
-    .trainer-arrow{
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid rgba(12,27,43,0.12);
-      background: rgba(255,255,255,0.85);
-      color: rgba(12,27,43,0.85);
-      font-weight: 900;
-      font-size: 24px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.10);
-      user-select: none;
-    }
-    .trainer-arrow:hover{
-      background: rgba(255,255,255,0.95);
-    }
-    .trainer-arrow.left{ left: 10px; }
-    .trainer-arrow.right{ right: 10px; }
-
-    .trainer-dots{
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .trainer-dot{
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      border: 0;
-      background: rgba(12,27,43,0.22);
-      cursor: pointer;
-    }
-    .trainer-dot.active{
-      background: var(--blue);
-    }
-
-    /* Camps carousel */
-    .camp-carousel{
-      margin-top: 14px;
-    }
-    .camp-tabs{
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 12px 0 12px;
-    }
-    .camp-tab{
-      border: 1px solid rgba(12,27,43,0.12);
-      background: rgba(12,27,43,0.05);
-      color: rgba(12,27,43,0.82);
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-weight: 900;
-      cursor: pointer;
-    }
-    .camp-tab.active{
-      background: var(--blue);
-      color: white;
-      border-color: transparent;
-    }
-    .camp-stage{
-      position: relative;
-      border-radius: 22px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.40);
-      border: 1px solid rgba(12,27,43,0.10);
-      padding: 14px;
-    }
-    .camp-slides{
-      display: block;
-      min-height: 1px;
-    }
-    .camp-slide{
-      display: none;
-      width: 100%;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .camp-slide.active{
-      display: block;
-    }
-    .camp-stage .camp-card{
-      margin: 0;
-      box-shadow: none;
-      border: 0;
-      background: rgba(255,255,255,0.82);
-    }
-    .camp-arrow{
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid rgba(12,27,43,0.12);
-      background: rgba(255,255,255,0.85);
-      color: rgba(12,27,43,0.85);
-      font-weight: 900;
-      font-size: 24px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.10);
-      user-select: none;
-    }
-    .camp-arrow:hover{
-      background: rgba(255,255,255,0.95);
-    }
-    .camp-arrow.left{ left: 10px; }
-    .camp-arrow.right{ right: 10px; }
-    .camp-dots{
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .camp-dot{
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      border: 0;
-      background: rgba(12,27,43,0.22);
-      cursor: pointer;
-    }
-    .camp-dot.active{
-      background: var(--blue);
-    }
-    @media (max-width: 980px){
-      .camp-arrow{ width: 42px; height: 42px; }
-    }
-
-
-
-    @media (max-width: 980px){
-      .trainer-card img{ height: 300px; }
-      .trainer-arrow{ width: 42px; height: 42px; }
-    }
-
-  
-    /* Trainer slide split layout */
-    .trainer-card{
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 16px;
-      align-items: start;
-    }
-    .trainer-card img{
-      width: 100%;
-      height: 420px;
-      object-fit: contain;
-      border: 0;
-      background: transparent;
-    }
-    .trainer-card h4{ margin-top: 0; }
-    @media (max-width: 980px){
-      .trainer-card{
-        grid-template-columns: 1fr;
-      }
-      .trainer-card img{
-        height: 340px;
-      }
-    }
-
-  
-    .trainer-stage{
-      max-width: 920px;
-      margin: 0 auto;
-    }
-    /* Ensure only carousel trainer is visible */
-    .trainer-card:not(.trainer-slide){
-      display: none !important;
-    }
-
-  
-    .trainer-slide{
-      display: none !important;
-    }
-    .trainer-slide.active{
-      display: grid !important;
-    }
-
-  
-    /* Remove white boxes for trainers */
-    .trainer-stage{
-      background: transparent !important;
-      border: 0 !important;
-      box-shadow: none !important;
-      padding: 0 !important;
-    }
-
-    .trainer-slide{
-      background: transparent !important;
-      border: 0 !important;
-      box-shadow: none !important;
-      padding: 0 !important;
-    }
-
-    /* Keep text in white boxes only */
-    .trainer-card h4,
-    .trainer-card .role,
-    .trainer-card ul{
-      background: white;
-      padding: 10px 14px;
-      border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-      margin-bottom: 10px;
-      display: inline-block;
-    }
-
-    .trainer-card ul{
-      display: block;
-    }
-
-  
-    /* Trainers: one info box on the right */
-    .trainer-card{
-      display: grid;
-      grid-template-columns: 420px 1fr;
-      gap: 22px;
-      align-items: center;
-    }
-    .trainer-card img{
-      width: 100%;
-      height: 520px;
-      object-fit: contain;
-      background: transparent;
-      border: 0;
-    }
-
-    .trainer-info{
-      background: rgba(255,255,255,0.92);
-      border: 1px solid rgba(12,27,43,0.10);
-      border-radius: 16px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.10);
-      padding: 16px 18px;
-    }
-    .trainer-info h4{
-      margin: 0 0 6px;
-      font-size: 1.2rem;
-    }
-    .trainer-info .role{
-      margin: 0 0 12px;
-      color: rgba(12,27,43,0.72);
-      font-weight: 900;
-    }
-    .trainer-info ul{
-      margin: 0;
-      padding-left: 18px;
-      color: rgba(12,27,43,0.78);
-      font-weight: 800;
-    }
-
-    /* Remove earlier per-element boxes if they exist */
-    .trainer-card h4,
-    .trainer-card .role,
-    .trainer-card ul{
-      background: transparent !important;
-      padding: 0 !important;
-      border-radius: 0 !important;
-      box-shadow: none !important;
-      display: block !important;
-    }
-
-    /* Keep arrows usable on wide layout */
-    .trainer-stage{
-      padding: 8px 0 !important;
-    }
-
-    @media (max-width: 980px){
-      .trainer-card{
-        grid-template-columns: 1fr;
-        align-items: start;
-      }
-      .trainer-card img{
-        height: 360px;
-      }
-    }
-
-  
-    /* Softer transparent sections */
-    .about-stack > .card,
-    .trainer-info{
-      background: rgba(255,255,255,0.82) !important;
-      backdrop-filter: blur(2px);
-    }
-
-    /* Remove any large empty white blocks */
-    .about-extra{
-      display: none !important;
-    }
-
-  
-    /* Hero logo */
-    .hero-logo{
-      margin-bottom: 18px;
-    }
-    .hero-logo img{
-      width: 120px;
-      height: auto;
-      display: block;
-    }
-
-  
-    /* Top navigation logo */
-    .nav-logo{
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      margin-right: 10px;
-    }
-
-    /* Hero center logo */
-    .hero-logo{
-      display: flex;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
-    .hero-logo img{
-      width: 140px;
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.15));
-    }
-
-  
-    .trainer-info{
-      background: rgba(255,255,255,0.78) !important;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(12,27,43,0.08);
-    }
-
-  
     /* About: single column and slightly transparent */
     .about-one{
       display: block;
     }
-    .card.about-text{
-      background: rgba(255,255,255,0.80) !important;
-      border: 1px solid rgba(12,27,43,0.08);
-      backdrop-filter: blur(2px);
-    }
-
-    /* Trainer info box: slightly more transparent */
-    .trainer-info{
-      background: rgba(255,255,255,0.74) !important;
-      border: 1px solid rgba(12,27,43,0.08);
-      backdrop-filter: blur(4px);
-    }
-
-  
-    /* Big hero logo */
-    .hero-logo-big{
-      display: flex;
-      justify-content: center;
-      margin-bottom: 30px;
-    }
-    .hero-logo-big img{
-      width: 220px;
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.18));
-    }
-
-    @media (max-width: 768px){
-      .hero-logo-big img{
-        width: 160px;
-      }
-    }
-
-  
-    /* Big hero logo (above text) */
-    .hero-logo-big{
-      display: flex;
-      justify-content: center;
-      margin: 0 0 26px;
-    }
-    .hero-logo-big img{
-      width: 260px;
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 10px 28px rgba(0,0,0,0.22));
-    }
-    @media (max-width: 768px){
-      .hero-logo-big img{ width: 180px; }
-    }
-
-  
-    /* O campu main box more transparent */
-    .card.about-text{
-      background: rgba(255,255,255,0.68) !important;
-      backdrop-filter: blur(3px);
-      border: 1px solid rgba(12,27,43,0.06);
-    }
-
-  
-    /* O campu even more transparent */
     .card.about-text{
       background: rgba(255,255,255,0.55) !important;
       backdrop-filter: blur(4px);
@@ -919,13 +395,6 @@
         padding: 20px !important;
       }
 
-      .trainer-slide{
-        gap: 20px !important;
-      }
-
-      .camp-card{
-        padding: 20px !important;
-      }
       .topbar{
         padding: 10px 16px !important;
       }
@@ -934,8 +403,21 @@
         font-size: 0.85rem !important;
       }
 
+      .hero-logo-big{
+        margin-bottom: 16px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }  
+
       .hero-logo-big img{
-        width: 180px !important;
+        width: auto !important;
+        max-width: 85% !important;
+        height: 110px !important;
+        display: block !important;
+        max-height: 110px !important;
+        object-fit: contain !important;
       }
     }
 
@@ -975,9 +457,17 @@
         align-items: center !important;
         gap: 8px !important;
       }
+      .brand img.nav-logo,
 
+      
       .brand img{
-        width: 28px !important;
+       width: 34px;
+       height: 34px;
+       max-width: 34px;
+       max-height: 34px;
+        object-fit: contain;
+       flex-shrink: 0;
+       display: block;
       }
 
       .brand div{
@@ -1084,6 +574,12 @@
       left: 0;
       right: 0;
     }
+
+    header.hero img{ 
+      max-width: 100% !important;
+      height: auto;
+    }
+
     /* Make hero background full-bleed even if wrapped */
     .hero{
       width: 100vw !important;
@@ -1114,8 +610,15 @@
       }
 
       .brand img{
-        width: 22px !important;
-      }
+       width: 26px !important;
+        height: 26px !important;
+        max-width: 26px !important;
+       max-height: 26px !important;
+       object-fit: contain !important;
+       flex-shrink: 0 !important;
+        display: block !important;
+     }
+}
 
       .brand div{
         font-size: 0.78rem !important;
@@ -1140,7 +643,7 @@
         width: 22px !important;
         height: 16px !important;
       }
-    }
+    
 
     @media (max-width: 380px){
       .brand div{
@@ -1182,24 +685,11 @@
 
   
     /* Bigger mobile logo */
-    @media (max-width: 768px){
-      .brand img{
-        width: 44px !important;
-      }
-    }
-
-    /* Signup form: always single column */
-    .form-grid{
-      grid-template-columns: 1fr !important;
-    }
+  
 
   
     /* Bigger mobile logo */
-    @media (max-width: 768px){
-      .brand img{
-        width: 54px !important;
-      }
-    }
+ 
 
     /* Signup form: ONE field per row everywhere */
     .form-grid{
@@ -1216,18 +706,6 @@
       width: 100% !important;
       box-sizing: border-box !important;
     }
-
-    /* Trainer comments */
-    .trainer-comments{ margin-top: 14px; display: grid; gap: 10px; align-items: start; }
-    .trainer-comments-head{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
-    .trainer-comments-head .title{ font-weight: 950; }
-    .trainer-comments-head .meta{ font-weight: 900; color: rgba(12,27,43,0.72); }
-    .trainer-comments-list{ display:grid; gap:10px; }
-    .trainer-comment-item{ background: rgba(255,255,255,0.72); border: 1px solid rgba(12,27,43,0.06); border-radius:14px; padding:10px 12px; backdrop-filter: blur(3px); }
-    .trainer-comment-item .row{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:6px; }
-    .trainer-comment-item .who{ font-size:12px; color: rgba(12,27,43,0.55); font-weight:900; }
-    .trainer-comment-item .date{ font-size:12px; color: rgba(12,27,43,0.55); font-weight:800; }
-    .trainer-comment-item .text{ font-weight:800; color: rgba(12,27,43,0.78); white-space: pre-wrap; }
 
   
     /* About modal */
@@ -1293,7 +771,139 @@
       margin-top: 0;
     }
 
-</style>
+    /* Packages carousel */
+    .pkg-wrap{
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(12,27,43,0.10);
+      border-radius: 18px;
+      padding: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pkg-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .pkg-head .title{
+      font-weight: 950;
+      letter-spacing: -0.1px;
+    }
+    .pkg-nav{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      flex-wrap: nowrap;
+    }
+    .pkg-arrow{
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(12,27,43,0.14);
+      background: rgba(255,255,255,0.85);
+      color: rgba(12,27,43,0.85);
+      font-weight: 900;
+      font-size: 22px;
+      cursor: pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      user-select:none;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.10);
+    }
+    .pkg-arrow:hover{ background: rgba(255,255,255,0.95); }
+    .pkg-dots{ display:flex; gap: 8px; align-items:center; }
+    .pkg-dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(12,27,43,0.22);
+      cursor: pointer;
+    }
+    .pkg-dot.active{ background: var(--blue); }
+    .pkg-name{
+      font-weight: 950;
+      font-size: 1.05rem;
+      margin: 4px 0 6px;
+    }
+    .pkg-list{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(12,27,43,0.74);
+      font-weight: 800;
+    }
+    .pkg-list li{ margin: 6px 0; }
+
+    /* Programs carousel (switch between programs, keep package carousels inside) */
+    .program-carousel{
+     position: relative;
+    }
+    .program-view{
+     display: flex;
+     align-items: stretch;
+      gap: 10px;
+    }
+    .program-window{
+     overflow: hidden;
+     flex: 1;
+     min-width: 0;
+    }
+    .program-track{
+      display: flex;
+      width: 100%;
+      transition: transform 260ms ease;
+      will-change: transform;
+    }
+    .program-slide{
+      flex: 0 0 100%;
+    }
+    .program-arrow{
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(12,27,43,0.14);
+      background: rgba(255,255,255,0.85);
+      color: rgba(12,27,43,0.85);
+      font-weight: 900;
+      font-size: 24px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.10);
+      flex: 0 0 auto;
+      margin-top: 6px;
+    }
+    .program-arrow:hover{ background: rgba(255,255,255,0.95); }
+    .program-dots{
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 12px;
+    }
+   .program-dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(12,27,43,0.22);
+      cursor: pointer;
+    }
+    .program-dot.active{ background: var(--blue); }
+
+    @media (max-width: 768px){
+      .program-arrow{
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+      }
+    }
+ </style>
 </head>
 <body>
 <div class="topbar">
@@ -1306,10 +916,10 @@
 </div>
 </div>
 <nav aria-label="Navigacija" class="nav">
-<a href="#o-nas" id="navAbout">O campu</a>
-<a href="#trenerji" id="navTrainers">Trenerji</a>
-<a href="#campi" id="navCamps">Termini</a>
-<a class="cta" href="#prijava" id="navSignup">Prijava</a>
+<a href="#o-nas" id="navAbout">About us</a>
+<a href="#lokacije" id="navLocations">Locations</a>
+<a href="#weeks" id="navWeeks">Weeks</a>
+<a class="cta" href="#prijava" id="navSignup">Apply</a>
 </nav>
 <div class="lang-switch">
 <img alt="Slovenščina" id="currentLang" src="27111.jpg"/>
@@ -1330,195 +940,136 @@
 <p id="heroText">Butični campi odbojke na mivki. Fokus na kakovostnem treningu, dobri družbi in nepozabnih dnevih na slovenski obali.</p>
 <div class="actions">
 <a class="btn primary" href="#prijava" id="heroJoin">Pridruži se campu</a>
-<a class="btn ghost" href="#campi" id="heroScroll">Pomakni se do terminov</a>
+<a class="btn ghost" href="#weeks" id="heroScroll">Pomakni se do terminov</a>
 </div>
 </div>
 </div>
 </header>
 <main class="wrap">
-<section aria-label="O campu in trenerji" id="o-nas">
-<div class="section-head">
-<div>
-<h2 id="aboutTitle">About Us</h2>
-</div>
-</div>
-<div class="about-one">
-<div class="card about-text">
-<h3 id="aboutSubtitle">Predstavitev</h3>
-<p id="aboutShort1">Organiziramo butične campe odbojke na mivki v Portorožu.</p>
-<p id="aboutShort2">Fokus je na kakovostnem treningu, jasnem napredku in dobri energiji v skupini.</p>
-<ul class="bullets">
-<li id="aboutLi1">Majhne skupine do 30–40 igralcev</li>
-<li id="aboutLi2">Individualen feedback in jasne naloge</li>
-<li id="aboutLi3">Trening po nivojih in veliko igre</li>
-<li id="aboutLi4">Družabni del in doživetja izven igrišča</li>
-</ul>
-<div style="margin-top:14px;">
-<a class="btn primary" href="#" id="aboutReadMore">PREBERI VEČ</a>
-</div>
-<div class="trainers-title" id="trenerji">
-<h3 id="trainersTitle">Spoznaj naše trenerje</h3>
-<p id="trainersLead"></p>
-</div>
-<div aria-label="Trenerji" class="trainer-carousel">
-<div aria-label="Izberi trenerja" class="trainer-tabs" role="tablist">
-<button aria-selected="true" class="trainer-tab active" data-index="0" role="tab" type="button">Alan Košenina</button>
-<button aria-selected="false" class="trainer-tab" data-index="1" role="tab" type="button">Trener 2</button>
-<button aria-selected="false" class="trainer-tab" data-index="2" role="tab" type="button">Trener 3</button>
-</div>
-<div aria-label="Prikaz trenerja" class="trainer-stage" id="trainerStage" tabindex="0">
-<button aria-label="Prejšnji trener" class="trainer-arrow left" type="button">‹</button>
-<div class="trainer-slides">
-<article aria-label="Alan Košenina" class="card trainer-card trainer-slide active" data-index="0" data-trainer-id="alan-kosenina">
-<img alt="Alan Košenina" src="alan-kosenina.png"/>
-<div class="trainer-info">
-<h4>Alan Košenina</h4>
-<p class="role" id="t0Role">Trener in vodja campa</p>
-<ul>
-<li id="t0Li1">Trening tehnike in taktike</li>
-<li id="t0Li2">Plan za napredek po nivojih</li>
-<li id="t0Li3">Video analiza in feedback</li>
-</ul>
-</div>
-<div class="trainer-comments">
-<div class="trainer-comments-head">
-<div class="title" data-i18n="commentsTitle">Mnenja</div>
-<div class="meta"><span class="count">0</span></div>
-</div>
-<div class="trainer-comments-list"></div>
-<button class="btn ghost comments-toggle" data-i18n="commentsReadAll" data-state="collapsed" type="button">PREBERI VSE</button>
-</div>
-</article>
-<article aria-label="Trener 2" class="card trainer-card trainer-slide" data-index="1" data-trainer-id="trener-2">
-<img alt="Trener 2" src="alan-kosenina.png"/>
-<div class="trainer-info">
-<h4>Trener 2</h4>
-<p class="role" id="t1Role">Dodaj ime in vlogo</p>
-<ul>
-<li id="t1Li1">Dodaj 3 točke</li>
-<li id="t1Li2">Dodaj 3 točke</li>
-<li id="t1Li3">Dodaj 3 točke</li>
-</ul>
-</div>
-<div class="trainer-comments">
-<div class="trainer-comments-head">
-<div class="title" data-i18n="commentsTitle">Mnenja</div>
-<div class="meta"><span class="count">0</span></div>
-</div>
-<div class="trainer-comments-list"></div>
-<button class="btn ghost comments-toggle" data-i18n="commentsReadAll" data-state="collapsed" type="button">PREBERI VSE</button>
-</div>
-</article>
-<article aria-label="Trener 3" class="card trainer-card trainer-slide" data-index="2" data-trainer-id="trener-3">
-<img alt="Trener 3" src="alan-kosenina.png"/>
-<div class="trainer-info">
-<h4>Trener 3</h4>
-<p class="role" id="t2Role">Dodaj ime in vlogo</p>
-<ul>
-<li id="t2Li1">Dodaj 3 točke</li>
-<li id="t2Li2">Dodaj 3 točke</li>
-<li id="t2Li3">Dodaj 3 točke</li>
-</ul>
-</div>
-<div class="trainer-comments">
-<div class="trainer-comments-head">
-<div class="title" data-i18n="commentsTitle">Mnenja</div>
-<div class="meta"><span class="count">0</span></div>
-</div>
-<div class="trainer-comments-list"></div>
-<button class="btn ghost comments-toggle" data-i18n="commentsReadAll" data-state="collapsed" type="button">PREBERI VSE</button>
-</div>
-</article>
-</div>
-<button aria-label="Naslednji trener" class="trainer-arrow right" type="button">›</button>
-<div aria-label="Indikator trenerjev" class="trainer-dots">
-<button aria-label="Alan Košenina" class="trainer-dot active" data-index="0" type="button"></button>
-<button aria-label="Trener 2" class="trainer-dot" data-index="1" type="button"></button>
-<button aria-label="Trener 3" class="trainer-dot" data-index="2" type="button"></button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section id="campi">
-<div class="section-head">
-<div>
-<h2 id="campsTitle">Termini</h2>
-<p id="campsLead">Več programov, za vsakega se nekaj najde.</p>
-</div>
-</div>
-<div aria-label="Termini" class="camp-carousel">
-<div aria-label="Izberi termin" class="camp-tabs" role="tablist">
-<button aria-selected="true" class="camp-tab active" data-index="0" role="tab" type="button" data-i18n="campTab1">Teden 1</button>
-<button aria-selected="false" class="camp-tab" data-index="1" role="tab" type="button" data-i18n="campTab2">Teden 2</button>
-<button aria-selected="false" class="camp-tab" data-index="2" role="tab" type="button" data-i18n="campTab3">Teden 3</button>
-</div>
-<div class="camp-stage" id="campStage">
-<button aria-label="Prejšnji termin" class="camp-arrow left" type="button">‹</button>
-<div class="camp-slides">
-<article class="camp-slide active" data-index="0">
-<article class="camp-card">
-<div class="camp-hero"></div>
-<div class="camp-body">
-<div class="camp-week" id="c1Week">Teden 1 • Open Termin</div>
-<h3 id="c1Title">Za vse nivoje</h3>
-<p id="c1Desc">Če hočeš stabilno osnovo in več samozavesti v igri.</p>
-<ul>
-<li id="c1Li1">Osnove tehnike in stabilnost</li>
-<li id="c1Li2">Branje igre in postavitev</li>
-<li id="c1Li3">Veliko igre in situacij</li>
-</ul>
-</div>
-<div class="camp-actions">
-<a class="btn primary" href="#prijava" id="c1Btn">Prijavi se na Teden 1</a>
-</div>
-</article>
-</article>
-<article class="camp-slide" data-index="1">
-<article class="camp-card">
-<div class="camp-hero"></div>
-<div class="camp-body">
-<div class="camp-week" id="c2Week">Teden 2 • Train Like a Pro</div>
-<h3 id="c2Title">Za napredne</h3>
-<p id="c2Desc">Če hočeš več intenzivnosti, več taktike in bolj zahtevne naloge.</p>
-<ul>
-<li id="c2Li1">Napad, blok, obramba po sistemu</li>
-<li id="c2Li2">Odločanje pod pritiskom</li>
-<li id="c2Li3">Sparing z jasnimi cilji</li>
-</ul>
-</div>
-<div class="camp-actions">
-<a class="btn primary" href="#prijava" id="c2Btn">Prijavi se na Teden 2</a>
-</div>
-</article>
-</article>
-<article class="camp-slide" data-index="2">
-<article class="camp-card">
-<div class="camp-hero"></div>
-<div class="camp-body">
-<div class="camp-week" id="c3Week">Teden 3 • Intensive Clinic</div>
-<h3 id="c3Title">Za tekmovalce</h3>
-<p id="c3Desc">Če hočeš tempo, veliko ponovitev in jasne cilje za turnirje.</p>
-<ul>
-<li id="c3Li1">Igra proti močnejšim parom</li>
-<li id="c3Li2">Specifika: sideout in break point</li>
-<li id="c3Li3">Video feedback in plan doma</li>
-</ul>
-</div>
-<div class="camp-actions">
-<a class="btn primary" href="#prijava" id="c3Btn">Prijavi se na Teden 3</a>
-</div>
-</article>
-</article>
-</div>
-<button aria-label="Naslednji termin" class="camp-arrow right" type="button">›</button>
-<div aria-label="Indikator terminov" class="camp-dots">
-<button aria-label="Teden 1" class="camp-dot active" data-index="0" type="button"></button>
-<button aria-label="Teden 2" class="camp-dot" data-index="1" type="button"></button>
-<button aria-label="Teden 3" class="camp-dot" data-index="2" type="button"></button>
-</div>
-</div>
-</div>
+<section aria-label="About us" id="o-nas">
+  <div class="section-head">
+    <div>
+      <h2 id="aboutTitle">About Us</h2>
+      <p id="aboutLead">Quality over quantity. Small groups. Real connection.</p>
+    </div>
+  </div>
+
+  <div class="about-one">
+    <div class="card about-text">
+      <h3 id="aboutSubtitle">Overview</h3>
+
+      <ul class="bullets">
+        <li id="aboutLi1">Focus on quality over quantity, 30-40 participants</li>
+        <li id="aboutLi2">Small training groups (max 8 players)</li>
+        <li id="aboutLi3">Detail-oriented, high-level training with individual attention</li>
+        <li id="aboutLi4">Emphasis on real human connection, not just volleyball</li>
+        <li id="aboutLi5">A lot of free play time</li>
+        <li id="aboutLi6">Group dinners, excursions, and social moments</li>
+        <li id="aboutLi7">Welcoming for friends and solo travelers alike</li>
+        <li id="aboutLi8">Goal: new friendships, lasting memories, improved beach volleyball skills</li>
+      </ul>
+
+      <div style="margin-top:14px;">
+        <a class="btn primary" href="#" id="aboutReadMore">READ MORE</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section aria-label="Locations" id="lokacije">
+  <div class="section-head">
+    <div>
+      <h2 id="locationsTitle">Locations</h2>
+      <p id="locationsLead">Portorož. Pro courts by the sea. Calm time off the sand.</p>
+    </div>
+  </div>
+
+  <div class="about-one">
+    <div class="card about-text">
+      <h3 id="locationsName">Portorož</h3>
+      <p id="locationsShort">One of Slovenia's most beautiful and lively seaside towns. Nestled between the Adriatic sea and lush Mediterranean hills Portorož offers:</p>
+
+      <ul class="bullets">
+        <li id="locationsLi1">Scenic seaside walks and golden sunsets</li>
+        <li id="locationsLi2">Historic seaside towns in close proximity</li>
+        <li id="locationsLi3">4 pro level beach volleyball courts right by the sea</li>
+        <li id="locationsLi4">A relaxing mediterranean atmosphere</li>
+      </ul>
+
+      <div style="margin-top:14px;">
+        <a class="btn primary" href="#" id="locationsReadMore">READ MORE</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="weeks">
+  <div class="section-head">
+    <div>
+      <h2 id="weeksTitle">Weeks</h2>
+      <p id="weeksLead">Choose a program. Then pick a package.</p>
+    </div>
+  </div>
+
+    <div class="program-carousel" id="programCarousel" aria-label="Programs">
+    <div class="program-view">
+      <button class="program-arrow" type="button" data-dir="-1" aria-label="Previous program">‹</button>
+
+      <div class="program-window">
+        <div class="program-track" id="programTrack">
+
+          <div class="program-slide" data-program="pp">
+            <div class="card" style="margin-bottom:16px;">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                <div>
+                  <h3 id="ppTitle" style="margin:0 0 6px;">Practice and play</h3>
+                  <p id="ppLead" style="margin:0; color: var(--muted); font-weight:700;">All levels. Structured training. Free play and social time.</p>
+                </div>
+                <a class="btn ghost" href="#" id="ppReadMore">READ MORE</a>
+              </div>
+
+              <ul class="bullets" style="margin-top:12px;">
+                <li id="ppLi1">All levels welcome</li>
+                <li id="ppLi2">Expert coaching</li>
+                <li id="ppLi3">Technical and tactical improvements</li>
+                <li id="ppLi4">Fun tournaments</li>
+                <li id="ppLi5">Free play time</li>
+                <li id="ppLi6">Social activities</li>
+              </ul>
+
+              <div class="pkg-carousel" data-carousel="pp" style="margin-top:14px;"></div>
+            </div>
+          </div>
+
+          <div class="program-slide" data-program="hp">
+            <div class="card">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                <div>
+                  <h3 id="hpTitle" style="margin:0 0 6px;">High performance camp</h3>
+                  <p id="hpLead" style="margin:0; color: var(--muted); font-weight:700;">Advanced players. Pro level sessions and tournaments.</p>
+                </div>
+                <a class="btn ghost" href="#" id="hpReadMore">READ MORE</a>
+              </div>
+
+              <ul class="bullets" style="margin-top:12px;">
+                <li id="hpLi1">Advanced players only</li>
+                <li id="hpLi2">PRO level training sessions</li>
+                <li id="hpLi3">Advanced tactics</li>
+                <li id="hpLi4">Modern play styles</li>
+                <li id="hpLi5">High level tournaments</li>
+                <li id="hpLi6">Fun social activities</li>
+              </ul>
+
+              <div class="pkg-carousel" data-carousel="hp" style="margin-top:14px;"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <button class="program-arrow" type="button" data-dir="1" aria-label="Next program">›</button>
+    </div>
+
+    <div class="program-dots" id="programDots" aria-label="Program selector"></div>
+  </div>
 </section>
 <section id="prijava">
 <div class="section-head">
@@ -1543,13 +1094,21 @@
 <input autocomplete="tel" id="phone" name="phone"/>
 </div>
 <div style="display:flex; flex-direction:column; gap: 8px;">
-<label for="week" id="lblWeek">Termin</label>
-<select id="week" name="week" required="">
-<option id="optChoose" value="">Izberi</option>
-<option id="optW1">Teden 1 (Open Termin)</option>
-<option id="optW2">Teden 2 (Train Like a Pro)</option>
-<option id="optW3">Teden 3 (Intensive Clinic)</option>
-</select>
+  <label for="program" id="lblProgram">Program</label>
+  <select id="program" name="program" required="">
+    <option id="optProgramChoose" value="">Choose</option>
+    <option id="optProgramPP" value="Practice and play">Practice and play</option>
+    <option id="optProgramHP" value="High performance camp">High performance camp</option>
+  </select>
+</div>
+<div style="display:flex; flex-direction:column; gap: 8px;">
+  <label for="package" id="lblPackage">Package</label>
+  <select id="package" name="package" required="">
+    <option id="optPackageChoose" value="">Choose</option>
+    <option id="optPackageGold" value="Gold">Gold</option>
+    <option id="optPackageSilver" value="Silver">Silver</option>
+    <option id="optPackageBronze" value="Bronze">Bronze</option>
+  </select>
 </div>
 <div style="display:flex; flex-direction:column; gap: 8px; grid-column: 1 / -1;">
 <label for="msg" id="lblMsg">Sporočilo</label>
@@ -1563,77 +1122,73 @@
 </form>
 </div>
 </section>
-<!-- About modal -->
+<!-- Modals -->
 <div aria-hidden="true" class="modal-overlay" id="aboutModalOverlay">
-<div aria-labelledby="aboutModalTitle" aria-modal="true" class="modal" id="aboutModal" role="dialog" tabindex="-1">
-<div class="modal-header">
-<div class="modal-title" id="aboutModalTitle">Predstavitev</div>
-<button aria-label="Zapri" class="modal-close" id="aboutModalClose" type="button">×</button>
+  <div aria-labelledby="aboutModalTitle" aria-modal="true" class="modal" id="aboutModal" role="dialog" tabindex="-1">
+    <div class="modal-header">
+      <div class="modal-title" id="aboutModalTitle">About Us</div>
+      <button aria-label="Close" class="modal-close" id="aboutModalClose" type="button">×</button>
+    </div>
+    <div class="modal-body">
+      <div data-lang-block="sl">
+        <p>Verjamemo, da so najboljše izkušnje odbojke na mivki zgrajene na kakovosti, ne na količini. Zato so naši butični campi namenoma manjši, omejeni na 30 do 40 udeležencev. Tako lahko ponudimo natančen, podroben trening in ustvarimo prostor za pravo človeško povezavo. Campi združujejo kakovostne treninge z dobrim časom izven igrišča. Skupne večerje, izleti in sproščeni socialni trenutki niso dodatek, ampak jedro campa. Ne glede na to, ali prideš s prijatelji ali sam, je cilj preprost. Domov greš z novimi stiki, močnimi spomini in boljšo igro odbojke na mivki.</p><p>Ustanovitelj Alan Košenina je kot trener sodeloval več kot 30 tednov na različnih mednarodnih campih in programih. Iz igralčevega in trenerskega pogleda je dobil jasen vpogled v to, kaj deluje in kaj ne. Videl je priložnost, da stvari postavimo drugače. Camp je nastal iz povratnih informacij igralcev in ene jasne vizije, naj ostane oseben, povezan in kakovosten.</p>
+      </div>
+      <div data-lang-block="en" style="display:none;">
+        <p>We believe the best beach volleyball experiences are built on quality, not quantity. That’s why our boutique camps are intentionally small, limited to 30–40 participants. This allows us to deliver excellent, detail-oriented training and create space for real human connection. Our camps combine high-level sessions with meaningful time off the court. Group dinners, excursions, and relaxed social moments are not extras - they’re a core part of the camp. Whether you arrive with friends or as a solo traveler, our goal is simple. You leave with new connections, strong memories, and better at beach volleyball.</p><p>Our founder Alan Košenina coached for 30+ weeks across multiple international camps and programs, gaining deep insight into what works and what doesn’t from the athlete’s perspective and he saw a clear opportunity to do things differently. The camp was built from player feedback and one clear vision, keep it personal, connected, and high quality.</p>
+      </div>
+      <div data-lang-block="de" style="display:none;">
+        <p>Wir glauben, dass die besten Beachvolleyball-Erlebnisse auf Qualität beruhen, nicht auf Quantität. Darum sind unsere Boutique-Camps bewusst klein und auf 30 bis 40 Teilnehmer begrenzt. So können wir präzises, detailorientiertes Training bieten und Raum für echte menschliche Verbindung schaffen. Unsere Camps verbinden starke Sessions mit sinnvoller Zeit abseits des Courts. Gemeinsame Abendessen, Ausflüge und entspannte soziale Momente sind kein Extra, sie sind ein Kernteil des Camps. Egal ob du mit Freunden anreist oder allein, das Ziel ist einfach. Du gehst mit neuen Kontakten, starken Erinnerungen und besserem Beachvolleyball nach Hause.</p><p>Unser Gründer Alan Košenina hat über 30 Wochen in mehreren internationalen Camps und Programmen gecoacht. Aus Sicht des Athleten hat er klar gesehen, was funktioniert und was nicht. Er erkannte eine Chance, Dinge anders zu machen. Das Camp entstand aus Spielerfeedback und einer klaren Vision, persönlich, verbunden und hochwertig zu bleiben.</p>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="modal-body">
-<div data-lang-block="sl">
-<h3>O nas</h3>
-<p>Verjamemo, da je najboljši beach volleyball camp zgrajen na kakovosti, ne na količini.</p>
-<p>Zato so naši campi butični in namenoma manjši, običajno 30 do 40 udeležencev. Tako lahko ponudimo natančen trening, več feedbacka in boljšo izkušnjo za vsakega igralca.</p>
-<p>Poleg treninga dajemo veliko poudarka tudi na povezovanju. Skupne večerje, izleti in sproščeni trenutki niso dodatek, ampak del koncepta.</p>
-<p>Če prideš sam ali s prijatelji, je cilj enak. Da domov odideš z novimi kontakti, dobrimi spomini in boljšo igro.</p>
-<h3>Ustanovitelj</h3>
-<p>Camp je ustanovil Alan Košenina, rojen v Sloveniji, z močno igralsko in trenersko zgodbo.</p>
-<p>10 let je igral profesionalno dvoransko odbojko, nastopal za slovensko reprezentanco in igral tudi v CEV Champions League. V odbojki na mivki je nastopal na najvišjem nivoju, igral za slovensko reprezentanco, nastopal na FIVB World Tour in osvojil srebro na enem izmed FIVB World Tour turnirjev.</p>
-<p>Po igralski karieri je kot trener sodeloval na številnih mednarodnih campih in programih, skupaj več kot 30 tednov. To mu je dalo jasen občutek, kaj igralci potrebujejo, in kaj jim v campih pogosto manjka.</p>
-<h3>Zakaj ta camp obstaja</h3>
-<p>Po letih dela za druge organizatorje je Alan želel camp, kjer je kakovost pod nadzorom. Manj ljudi, boljši feedback, boljša energija, boljši napredek. Camp je nastal iz povratnih informacij igralcev in iz ene jasne vizije.</p>
-<p>Želimo ustvariti izkušnjo, ki je osebna, povezana in uporabna. Camp za igralce, ki hočejo več kot samo treninge.</p>
-<h3>Lokacija</h3>
-<p>Camp poteka v Portorožu, na slovenski obali.</p>
-<p>Igrišča so na plaži, tik ob morju. Na voljo so štiri profesionalna igrišča, kjer so potekala tudi domača in mednarodna tekmovanja. Med treningi si lahko v nekaj korakih v vodi. To je idealna kombinacija treninga in odklopa.</p>
-<h3>Vaja &amp; igra</h3>
-<p>Ne glede na to, ali si začetnik ali želiš izpiliti svojo igro, program Vaja &amp; igra ponuja strukturiran trening v skupinah po nivojih, da zagotovimo kakovosten napredek. Čakajo te tekmovalni, a prijateljski turnirji ter veliko prostega igranja za vse nivoje. Po treningih tempo umirimo z druženjem, izleti in sproščenimi večeri ob morju, kjer soigralci postanejo prijatelji.</p>
-<h3>Visoka zmogljivost</h3>
-<p>Program je namenjen naprednim igralcem, ki želijo najboljše pogoje za napredek. Poudarek je na taktičnem razumevanju igre, odločanju pod pritiskom, sodobnih stilih igre in izvedbi v zahtevnih situacijah. Treniraj, tekmuj in se preizkusi proti igralcem na svojem ali višjem nivoju ter dobi priložnost igrati proti profesionalnim igralcem iz Slovenije in regije. Ko se zadnje točke zaključijo, skupaj preklopimo v sproščen del campa z druženjem in izleti, ki ustvarijo povezave tudi izven igrišča.</p>
+
+<div aria-hidden="true" class="modal-overlay" id="locationsModalOverlay">
+  <div aria-labelledby="locationsModalTitle" aria-modal="true" class="modal" id="locationsModal" role="dialog" tabindex="-1">
+    <div class="modal-header">
+      <div class="modal-title" id="locationsModalTitle">Portorož</div>
+      <button aria-label="Close" class="modal-close" id="locationsModalClose" type="button">×</button>
+    </div>
+    <div class="modal-body">
+      <div data-lang-block="sl">
+        <p>Camp poteka v Portorožu, enem najlepših obmorskih krajev na kratki, a izjemno lepi slovenski obali.</p><p>Slovenska obala je stisnjena med Jadransko morje in mediteranske hribe. Ponuja redko kombinacijo naravne lepote, sproščenega obmorskega ritma in dobre dostopnosti. Čista voda, sprehodi ob morju, zgodovinska mesta v bližini, zlati sončni zahodi in mirno vzdušje, idealno za trening in odklop.</p><p>Na plaži, le nekaj korakov od morja, so štiri profesionalna igrišča za odbojko na mivki. Na teh igriščih so potekala domača in mednarodna tekmovanja, zato nudijo odlično okolje za kakovosten trening. Med vajami je osvežitev v Jadranu vedno na dosegu.</p><p>Trening z nogami v mivki, z valovi v ozadju in morskim vetrom na koži, to je odbojka na mivki, kot mora biti. Vrhunska igrišča in destinacija, ki te povabi, da se umiriš, napolniš baterije in uživaš v vsakem trenutku na igrišču in izven njega.</p>
+      </div>
+      <div data-lang-block="en" style="display:none;">
+        <p>Our camp takes place in Portorož, one of the most beautiful seaside towns on the short but stunning Slovenia coastline.</p><p>Nestled between the Adriatic Sea and lush Mediterranean hills, the Slovenian coast offers a rare blend of natural beauty, relaxed coastal life, and easy accessibility. Think crystal-clear water, scenic seaside walks, historic towns nearby, golden sunsets, and a calm atmosphere that instantly slows you down, perfect for both training and unwinding.</p><p>Right on the beach, just steps from the sea, you’ll find our four professional-level beach volleyball courts. These courts have hosted numerous top-level domestic and international competitions and provide an exceptional setting for high-quality training. Between drills, a refreshing swim in the Adriatic is never more than a few steps away.</p><p>Training with your feet in the sand, the sound of the waves in the background, and the sea breeze on your skin, this is beach volleyball as it’s meant to be experienced. World-class facilities meet a coastal destination that invites you to stay present, recharge, and fully enjoy every moment on and off the court.</p>
+      </div>
+      <div data-lang-block="de" style="display:none;">
+        <p>Unser Camp findet in Portorož statt, einem der schönsten Küstenorte an der kurzen, aber beeindruckenden slowenischen Küste.</p><p>Eingebettet zwischen der Adria und grünen mediterranen Hügeln bietet die slowenische Küste eine seltene Mischung aus Natur, entspannter Küstenatmosphäre und guter Erreichbarkeit. Kristallklares Wasser, Spaziergänge am Meer, historische Orte in der Nähe, goldene Sonnenuntergänge und eine ruhige Stimmung, perfekt zum Trainieren und Abschalten.</p><p>Direkt am Strand, nur wenige Schritte vom Meer entfernt, stehen unsere vier professionellen Beachvolleyball-Courts. Auf diesen Courts fanden viele nationale und internationale Wettkämpfe statt. Sie bieten ein starkes Umfeld für hochwertiges Training. Zwischen den Drills ist ein Sprung in die Adria immer nur ein paar Schritte entfernt.</p><p>Training mit den Füßen im Sand, dem Klang der Wellen im Hintergrund und einer Meeresbrise auf der Haut, so soll Beachvolleyball erlebt werden. Top-Anlage trifft auf eine Küstendestination, die dich einlädt, präsent zu bleiben, neue Energie zu tanken und jeden Moment auf und neben dem Court zu genießen.</p>
+      </div>
+    </div>
+  </div>
 </div>
-<div data-lang-block="en" style="display:none;">
-<h3>About Us</h3>
-<p>We believe the best beach volleyball experiences are built on quality, not quantity.</p>
-<p>That’s why our boutique camps are intentionally small, limited to 30–40 participants. This allows us to deliver excellent, detail-oriented training and create space for real human connection.</p>
-<p>Our camps combine high-level sessions with meaningful time off the court. Group dinners, excursions, and relaxed social moments are not extras; they’re a core part of the camp.</p>
-<p>Whether you arrive with friends or as a solo traveler, our goal is simple. You leave with new connections, strong memories, and better volleyball.</p>
-<h3>Our Founder</h3>
-<p>The camp was founded by Alan Košenina, born in Slovenia, whose career spans both elite performance and extensive coaching experience.</p>
-<p>Alan played 10 years as a professional indoor volleyball athlete, represented the Slovenian national team, and competed in the CEV Champions League. In beach volleyball, he played at the highest level, competed on the FIVB World Tour, and won a silver medal at an FIVB World Tour event.</p>
-<p>After his playing career, Alan coached for 30+ weeks across multiple international camps and programs, gaining deep insight into what works and what doesn’t from the athlete’s perspective.</p>
-<h3>Why This Camp Exists</h3>
-<p>After years of coaching for multiple companies, Alan saw a clear opportunity to do things differently. The camp was built from player feedback and one clear vision, keep it personal, connected, and high quality.</p>
-<h3>Location</h3>
-<p>Our camp takes place in Portorož, one of the most beautiful seaside towns on the short but stunning Slovenia coastline.</p>
-<p>Right on the beach, just steps from the sea, you’ll find four professional-level courts that have hosted domestic and international competitions. Between drills, a swim in the Adriatic is never more than a few steps away.</p>
-<h3>Practice &amp; Play</h3>
-<p>Whether you’re new to beach volleyball or looking to sharpen your game, Practice &amp; Play offers structured training with groups formed by skill level to ensure quality learning. Competitive but friendly tournaments and plenty of free play court time are included for players of all levels. After sessions, we switch gears with social activities, excursions, and relaxed evenings by the sea that turn teammates into friends.</p>
-<h3>High Performance</h3>
-<p>Designed for advanced players who want the best possible conditions for improvement. The camp emphasizes tactical understanding, decision-making, modern play styles, and execution under pressure. Train, compete, and test yourself against players on your level or higher, and get the chance to compete against professional players from Slovenia and the region. After the last rallies are played, we unwind together through social activities and excursions that create connections that last beyond the sand.</p>
-</div><div data-lang-block="de" style="display:none;">
-<h3>Über uns</h3>
-<p>Wir glauben, dass die besten Beachvolleyball Camps auf Qualität beruhen, nicht auf Quantität.</p>
-<p>Deshalb sind unsere Boutique Camps bewusst klein gehalten, meist mit 30 bis 40 Teilnehmern. So können wir präzises Training, mehr Feedback und eine bessere Erfahrung für jeden Spieler bieten.</p>
-<p>Neben dem Training legen wir großen Wert auf Verbindung und Gemeinschaft. Gemeinsame Abendessen, Ausflüge und entspannte Momente sind kein Extra, sie gehören zum Konzept.</p>
-<p>Egal ob du allein kommst oder mit Freunden, das Ziel ist klar. Du gehst mit neuen Kontakten, starken Erinnerungen und besserem Volleyball nach Hause.</p>
-<h3>Gründer</h3>
-<p>Das Camp wurde von Alan Košenina gegründet, geboren in Slowenien, mit einer starken Spieler und Trainer Laufbahn.</p>
-<p>Alan spielte 10 Jahre professionell Hallenvolleyball, vertrat die slowenische Nationalmannschaft und spielte auch in der CEV Champions League. Im Beachvolleyball spielte er auf höchstem Niveau, trat auf der FIVB World Tour an und gewann Silber bei einem FIVB World Tour Event.</p>
-<p>Nach seiner aktiven Karriere arbeitete Alan als Coach in zahlreichen internationalen Camps und Programmen, insgesamt über 30 Wochen. Dadurch weiß er genau, was Spielern hilft und was in Camps oft fehlt.</p>
-<h3>Warum dieses Camp existiert</h3>
-<p>Nach Jahren der Arbeit für andere Organisatoren wollte Alan ein Camp, bei dem Qualität unter Kontrolle bleibt. Weniger Leute, besseres Feedback, bessere Energie, besserer Fortschritt. Das Camp entstand aus Spielerfeedback und einer klaren Vision.</p>
-<p>Wir wollen ein Erlebnis schaffen, das persönlich, verbunden und direkt nutzbar ist. Ein Camp für Spieler, die mehr wollen als nur Training.</p>
-<h3>Ort</h3>
-<p>Das Camp findet in Portorož an der slowenischen Küste statt.</p>
-<p>Die Courts liegen direkt am Strand, nur wenige Schritte vom Meer entfernt. Es gibt vier professionelle Courts, auf denen auch nationale und internationale Wettbewerbe ausgetragen wurden. Zwischen den Trainings bist du in wenigen Sekunden im Wasser. Das ist die ideale Kombination aus Training und Abschalten.</p>
-<h3>Üben &amp; spielen</h3>
-<p>Egal ob du neu im Beachvolleyball bist oder deine Skills schärfen willst, Üben &amp; spielen bietet strukturiertes Training in Gruppen nach Spielstärke. Dazu gehören wettkampforientierte, aber freundliche Turniere und viel freie Court Zeit für alle Niveaus. Nach den Sessions wechseln wir den Fokus zu Social Activities, Ausflügen und entspannten Abenden am Meer, die Teamkollegen zu Freunden machen.</p>
-<h3>Hohe Leistung</h3>
-<p>Für fortgeschrittene Spieler entwickelt, die die bestmöglichen Bedingungen für Verbesserung wollen. Der Fokus liegt auf taktischem Verständnis, Entscheidungsfindung, modernen Spielstilen und Ausführung unter Druck. Trainiere, spiele und teste dich gegen Spieler auf deinem Niveau oder höher. Du bekommst auch die Chance, gegen Profispieler aus Slowenien und der Region zu spielen. Nach den letzten Ballwechseln entspannen wir gemeinsam bei Social Activities und Ausflügen, die Verbindungen schaffen, die auch außerhalb des Courts bleiben.</p>
+
+<div aria-hidden="true" class="modal-overlay" id="ppModalOverlay">
+  <div aria-labelledby="ppModalTitle" aria-modal="true" class="modal" id="ppModal" role="dialog" tabindex="-1">
+    <div class="modal-header">
+      <div class="modal-title" id="ppModalTitle">Practice and play</div>
+      <button aria-label="Close" class="modal-close" id="ppModalClose" type="button">×</button>
+    </div>
+    <div class="modal-body">
+      <div data-lang-block="sl"><p>Ne glede na to, ali si nov v odbojki na mivki ali želiš izpiliti igro, program Practice &amp; Play ponuja strukturiran trening v skupinah po nivojih. Tako zagotovimo kakovostno učenje in napredek. Vključeni so tekmovalni, a prijateljski turnirji ter veliko prostega igranja za vse nivoje. Po treningih preklopimo v družabni del z aktivnostmi, izleti in sproščenimi večeri ob morju, kjer soigralci postanejo prijatelji.</p></div>
+      <div data-lang-block="en" style="display:none;"><p>Whether you’re new to beach volleyball or looking to sharpen your game, Practice &amp; Play offers structured training with groups formed by skill level to ensure quality learning. Competitive but friendly tournaments and plenty of free play court time are included for players of all levels. After sessions, we switch gears with social activities, excursions, and relaxed evenings by the sea that turn teammates into friends.</p></div>
+      <div data-lang-block="de" style="display:none;"><p>Egal ob du neu im Beachvolleyball bist oder dein Spiel schärfen willst, Practice &amp; Play bietet strukturiertes Training in Gruppen nach Spielstärke. So bleibt die Qualität hoch. Dazu gehören wettkampforientierte, aber freundliche Turniere und viel freie Court-Zeit für alle Levels. Nach den Sessions wechseln wir in den Social-Teil mit Aktivitäten, Ausflügen und entspannten Abenden am Meer, die Teamkollegen zu Freunden machen.</p></div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
+<div aria-hidden="true" class="modal-overlay" id="hpModalOverlay">
+  <div aria-labelledby="hpModalTitle" aria-modal="true" class="modal" id="hpModal" role="dialog" tabindex="-1">
+    <div class="modal-header">
+      <div class="modal-title" id="hpModalTitle">High performance camp</div>
+      <button aria-label="Close" class="modal-close" id="hpModalClose" type="button">×</button>
+    </div>
+    <div class="modal-body">
+      <div data-lang-block="sl"><p>Program je namenjen naprednim igralcem, ki želijo najboljše pogoje za napredek. Poudarek je na taktičnem razumevanju, odločanju, sodobnih stilih igre in izvedbi pod pritiskom. Treniraj, tekmuj in se preizkusi proti igralcem na svojem nivoju ali višje, ter dobi priložnost igrati proti profesionalnim igralcem iz Slovenije in regije. Ko se zadnje točke zaključijo, se skupaj sprostimo ob družabnih aktivnostih in izletih, kjer nastanejo povezave, ki ostanejo tudi izven mivke.</p></div>
+      <div data-lang-block="en" style="display:none;"><p>Designed for advanced players who want the best possible conditions for improvement. The camp emphasizes tactical understanding, decision-making, modern play styles, and execution under pressure. Train, compete, and test yourself against players on your level or higher, and get the chance to compete against professional players from Slovenia and the region. After the last rallies are played, we unwind together through social activities and excursions that create connections that last beyond the sand.</p></div>
+      <div data-lang-block="de" style="display:none;"><p>Für fortgeschrittene Spieler entwickelt, die die bestmöglichen Bedingungen für Verbesserung wollen. Der Fokus liegt auf taktischem Verständnis, Entscheidungsfindung, modernen Spielstilen und Ausführung unter Druck. Trainiere, spiele Turniere und teste dich gegen Spieler auf deinem Niveau oder darüber. Du bekommst auch die Chance, gegen Profispieler aus Slowenien und der Region zu spielen. Nach den letzten Ballwechseln entspannen wir gemeinsam bei Social Activities und Ausflügen, die Verbindungen schaffen, die über den Sand hinaus bleiben.</p></div>
+    </div>
+  </div>
 </div>
 </main>
 <footer>
@@ -1649,11 +1204,12 @@
 </div>
 </footer>
 <script>
-  // Form (demo)
+  // Signup (Supabase REST)
   const form = document.getElementById("signupForm");
   const statusEl = document.getElementById("status");
 
-  // Signups (Supabase REST)
+  let currentLang = "sl";
+
   const SIGNUP_REST = "https://dniqxnmmenjosbhtembc.supabase.co".replace(/\/+$/,"") + "/rest/v1/signups";
   const SIGNUP_HEADERS = {
     "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRuaXF4bm1tZW5qb3NiaHRlbWJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE1MjgyNjUsImV4cCI6MjA4NzEwNDI2NX0.WNrQ725NK3q67b93MSPBlsGYBp_yputelq2LErVxX8Q",
@@ -1675,477 +1231,689 @@
     return true;
   }
 
-  form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  // Packages
+  const packageData = {
+   en: {
+     pp: [
+       {
+         title: "Gold",
+          items: [
+           "6 nights in hotel with breakfast",
+           "3 tournaments",
+            "5 training sessions",
+           "Unlimited free play",
+            "2 excursions"
+          ]
+        },
+       {
+         title: "Silver",
+         items: [
+           "6 nights in a hostel + breakfast (exclusive camp rooms)",
+           "3 tournaments",
+           "5 training sessions",
+           "Unlimited free play",
+           "2 excursions"
+         ]
+       },
+       {
+         title: "Bronze",
+         items: [
+           "3 tournaments",
+           "5 training sessions",
+           "Unlimited free play",
+           "2 excursions"
+         ]
+       }
+     ],
+     hp: [
+       {
+         title: "Gold",
+         items: [
+           "6 nights in hotel with breakfast",
+           "3 tournaments",
+           "5 training sessions",
+           "Unlimited free play",
+           "2 excursions"
+         ]
+       },
+       {
+         title: "Silver",
+         items: [
+           "6 nights in a hostel + breakfast (exclusive camp rooms)",
+           "3 tournaments",
+           "5 training sessions",
+           "Unlimited free play",
+           "2 excursions"
+         ]
+       },
+       {
+         title: "Bronze",
+         items: [
+           "3 tournaments",
+           "5 training sessions",
+           "Unlimited free play",
+            "2 excursions"
+          ]
+        }
+      ]
+    },
 
-    const lang = (typeof currentLang === "string" ? currentLang : "sl");
-    const t = (typeof i18n !== "undefined" && i18n[lang]) ? i18n[lang] : {};
+    sl: {
+      pp: [
+        {
+          title: "Zlati",
+          items: [
+           "6 nočitev v hotelu z zajtrkom",
+           "3 turnirji",
+            "5 treningov",
+            "Neomejena prosta igra",
+            "2 izleta"
+          ]
+       },
+       {
+          title: "Srebrni",
+         items: [
+           "6 nočitev v hostlu + zajtrk (ekskluzivne camp sobe)",
+            "3 turnirji",
+            "5 treningov",
+            "Neomejena prosta igra",
+            "2 izleta"
+          ]
+        },
+        {
+          title: "Bronasti",
+          items: [
+            "3 turnirji",
+            "5 treningov",
+           "Neomejena prosta igra",
+           "2 izleta"
+         ]
+       }
+     ],
+     hp: [
+       {
+         title: "Zlati",
+         items: [
+           "6 nočitev v hotelu z zajtrkom",
+           "3 turnirji",
+           "5 treningov",
+           "Neomejena prosta igra",
+           "2 izleta"
+         ]
+       },
+       {
+         title: "Srebrni",
+         items: [
+           "6 nočitev v hostlu + zajtrk (ekskluzivne camp sobe)",
+           "3 turnirji",
+           "5 treningov",
+           "Neomejena prosta igra",
+           "2 izleta"
+         ]
+       },
+       {
+         title: "Bronasti",
+         items: [
+           "3 turnirji",
+           "5 treningov",
+           "Neomejena prosta igra",
+           "2 izleta"
+         ]
+       }
+     ]
+    },
+    de: {
+      pp: [
+        {
+          title: "Gold",
+         items: [
+            "6 Nächte im Hotel mit Frühstück",
+           "3 Turniere",
+           "5 Trainingseinheiten",
+           "Unbegrenztes freies Spiel",
+            "2 Ausflüge"
+          ]
+        },
+       {
+          title: "Silber",
+         items: [
+            "6 Nächte im Hostel + Frühstück (exklusive Camp Zimmer)",
+           "3 Turniere",
+           "5 Trainingseinheiten",
+           "Unbegrenztes freies Spiel",
+           "2 Ausflüge"
+         ]
+       },
+       {
+         title: "Bronze",
+         items: [
+           "3 Turniere",
+           "5 Trainingseinheiten",
+           "Unbegrenztes freies Spiel",
+           "2 Ausflüge"
+         ]
+       }
+     ],
+     hp: [
+       {
+         title: "Gold",
+         items: [
+           "6 Nächte im Hotel mit Frühstück",
+           "3 Turniere",
+           "5 Trainingseinheiten",
+           "Unbegrenztes freies Spiel",
+           "2 Ausflüge"
+         ]
+       },
+       {
+         title: "Silber",
+         items: [
+           "6 Nächte im Hostel + Frühstück (exklusive Camp Zimmer)",
+           "3 Turniere",
+           "5 Trainingseinheiten",
+           "Unbegrenztes freies Spiel",
+         "2 Ausflüge"
+         ]
+       },
+       {
+         title: "Bronze",
+         items: [
+           "3 Turniere",
+           "5 Trainingseinheiten",
+           "Unbegrenztes freies Spiel",
+           "2 Ausflüge"
+         ]
+       }
+     ]
+    }
+  };
 
-    const fullName = (document.getElementById("name")?.value || "").trim();
-    const email = (document.getElementById("email")?.value || "").trim();
-    const phone = (document.getElementById("phone")?.value || "").trim();
-    const week = (document.getElementById("week")?.value || "").trim();
-    const message = (document.getElementById("msg")?.value || "").trim();
+  const carState = { pp: 0, hp: 0 };
 
-    if (!fullName || !email || !week){
-      statusEl.textContent = (lang === "en")
-        ? "Please fill in name, email and week."
-        : "Izpolni ime, email in termin.";
-      return;
+  function buildCarousel(container, key){
+    container.innerHTML = `
+      <div class="pkg-wrap">
+        <div class="pkg-head">
+          <div class="title" data-role="title">Packages</div>
+          <div class="pkg-nav">
+            <button class="pkg-arrow" type="button" data-dir="-1" aria-label="Previous">‹</button>
+            <div class="pkg-dots" data-role="dots"></div>
+            <button class="pkg-arrow" type="button" data-dir="1" aria-label="Next">›</button>
+          </div>
+        </div>
+        <div class="pkg-name" data-role="name"></div>
+        <ul class="pkg-list" data-role="list"></ul>
+      </div>
+    `;
+
+    const left = container.querySelector('[data-dir="-1"]');
+    const right = container.querySelector('[data-dir="1"]');
+
+    left.addEventListener("click", () => stepCarousel(key, -1));
+    right.addEventListener("click", () => stepCarousel(key, 1));
+
+    renderCarousel(key);
+  }
+
+  function renderDots(key){
+   const container = document.querySelector('.pkg-carousel[data-carousel="' + key + '"]');
+   if (!container) return;
+
+   const dotsWrap = container.querySelector('[data-role="dots"]');
+   if (!dotsWrap) return;
+
+    const pkgs = packageData[currentLang]?.[key] || [];
+    dotsWrap.innerHTML = "";
+
+   pkgs.forEach((_, idx) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "pkg-dot" + (idx === carState[key] ? " active" : "");
+     b.setAttribute("aria-label", "Package " + (idx + 1));
+     b.addEventListener("click", () => { carState[key] = idx; renderCarousel(key); });
+     dotsWrap.appendChild(b);
+   });
+  }
+
+  function renderCarousel(key){
+    const container = document.querySelector('.pkg-carousel[data-carousel="' + key + '"]');
+    if (!container) return;
+
+    const pkgs = packageData[currentLang]?.[key] || [];
+    if (!pkgs.length) return;
+
+    const idx = Math.max(0, Math.min(carState[key] || 0, pkgs.length - 1));
+    carState[key] = idx;
+
+    const p = pkgs[idx];
+
+    const titleEl = container.querySelector('[data-role="title"]');
+    const nameEl = container.querySelector('[data-role="name"]');
+    const listEl = container.querySelector('[data-role="list"]');
+
+    if (titleEl){
+      titleEl.textContent =
+       (currentLang === "sl") ? "Paketi" :
+        (currentLang === "de") ? "Pakete" :
+        "Packages";
     }
 
-    statusEl.textContent = (lang === "en" || lang==="de") ? "Sending..." : "Pošiljam...";
+    if (nameEl) nameEl.textContent = p.title || "";
 
-    try{
-      await insertSignup({
-        full_name: fullName,
-        email: email,
-        phone: phone || null,
-        week: week,
-        message: message || null
+   if (listEl){
+     listEl.innerHTML = "";
+
+     if (Array.isArray(p.items)){
+       p.items.forEach(t => {
+         const li = document.createElement("li");
+         li.textContent = t;
+         listEl.appendChild(li);
+       });
+     } else {
+       if (p.desc){
+         const li1 = document.createElement("li");
+         li1.textContent = p.desc;
+          listEl.appendChild(li1);
+       }
+        if (p.price){
+          const li2 = document.createElement("li");
+          li2.textContent =
+           (currentLang === "sl") ? ("Cena: " + p.price) :
+           (currentLang === "de") ? ("Preis: " + p.price) :
+           ("Price: " + p.price);
+          listEl.appendChild(li2);
+        }
+     }
+    }
+
+   renderDots(key);
+  }
+
+  function stepCarousel(key, dir){
+   const pkgs = packageData[currentLang]?.[key] || [];
+   const n = pkgs.length || 1;
+   carState[key] = (carState[key] + dir + n) % n;
+    renderCarousel(key);
+  } 
+
+  document.querySelectorAll(".pkg-carousel").forEach(el => {
+    const key = el.getAttribute("data-carousel");
+    buildCarousel(el, key);
+  });
+
+  // Programs carousel (switch between Practice & Play and High Performance)
+  const programTrack = document.getElementById("programTrack");
+  const programDots = document.getElementById("programDots");
+  const programCarousel = document.getElementById("programCarousel");
+
+  const programState = { index: 0 };
+
+  function buildProgramDots(){
+    if (!programDots || !programTrack) return;
+    const slides = programTrack.querySelectorAll(".program-slide");
+   programDots.innerHTML = "";
+   slides.forEach((_, idx) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "program-dot" + (idx === programState.index ? " active" : "");
+      b.setAttribute("aria-label", "Program " + (idx + 1));
+      b.addEventListener("click", () => {
+       programState.index = idx;
+       renderProgramCarousel();
       });
-
-      statusEl.textContent = (lang === "en" || lang==="de") ? "Thanks. Sign up sent." : "Hvala. Prijava je poslana.";
-      form.reset();
-    }catch(err){
-      console.error(err);
-      statusEl.textContent = (lang === "en" || lang==="de") ? "Send failed. Try again." : "Napaka pri pošiljanju. Poskusi znova.";
-    }
-  });
-
-
-  // Trainers carousel
-  const slides = Array.from(document.querySelectorAll(".trainer-slide"));
-  const tabs = Array.from(document.querySelectorAll(".trainer-tab"));
-  const dots = Array.from(document.querySelectorAll(".trainer-dot"));
-  const stage = document.getElementById("trainerStage");
-  const btnPrev = document.querySelector(".trainer-arrow.left");
-  const btnNext = document.querySelector(".trainer-arrow.right");
-
-  let current = 0;
-  function setActive(index){
-    const total = slides.length;
-    if (total === 0) return;
-    current = (index + total) % total;
-
-    slides.forEach(s => s.classList.remove("active"));
-    tabs.forEach(t => { t.classList.remove("active"); t.setAttribute("aria-selected","false"); });
-    dots.forEach(d => d.classList.remove("active"));
-
-    slides[current].classList.add("active");
-    tabs[current].classList.add("active");
-    tabs[current].setAttribute("aria-selected","true");
-    dots[current].classList.add("active");
+      programDots.appendChild(b);
+    });
   }
-  function next(){ setActive(current + 1); }
-  function prev(){ setActive(current - 1); }
 
-  tabs.forEach(t => t.addEventListener("click", () => setActive(parseInt(t.dataset.index, 10))));
-  dots.forEach(d => d.addEventListener("click", () => setActive(parseInt(d.dataset.index, 10))));
-  btnNext?.addEventListener("click", next);
-  btnPrev?.addEventListener("click", prev);
-
-  // Swipe: left = next, right = prev
-  let startX = null;
-  let tracking = false;
-  function onStart(x){ startX = x; tracking = true; }
-  function onEnd(x){
-    if (!tracking || startX === null) return;
-    const dx = x - startX;
-    const threshold = 40;
-    tracking = false;
-    startX = null;
-    if (dx <= -threshold) next();
-    if (dx >= threshold) prev();
-  }
-  stage?.addEventListener("touchstart", (e) => onStart(e.touches[0].clientX), { passive: true });
-  stage?.addEventListener("touchend", (e) => onEnd(e.changedTouches[0].clientX), { passive: true });
-  stage?.addEventListener("mousedown", (e) => onStart(e.clientX));
-  stage?.addEventListener("mouseup", (e) => onEnd(e.clientX));
-  stage?.addEventListener("mouseleave", () => { tracking = false; startX = null; });
-
-
-  // Camps carousel
-  const campSlides = Array.from(document.querySelectorAll(".camp-slide"));
-  const campTabs = Array.from(document.querySelectorAll(".camp-tab"));
-  const campDots = Array.from(document.querySelectorAll(".camp-dot"));
-  const campStage = document.getElementById("campStage");
-  const campPrev = document.querySelector(".camp-arrow.left");
-  const campNext = document.querySelector(".camp-arrow.right");
-
-  let campCurrent = 0;
-  function setCampActive(index){
-    const total = campSlides.length;
-    if (total === 0) return;
-    campCurrent = (index + total) % total;
-
-    campSlides.forEach(s => s.classList.remove("active"));
-    campTabs.forEach(t => { t.classList.remove("active"); t.setAttribute("aria-selected","false"); });
-    campDots.forEach(d => d.classList.remove("active"));
-
-    campSlides[campCurrent].classList.add("active");
-    campTabs[campCurrent].classList.add("active");
-    campTabs[campCurrent].setAttribute("aria-selected","true");
-    campDots[campCurrent].classList.add("active");
-
-    // Keep dropdown in sync
-    const weekSelect = document.getElementById("week");
-    if (weekSelect){
-      const map = ["Teden 1 (Open Termin)", "Teden 2 (Train Like a Pro)", "Teden 3 (Intensive Clinic)"];
-      const target = map[campCurrent];
-      const opt = Array.from(weekSelect.options).find(o => (o.textContent || "").trim() === target);
-      if (opt) weekSelect.value = opt.value || opt.textContent;
+  function renderProgramCarousel(){
+    if (!programTrack) return;
+    programTrack.style.transform = "translateX(-" + (programState.index * 100) + "%)";
+    if (programDots){
+     programDots.querySelectorAll(".program-dot").forEach((d, i) => {
+       d.classList.toggle("active", i === programState.index);
+     });
     }
   }
-  function campNextFn(){ setCampActive(campCurrent + 1); }
-  function campPrevFn(){ setCampActive(campCurrent - 1); }
 
-  campTabs.forEach(t => t.addEventListener("click", () => setCampActive(parseInt(t.dataset.index, 10))));
-  campDots.forEach(d => d.addEventListener("click", () => setCampActive(parseInt(d.dataset.index, 10))));
-  campNext?.addEventListener("click", campNextFn);
-  campPrev?.addEventListener("click", campPrevFn);
-
-  // Swipe
-  let campStartX = null;
-  let campTracking = false;
-  function campOnStart(x){ campStartX = x; campTracking = true; }
-  function campOnEnd(x){
-    if (!campTracking || campStartX === null) return;
-    const dx = x - campStartX;
-    const threshold = 40;
-    campTracking = false;
-    campStartX = null;
-    if (dx <= -threshold) campNextFn();
-    if (dx >= threshold) campPrevFn();
+  function stepProgram(dir){
+    if (!programTrack) return;
+   const slides = programTrack.querySelectorAll(".program-slide");
+   const n = slides.length || 1;
+   programState.index = (programState.index + dir + n) % n;
+   renderProgramCarousel();
   }
-  campStage?.addEventListener("touchstart", (e) => campOnStart(e.touches[0].clientX), { passive: true });
-  campStage?.addEventListener("touchend", (e) => campOnEnd(e.changedTouches[0].clientX), { passive: true });
-  campStage?.addEventListener("mousedown", (e) => campOnStart(e.clientX));
-  campStage?.addEventListener("mouseup", (e) => campOnEnd(e.clientX));
-  campStage?.addEventListener("mouseleave", () => { campTracking = false; campStartX = null; });
 
-  // About modal
-  const aboutReadMoreBtn = document.getElementById("aboutReadMore");
-  const aboutModalOverlay = document.getElementById("aboutModalOverlay");
-  const aboutModal = document.getElementById("aboutModal");
-  const aboutModalClose = document.getElementById("aboutModalClose");
-  let aboutLastFocus = null;
+  if (programCarousel){
+    programCarousel.querySelectorAll(".program-arrow").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const dir = parseInt(btn.getAttribute("data-dir"), 10) || 0;
+        stepProgram(dir);
+      });
+   });
 
-  function openAboutModal(){
-    if (!aboutModalOverlay || !aboutModal) return;
-    aboutLastFocus = document.activeElement;
-    aboutModalOverlay.classList.add("open");
-    aboutModalOverlay.setAttribute("aria-hidden","false");
+    // Basic swipe on touch devices
+   let touchX = null;
+   programCarousel.addEventListener("touchstart", (e) => {
+      touchX = e.touches && e.touches[0] ? e.touches[0].clientX : null;
+    }, { passive: true });
+
+   programCarousel.addEventListener("touchend", (e) => {
+     if (touchX === null) return;
+     const endX = e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : null;
+     if (endX === null) return;
+     const dx = endX - touchX;
+      if (Math.abs(dx) > 40){
+       stepProgram(dx < 0 ? 1 : -1);
+      }
+      touchX = null;
+    }, { passive: true });
+
+   buildProgramDots();
+   renderProgramCarousel();
+  }
+  // Modals
+  function openModal(overlayId){
+    const ov = document.getElementById(overlayId);
+    if (!ov) return;
+    ov.classList.add("open");
+    ov.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-    setTimeout(() => { aboutModal.focus(); }, 0);
+    const modal = ov.querySelector(".modal");
+    if (modal) modal.focus();
   }
 
-  function closeAboutModal(){
-    if (!aboutModalOverlay) return;
-    aboutModalOverlay.classList.remove("open");
-    aboutModalOverlay.setAttribute("aria-hidden","true");
+  function closeModal(overlayId){
+    const ov = document.getElementById(overlayId);
+    if (!ov) return;
+    ov.classList.remove("open");
+    ov.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-    if (aboutLastFocus && typeof aboutLastFocus.focus === "function"){
-      aboutLastFocus.focus();
-    }
   }
 
-  aboutReadMoreBtn?.addEventListener("click", (e) => {
-    e.preventDefault();
-    openAboutModal();
-  });
+  function bindModal(triggerId, overlayId, closeId){
+    const trigger = document.getElementById(triggerId);
+    const closeBtn = document.getElementById(closeId);
+    const ov = document.getElementById(overlayId);
 
-  aboutModalClose?.addEventListener("click", closeAboutModal);
+    trigger && trigger.addEventListener("click", (e) => { e.preventDefault(); openModal(overlayId); });
+    closeBtn && closeBtn.addEventListener("click", () => closeModal(overlayId));
 
-  aboutModalOverlay?.addEventListener("click", (e) => {
-    if (e.target === aboutModalOverlay) closeAboutModal();
-  });
+    ov && ov.addEventListener("click", (e) => {
+      if (e.target === ov) closeModal(overlayId);
+    });
+  }
+
+  bindModal("aboutReadMore", "aboutModalOverlay", "aboutModalClose");
+  bindModal("locationsReadMore", "locationsModalOverlay", "locationsModalClose");
+  bindModal("ppReadMore", "ppModalOverlay", "ppModalClose");
+  bindModal("hpReadMore", "hpModalOverlay", "hpModalClose");
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && aboutModalOverlay?.classList.contains("open")){
-      closeAboutModal();
-    }
+    if (e.key !== "Escape") return;
+    ["aboutModalOverlay","locationsModalOverlay","ppModalOverlay","hpModalOverlay"].forEach(id => {
+      const ov = document.getElementById(id);
+      if (ov && ov.classList.contains("open")) closeModal(id);
+    });
   });
 
-
-
   // i18n
+  
+
   const i18n = {
     sl: {
       pageTitle: "Skyball beach camps",
-      pageDesc: "Odbojka na mivki. Termini, trenerji, program in prijava.",
+      pageDesc: "Odbojka na mivki. Program, lokacija in prijava.",
       brandTagline: "Odbojka na mivki",
       navAbout: "O campu",
-      navTrainers: "Trenerji",
-      navCamps: "Termini",
+      navLocations: "Lokacija",
+      navWeeks: "Program",
       navSignup: "Prijava",
+
       heroTitle: "Treniraj. Poveži se.<br>Doživi odbojko na mivki.",
-      heroText: "Butični campi odbojke na mivki. Fokus na kakovostnem treningu, dobri družbi in nepozabnih dnevih na slovenski obali.",
-      heroJoin: "Pridruži se kampu",
-      heroScroll: "Pomakni se do terminov",
+      heroText: "Butični campi odbojke na mivki. Fokus na kakovosti, dobri družbi in nepozabnih dnevih na slovenski obali.",
+      heroJoin: "Pridruži se campu",
+      heroScroll: "Poglej program",
+
       aboutTitle: "O campu",
-      aboutLead: "Camp je za igralce, ki hočejo jasen plan, dober tempo in merljiv napredek.",
-      aboutP1: "Treningi so praktični. Veliko dotikov. Jasne naloge. Kratki popravki.",
-      aboutP2: "Dobiš rutino, ki jo lahko ponavljaš tudi po campu. Dobiš feedback, ki ga lahko uporabiš takoj.",
-      aboutLi1: "Tehnika podaje, sprejema, napada, bloka",
-      aboutLi2: "Taktika, izbira udarca, postavitev v obrambi",
-      aboutLi3: "Igranje situacij in organiziran sparing",
-      aboutLi4: "Družabni del in doživetja izven igrišča",
-      aboutSubtitle: "O campu",
-      aboutShort1: "Organiziramo butične campe odbojke na mivki v Portorožu.",
-      aboutShort2: "Fokus je na kakovostnem treningu, jasnem napredku in dobri energiji v skupini.",
+      aboutLead: "Kakovost pred količino. Majhne skupine. Prava povezava.",
+      aboutSubtitle: "Kaj dobiš",
+      aboutLi1: "Kakovost pred količino, 30 do 40 udeležencev",
+      aboutLi2: "Majhne trening skupine (max 8 igralcev)",
+      aboutLi3: "Podroben, kakovosten trening z individualno pozornostjo",
+      aboutLi4: "Poudarek na povezovanju, ne samo na odbojki",
+      aboutLi5: "Veliko prostega igranja",
+      aboutLi6: "Skupne večerje, izleti in družabni trenutki",
+      aboutLi7: "Primerno za prijatelje in solo udeležence",
+      aboutLi8: "Cilj, nova prijateljstva, močni spomini, boljša igra",
       aboutReadMore: "PREBERI VEČ",
       aboutModalTitle: "O campu",
-      aboutFullTitle: "Celoten opis",
-      aboutFullLead: "Tukaj najdeš celotno besedilo o campu. Preklop jezika ga prevede.",
-      trainersTitle: "Spoznaj trenerje",
-      trainersLead: "Spodaj imaš profile trenerjev. Dodaj še ostale po istem vzorcu.",
-      t0Role: "Trener in vodja campa",
-      t0Li1: "Trening tehnike in taktike",
-      t0Li2: "Plan za napredek po nivojih",
-      t0Li3: "Video analiza in feedback",
-      t1Role: "Dodaj ime in vlogo",
-      t1Li1: "Dodaj 3 točke",
-      t1Li2: "Dodaj 3 točke",
-      t1Li3: "Dodaj 3 točke",
-      t2Role: "Dodaj ime in vlogo",
-      t2Li1: "Dodaj 3 točke",
-      t2Li2: "Dodaj 3 točke",
-      t2Li3: "Dodaj 3 točke",
-      campsTitle: "Termini",
-      campsLead: "Dva programa. En standard. Izberi nivo in termin.",
-      c1Week: "Teden 1 • Open Termin",
-      c1Title: "Za vse nivoje",
-      c1Desc: "Če hočeš stabilno osnovo in več samozavesti v igri.",
-      c1Li1: "Osnove tehnike in stabilnost",
-      c1Li2: "Branje igre in postavitev",
-      c1Li3: "Veliko igre in situacij",
-      c1Btn: "Prijavi se na Teden 1",
-      c2Week: "Teden 2 • Train Like a Pro",
-      c2Title: "Za napredne",
-      c2Desc: "Če hočeš več intenzivnosti, več taktike in bolj zahtevne naloge.",
-      c2Li1: "Napad, blok, obramba po sistemu",
-      c2Li2: "Odločanje pod pritiskom",
-      c2Li3: "Sparing z jasnimi cilji",
-      c2Btn: "Prijavi se na Teden 2",
-      c3Week: "Teden 3 • Intensive Clinic",
-      campTab1: "Teden 1",
-      campTab2: "Teden 2",
-      campTab3: "Teden 3",
-      c3Title: "Za tekmovalce",
-      c3Desc: "Če hočeš tempo, veliko ponovitev in jasne cilje za turnirje.",
-      c3Li1: "Igra proti močnejšim parom",
-      c3Li2: "Specifika: sideout in break point",
-      c3Li3: "Video feedback in plan doma",
-      c3Btn: "Prijavi se na Teden 3",
+
+      locationsTitle: "Lokacija",
+      locationsLead: "Portorož. Igrišča ob morju. Odklop izven mivke.",
+      locationsName: "Portorož",
+      locationsShort: "Eden najlepših in najbolj živahnih obmorskih krajev v Sloveniji. Portorož ponuja:",
+      locationsLi1: "Sprehode ob morju in zlate sončne zahode",
+      locationsLi2: "Zgodovinska obmorska mesta v bližini",
+      locationsLi3: "4 profesionalna igrišča tik ob morju",
+      locationsLi4: "Sproščeno mediteransko vzdušje",
+      locationsReadMore: "PREBERI VEČ",
+      locationsModalTitle: "Portorož",
+
+      weeksTitle: "Program",
+      weeksLead: "Izberi program. Nato izberi paket.",
+      ppTitle: "Practice and play",
+      ppLead: "Za vse nivoje. Strukturiran trening. Prosta igra in druženje.",
+      ppReadMore: "PREBERI VEČ",
+      ppLi1: "Primerno za vse nivoje",
+      ppLi2: "Strokovno vodenje",
+      ppLi3: "Tehnični in taktični napredek",
+      ppLi4: "Zabavni turnirji",
+      ppLi5: "Prosta igra",
+      ppLi6: "Družabne aktivnosti",
+      ppModalTitle: "Practice and play",
+
+      hpTitle: "High performance camp",
+      hpLead: "Za napredne. Pro treningi in turnirji.",
+      hpReadMore: "PREBERI VEČ",
+      hpLi1: "Samo za napredne",
+      hpLi2: "PRO treningi",
+      hpLi3: "Napredna taktika",
+      hpLi4: "Sodobni stili igre",
+      hpLi5: "Turnirji na visokem nivoju",
+      hpLi6: "Družabne aktivnosti",
+      hpModalTitle: "High performance camp",
+
       signupTitle: "Prijava",
       signupLead: "Izpolni obrazec. Odgovor dobiš po emailu.",
       lblName: "Ime in priimek",
       lblEmail: "Email",
       lblPhone: "Telefon",
-      lblWeek: "Termin",
-      optChoose: "Izberi",
-      optW1: "Teden 1 (Open Termin)",
-      optW2: "Teden 2 (Train Like a Pro)",
-      optW3: "Teden 3 (Intensive Clinic)",
+      lblProgram: "Program",
+      lblPackage: "Paket",
+      optProgramChoose: "Izberi",
+      optProgramPP: "Practice and play",
+      optProgramHP: "High performance camp",
+      optPackageChoose: "Izberi",
+      optPackageGold: "Gold",
+      optPackageSilver: "Silver",
+      optPackageBronze: "Bronze",
       lblMsg: "Sporočilo",
-      msgPlaceholder: "Nivo, izkušnje, cilji.",
       btnSend: "Pošlji",
-      statusDefault: "",
-      statusSent: "Hvala. Prijava je zabeležena.",
-      commentsTitle: "Mnenja",
-      commentsReadAll: "PREBERI VSE",
-      commentsHide: "ZAPRI"
-
+      msgPlaceholder: "Nivo, izkušnje, cilji.",
+      statusDefault: ""
     },
+
     en: {
       pageTitle: "Skyball beach camps",
-      pageDesc: "Beach volleyball camp. Weeks, coaches, program and sign up.",
+      pageDesc: "Beach volleyball camp. Programs, location, and application.",
       brandTagline: "Beach volleyball",
-      navAbout: "About",
-      navTrainers: "Coaches",
-      navCamps: "Weeks",
-      navSignup: "Sign up",
-      heroTitle: "Train. Connect.<br>Experience Beach Volleyball.",
-      heroText: "Boutique beach volleyball camps. Focus on quality coaching, great people and unforgettable days by the sea.",
-      heroJoin: "Join the camp",
-      heroScroll: "See camp weeks",
-      aboutTitle: "About the camp",
-      aboutLead: "A camp for players who want a clear plan, good tempo and measurable progress.",
-      aboutP1: "Practical sessions. Many touches. Clear tasks. Quick corrections.",
-      aboutP2: "You get a routine you can repeat after camp. You get feedback you can use immediately.",
-      aboutLi1: "Technique, serve receive, attack, block",
-      aboutLi2: "Tactics, shot selection, defensive positioning",
-      aboutLi3: "Game scenarios and organized sparring",
-      aboutLi4: "Social experience beyond the court",
-      aboutSubtitle: "About Us",
-      aboutShort1: "We run boutique beach volleyball camps in Portorož.",
-      aboutShort2: "We focus on quality training, clear progress and great group energy.",
+      navAbout: "About us",
+      navLocations: "Locations",
+      navWeeks: "Weeks",
+      navSignup: "Apply",
+
+      heroTitle: "Train. Connect.<br>Experience beach volleyball.",
+      heroText: "Boutique beach volleyball camps. Focus on quality training, good people, and great days by the sea.",
+      heroJoin: "Apply now",
+      heroScroll: "View weeks",
+
+      aboutTitle: "About us",
+      aboutLead: "Quality over quantity. Small groups. Real connection.",
+      aboutSubtitle: "What you get",
+      aboutLi1: "Focus on quality over quantity, 30-40 participants",
+      aboutLi2: "Small training groups (max 8 players)",
+      aboutLi3: "Detail-oriented, high-level training with individual attention",
+      aboutLi4: "Emphasis on real human connection, not just volleyball",
+      aboutLi5: "A lot of free play time",
+      aboutLi6: "Group dinners, excursions, and social moments",
+      aboutLi7: "Welcoming for friends and solo travelers alike",
+      aboutLi8: "Goal: new friendships, lasting memories, improved beach volleyball skills",
       aboutReadMore: "READ MORE",
-      aboutModalTitle: "About Us",
-      aboutFullTitle: "Full story",
-      aboutFullLead: "Here is the full text about the camp. Switching language will translate it.",
-      trainersTitle: "Meet our coaches",
-      trainersLead: "",
-      t0Role: "Head coach and camp lead",
-      t0Li1: "Technique and tactics training",
-      t0Li2: "Progress plan by level",
-      t0Li3: "Video analysis and feedback",
-      t1Role: "Add name and role",
-      t1Li1: "Add 3 points",
-      t1Li2: "Add 3 points",
-      t1Li3: "Add 3 points",
-      t2Role: "Add name and role",
-      t2Li1: "Add 3 points",
-      t2Li2: "Add 3 points",
-      t2Li3: "Add 3 points",
-      campsTitle: "Weeks",
-      campsLead: "Two programs. One standard. Choose your level and week.",
-      c1Week: "Week 1 • Open Camp",
-      campTab1: "Week 1",
-      campTab2: "Week 2",
-      campTab3: "Week 3",
-      c1Title: "All levels",
-      c1Desc: "For a strong base and more confidence in your game.",
-      c1Li1: "Fundamentals and stability",
-      c1Li2: "Reading the game and positioning",
-      c1Li3: "Lots of play and situations",
-      c1Btn: "Sign up for Week 1",
-      c2Week: "Week 2 • Train Like a Pro",
-      c2Title: "Advanced",
-      c2Desc: "More intensity, more tactics and tougher tasks.",
-      c2Li1: "Attack, block and defense system",
-      c2Li2: "Decision making under pressure",
-      c2Li3: "Sparring with clear goals",
-      c2Btn: "Sign up for Week 2",
-      c3Week: "Week 3 • Intensive Clinic",
-      c3Title: "For competitors",
-      c3Desc: "If you want pace, high reps, and clear goals for tournaments.",
-      c3Li1: "Play against stronger pairs",
-      c3Li2: "Sideout and break point focus",
-      c3Li3: "Video feedback and home plan",
-      c3Btn: "Sign up for Week 3",
-      signupTitle: "Sign up",
-      signupLead: "Fill out the form. We will reply by email.",
+      aboutModalTitle: "About us",
+
+      locationsTitle: "Locations",
+      locationsLead: "Portorož. Pro courts by the sea. Calm time off the sand.",
+      locationsName: "Portorož",
+      locationsShort: "One of Slovenia's most beautiful and lively seaside towns. Nestled between the Adriatic sea and lush Mediterranean hills Portorož offers:",
+      locationsLi1: "Scenic seaside walks and golden sunsets",
+      locationsLi2: "Historic seaside towns in close proximity",
+      locationsLi3: "4 pro level beach volleyball courts right by the sea",
+      locationsLi4: "A relaxing mediterranean atmosphere",
+      locationsReadMore: "READ MORE",
+      locationsModalTitle: "Portorož",
+
+      weeksTitle: "Weeks",
+      weeksLead: "Choose a program. Then pick a package.",
+      ppTitle: "Practice and play",
+      ppLead: "All levels. Structured training. Free play and social time.",
+      ppReadMore: "READ MORE",
+      ppLi1: "All levels welcome",
+      ppLi2: "Expert coaching",
+      ppLi3: "Technical and tactical improvements",
+      ppLi4: "Fun tournaments",
+      ppLi5: "Free play time",
+      ppLi6: "Social activities",
+      ppModalTitle: "Practice and play",
+
+      hpTitle: "High performance camp",
+      hpLead: "Advanced players. PRO sessions and tournaments.",
+      hpReadMore: "READ MORE",
+      hpLi1: "Advanced players only",
+      hpLi2: "PRO level training sessions",
+      hpLi3: "Advanced tactics",
+      hpLi4: "Modern play styles",
+      hpLi5: "High level tournaments",
+      hpLi6: "Fun social activities",
+      hpModalTitle: "High performance camp",
+
+      signupTitle: "Apply",
+      signupLead: "Fill the form. We reply by email.",
       lblName: "Full name",
       lblEmail: "Email",
       lblPhone: "Phone",
-      lblWeek: "Week",
-      optChoose: "Select",
-      optW1: "Week 1 (Open Camp)",
-      optW2: "Week 2 (Train Like a Pro)",
-      optW3: "Week 3 (Intensive Clinic)",
+      lblProgram: "Program",
+      lblPackage: "Package",
+      optProgramChoose: "Choose",
+      optProgramPP: "Practice and play",
+      optProgramHP: "High performance camp",
+      optPackageChoose: "Choose",
+      optPackageGold: "Gold",
+      optPackageSilver: "Silver",
+      optPackageBronze: "Bronze",
       lblMsg: "Message",
-      msgPlaceholder: "Level, experience, goals.",
       btnSend: "Send",
-      statusDefault: "",
-      statusSent: "Thanks. Your sign up was recorded.",
-      commentsTitle: "Reviews",
-      commentsReadAll: "READ ALL",
-      commentsHide: "CLOSE"
-    }
-    ,
+      msgPlaceholder: "Level, experience, goals.",
+      statusDefault: ""
+    },
+
     de: {
       pageTitle: "Skyball beach camps",
-      pageDesc: "Beachvolleyball Camp. Termine, Trainer, Programm und Anmeldung.",
+      pageDesc: "Beachvolleyball Camp. Programme, Ort und Anmeldung.",
       brandTagline: "Beachvolleyball",
-      navAbout: "Camp",
-      navTrainers: "Trainer",
-      navCamps: "Termine",
+      navAbout: "Über uns",
+      navLocations: "Ort",
+      navWeeks: "Programme",
       navSignup: "Anmeldung",
+
       heroTitle: "Trainiere. Verbinde dich.<br>Erlebe Beachvolleyball.",
-      heroText: "Boutique Beachvolleyball Camps in Portorož. Fokus auf hochwertigem Training, guter Atmosphäre und unvergesslichen Tagen am Meer.",
-      heroJoin: "Zum Camp",
-      heroScroll: "Zu den Terminen",
+      heroText: "Boutique Beachvolleyball Camps. Fokus auf Qualität, gute Leute und starke Tage am Meer.",
+      heroJoin: "Anmelden",
+      heroScroll: "Programme ansehen",
 
-      aboutTitle: "Über das Camp",
-      aboutLead: "Das Camp ist für Spieler, die einen klaren Plan, gutes Tempo und messbaren Fortschritt wollen.",
-      aboutP1: "Die Trainings sind praktisch. Viele Ballkontakte. Klare Aufgaben. Kurze Korrekturen.",
-      aboutP2: "Du bekommst eine Routine, die du auch nach dem Camp nutzen kannst. Du bekommst Feedback, das du sofort anwenden kannst.",
-      aboutLi1: "Technik: Pritschen, Baggern, Angriff, Block",
-      aboutLi2: "Taktik: Schlagwahl und Positionierung in der Abwehr",
-      aboutLi3: "Situationen spielen und strukturierter Sparring",
-      aboutLi4: "Soziale Aktivitäten außerhalb des Courts",
-      aboutSubtitle: "Über das Camp",
-      aboutShort1: "Wir organisieren Boutique Beachvolleyball Camps in Portorož.",
-      aboutShort2: "Der Fokus liegt auf qualitativem Training, klarer Entwicklung und starker Gruppendynamik.",
+      aboutTitle: "Über uns",
+      aboutLead: "Qualität vor Quantität. Kleine Gruppen. Echte Verbindung.",
+      aboutSubtitle: "Was du bekommst",
+      aboutLi1: "Qualität vor Quantität, 30 bis 40 Teilnehmer",
+      aboutLi2: "Kleine Trainingsgruppen (max 8 Spieler)",
+      aboutLi3: "Detailorientiertes Training mit individueller Betreuung",
+      aboutLi4: "Fokus auf echte Verbindung, nicht nur Volleyball",
+      aboutLi5: "Viel freie Spielzeit",
+      aboutLi6: "Gemeinsame Abendessen, Ausflüge und Social Moments",
+      aboutLi7: "Für Freunde und Solo-Reisende geeignet",
+      aboutLi8: "Ziel, neue Freundschaften, starke Erinnerungen, besseres Spiel",
       aboutReadMore: "MEHR LESEN",
-      aboutModalTitle: "Über das Camp",
-      aboutFullTitle: "Vollständiger Text",
-      aboutFullLead: "Hier findest du den vollständigen Text über das Camp. Beim Sprachwechsel wird er übersetzt.",
+      aboutModalTitle: "Über uns",
 
-      trainersTitle: "Lerne die Trainer kennen",
-      trainersLead: "",
-      t0Role: "Trainer und Camp Leiter",
-      t0Li1: "Technik und Taktik Training",
-      t0Li2: "Fortschrittsplan nach Niveau",
-      t0Li3: "Videoanalyse und Feedback",
-      t1Role: "Name und Rolle hinzufügen",
-      t1Li1: "3 Punkte hinzufügen",
-      t1Li2: "3 Punkte hinzufügen",
-      t1Li3: "3 Punkte hinzufügen",
-      t2Role: "Name und Rolle hinzufügen",
-      t2Li1: "3 Punkte hinzufügen",
-      t2Li2: "3 Punkte hinzufügen",
-      t2Li3: "3 Punkte hinzufügen",
+      locationsTitle: "Ort",
+      locationsLead: "Portorož. Pro Courts am Meer. Entspannung neben dem Sand.",
+      locationsName: "Portorož",
+      locationsShort: "Einer der schönsten und lebendigsten Küstenorte Sloweniens. Portorož bietet:",
+      locationsLi1: "Spaziergänge am Meer und goldene Sonnenuntergänge",
+      locationsLi2: "Historische Küstenorte in der Nähe",
+      locationsLi3: "4 professionelle Beachvolleyball Courts direkt am Meer",
+      locationsLi4: "Entspannte mediterrane Atmosphäre",
+      locationsReadMore: "MEHR LESEN",
+      locationsModalTitle: "Portorož",
 
-      campsTitle: "Termine",
-      campsLead: "Zwei Programme. Ein Standard. Wähle Niveau und Termin.",
-      c1Week: "Woche 1 • Open Camp",
-      c1Title: "Für alle Niveaus",
-      c1Desc: "Wenn du eine stabile Basis und mehr Sicherheit im Spiel willst.",
-      c1Li1: "Technik Grundlagen und Stabilität",
-      c1Li2: "Spiel lesen und Positionierung",
-      c1Li3: "Viel Spiel und Situationen",
-      c1Btn: "Für Woche 1 anmelden",
-      c2Week: "Woche 2 • Train Like a Pro",
-      campTab1: "Woche 1",
-      campTab2: "Woche 2",
-      campTab3: "Woche 3",
-      c2Title: "Für Fortgeschrittene",
-      c2Desc: "Wenn du mehr Intensität, mehr Taktik und anspruchsvollere Aufgaben willst.",
-      c2Li1: "Angriff, Block, Abwehr im System",
-      c2Li2: "Entscheidungen unter Druck",
-      c2Li3: "Sparring mit klaren Zielen",
-      c2Btn: "Für Woche 2 anmelden",
-      c3Week: "Woche 3 • Intensive Clinic",
-      c3Title: "Für Wettkampfspieler",
-      c3Desc: "Wenn du Tempo, viele Wiederholungen und klare Turnierziele willst.",
-      c3Li1: "Spiel gegen stärkere Paare",
-      c3Li2: "Fokus: Sideout und Break Point",
-      c3Li3: "Video Feedback und Plan für zuhause",
-      c3Btn: "Für Woche 3 anmelden",
+      weeksTitle: "Programme",
+      weeksLead: "Wähle ein Programm. Dann wähle ein Paket.",
+      ppTitle: "Practice and play",
+      ppLead: "Alle Levels. Strukturiertes Training. Freies Spiel und Social Time.",
+      ppReadMore: "MEHR LESEN",
+      ppLi1: "Alle Levels willkommen",
+      ppLi2: "Erfahrenes Coaching",
+      ppLi3: "Technische und taktische Verbesserungen",
+      ppLi4: "Spaßige Turniere",
+      ppLi5: "Freies Spiel",
+      ppLi6: "Soziale Aktivitäten",
+      ppModalTitle: "Practice and play",
+
+      hpTitle: "High performance camp",
+      hpLead: "Nur für Fortgeschrittene. PRO Sessions und Turniere.",
+      hpReadMore: "MEHR LESEN",
+      hpLi1: "Nur für Fortgeschrittene",
+      hpLi2: "PRO Trainingseinheiten",
+      hpLi3: "Fortgeschrittene Taktik",
+      hpLi4: "Moderne Spielstile",
+      hpLi5: "Turniere auf hohem Niveau",
+      hpLi6: "Soziale Aktivitäten",
+      hpModalTitle: "High performance camp",
 
       signupTitle: "Anmeldung",
-      signupLead: "Fülle das Formular aus. Wir antworten per E Mail.",
-      lblName: "Vor und Nachname",
-      lblEmail: "E Mail",
+      signupLead: "Formular ausfüllen. Wir antworten per E-Mail.",
+      lblName: "Vor- und Nachname",
+      lblEmail: "E-Mail",
       lblPhone: "Telefon",
-      lblWeek: "Termin",
-      optChoose: "Auswählen",
-      optW1: "Woche 1 (Open Camp)",
-      optW2: "Woche 2 (Train Like a Pro)",
-      optW3: "Woche 3 (Intensive Clinic)",
+      lblProgram: "Programm",
+      lblPackage: "Paket",
+      optProgramChoose: "Auswählen",
+      optProgramPP: "Practice and play",
+      optProgramHP: "High performance camp",
+      optPackageChoose: "Auswählen",
+      optPackageGold: "Gold",
+      optPackageSilver: "Silver",
+      optPackageBronze: "Bronze",
       lblMsg: "Nachricht",
-      msgPlaceholder: "Niveau, Erfahrung, Ziele.",
       btnSend: "Senden",
-      statusDefault: "",
-      statusSent: "Danke. Deine Anmeldung wurde gespeichert.",
-
-      commentsTitle: "Bewertungen",
-      commentsReadAll: "ALLES LESEN",
-      commentsHide: "SCHLIESSEN"
+      msgPlaceholder: "Level, Erfahrung, Ziele.",
+      statusDefault: ""
     }
   };
-
-
-  let currentLang = "sl";
 
   function applyLang(lang){
     currentLang = lang;
     document.documentElement.lang = lang;
 
-    // Title + meta
     document.title = i18n[lang].pageTitle;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", i18n[lang].pageDesc);
@@ -2157,15 +1925,24 @@
     });
 
     const ids = [
-      "brandTagline","navAbout","navTrainers","navCamps","navSignup",
+      "brandTagline","navAbout","navLocations","navWeeks","navSignup",
       "heroText","heroJoin","heroScroll",
-      "aboutTitle","aboutLead","aboutP1","aboutP2","aboutLi1","aboutLi2","aboutLi3","aboutLi4","aboutSubtitle","aboutShort1","aboutShort2","aboutReadMore","aboutModalTitle","aboutFullTitle","aboutFullLead",
-      "trainersTitle","trainersLead",
-      "t0Role","t0Li1","t0Li2","t0Li3","t1Role","t1Li1","t1Li2","t1Li3","t2Role","t2Li1","t2Li2","t2Li3",
-      "campsTitle","campsLead","c1Week","c1Title","c1Desc","c1Li1","c1Li2","c1Li3","c1Btn",
-      "c2Week","c2Title","c2Desc","c2Li1","c2Li2","c2Li3","c2Btn", "c3Week", "c3Title", "c3Desc", "c3Li1", "c3Li2", "c3Li3", "c3Btn",
-      "signupTitle","signupLead","lblName","lblEmail","lblPhone","lblWeek","optChoose","optW1","optW2","optW3","lblMsg","btnSend"
+      "aboutTitle","aboutLead","aboutSubtitle",
+      "aboutLi1","aboutLi2","aboutLi3","aboutLi4","aboutLi5","aboutLi6","aboutLi7","aboutLi8",
+      "aboutReadMore","aboutModalTitle",
+      "locationsTitle","locationsLead","locationsName","locationsShort",
+      "locationsLi1","locationsLi2","locationsLi3","locationsLi4",
+      "locationsReadMore","locationsModalTitle",
+      "weeksTitle","weeksLead",
+      "ppTitle","ppLead","ppReadMore","ppLi1","ppLi2","ppLi3","ppLi4","ppLi5","ppLi6","ppModalTitle",
+      "hpTitle","hpLead","hpReadMore","hpLi1","hpLi2","hpLi3","hpLi4","hpLi5","hpLi6","hpModalTitle",
+      "signupTitle","signupLead",
+      "lblName","lblEmail","lblPhone","lblProgram","lblPackage",
+      "optProgramChoose","optProgramPP","optProgramHP",
+      "optPackageChoose","optPackageGold","optPackageSilver","optPackageBronze",
+      "lblMsg","btnSend"
     ];
+
     ids.forEach(id => {
       const el = document.getElementById(id);
       if (el) el.textContent = i18n[lang][id];
@@ -2176,172 +1953,101 @@
 
     if (statusEl) statusEl.textContent = i18n[lang].statusDefault;
 
-    // Translate simple text nodes via data-i18n
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-      const key = el.getAttribute("data-i18n");
-      if (key && i18n[lang] && i18n[lang][key]) el.textContent = i18n[lang][key];
-    });
-
-
-    // Show language-specific blocks
+    // Show language-specific blocks inside modals
     document.querySelectorAll("[data-lang-block]").forEach(el => {
       const target = el.getAttribute("data-lang-block");
       el.style.display = (target === lang) ? "" : "none";
     });
 
-
-    // Aria labels that matter
     const nav = document.querySelector(".nav");
     if (nav){
       const label = (lang === "sl") ? "Navigacija" : (lang === "de") ? "Navigation" : "Navigation";
       nav.setAttribute("aria-label", label);
     }
-    const tablist = document.querySelector(".trainer-tabs");
-    if (tablist){
-      const label = (lang === "sl") ? "Izberi trenerja" : (lang === "de") ? "Trainer auswählen" : "Choose a coach";
-      tablist.setAttribute("aria-label", label);
-    }
-    const left = document.querySelector(".trainer-arrow.left");
-    const right = document.querySelector(".trainer-arrow.right");
-    if (left){
-      const label = (lang === "sl") ? "Prejšnji trener" : (lang === "de") ? "Vorheriger Trainer" : "Previous coach";
-      left.setAttribute("aria-label", label);
-    }
-    if (right){
-      const label = (lang === "sl") ? "Naslednji trener" : (lang === "de") ? "Nächster Trainer" : "Next coach";
-      right.setAttribute("aria-label", label);
-    }
+    // Rebuild package carousels after language change
+    document.querySelectorAll(".pkg-carousel").forEach(el => {
+      const key = el.getAttribute("data-carousel");
+     if (!key) return;
+      carState[key] = 0;
+      renderCarousel(key);
+    });
   }
 
-  // Language switcher
-  const switcher = document.querySelector(".lang-switch");
-  const dropdown = document.getElementById("langDropdown");
-  const currentFlag = document.getElementById("currentLang");
+  // Language dropdown
+  const langSwitch = document.querySelector(".lang-switch");
+  const currentLangImg = document.getElementById("currentLang");
+  const langDropdown = document.getElementById("langDropdown");
 
-  switcher?.addEventListener("click", () => {
-    switcher.classList.toggle("open");
+  function setLangImage(lang){
+    const img = langDropdown.querySelector('img[data-lang="' + lang + '"]');
+    if (img && currentLangImg) currentLangImg.src = img.src;
+  }
+
+  langSwitch && langSwitch.addEventListener("click", (e) => {
+    e.stopPropagation();
+    langSwitch.classList.toggle("open");
   });
 
-  dropdown?.querySelectorAll("img").forEach(flag => {
-    flag.addEventListener("click", (e) => {
-      const lang = e.target.dataset.lang;
-      if (!lang) return;
-      currentFlag.src = e.target.src;
+  document.addEventListener("click", () => {
+    langSwitch && langSwitch.classList.remove("open");
+  });
+
+  langDropdown && langDropdown.querySelectorAll("img[data-lang]").forEach(img => {
+    img.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const lang = img.getAttribute("data-lang");
+      setLangImage(lang);
       applyLang(lang);
-      switcher.classList.remove("open");
+      langSwitch.classList.remove("open");
     });
   });
 
+  // Form submit
+  form && form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const fullName = (document.getElementById("name")?.value || "").trim();
+    const email = (document.getElementById("email")?.value || "").trim();
+    const phone = (document.getElementById("phone")?.value || "").trim();
+    const program = (document.getElementById("program")?.value || "").trim();
+    const pkg = (document.getElementById("package")?.value || "").trim();
+    const message = (document.getElementById("msg")?.value || "").trim();
+
+    if (!fullName || !email || !program || !pkg){
+      statusEl.textContent = (currentLang === "en") ? "Please fill name, email, program, and package." :
+                           (currentLang === "de") ? "Bitte Name, E-Mail, Programm und Paket ausfüllen." :
+                           "Izpolni ime, email, program in paket.";
+      return;
+    }
+
+    statusEl.textContent = (currentLang === "en") ? "Sending..." :
+                         (currentLang === "de") ? "Sende..." :
+                         "Pošiljam...";
+
+    try{
+      await insertSignup({
+        full_name: fullName,
+        email: email,
+        phone: phone || null,
+        week: program + " | " + pkg,
+        message: message || null
+      });
+
+      statusEl.textContent = (currentLang === "en") ? "Thanks. Application sent." :
+                           (currentLang === "de") ? "Danke. Anmeldung gesendet." :
+                           "Hvala. Prijava je poslana.";
+      form.reset();
+    }catch(err){
+      console.error(err);
+      statusEl.textContent = (currentLang === "en") ? "Send failed. Try again." :
+                           (currentLang === "de") ? "Senden fehlgeschlagen. Bitte erneut versuchen." :
+                           "Napaka pri pošiljanju. Poskusi znova.";
+    }
+  });
+
   // Init
-  setActive(0);
+  setLangImage("sl");
   applyLang("sl");
-
-  // Trainer comments (manual, in code)
-  function initComments(){
-
-    const COMMENTS = {
-      "alan-kosenina": [
-        { who: "Udeleženec", date: "2025-07-10", text: "Jasne naloge in dober tempo. Največ mi je pomagal feedback pri sprejemu." },
-        { who: "Udeleženka", date: "2025-08-03", text: "Veliko dotikov in konkretni popravki. Po 3 dneh sem imela bolj stabilen sideout." },
-        { who: "Udeleženec", date: "2025-08-21", text: "Video analiza je top. Vidiš napako, dobiš rešitev, potem takoj ponoviš v igri." }
-      ],
-      "trener-2": [
-        { who: "Udeleženec", date: "2025-07-18", text: "Dodaj komentar, ko ga dobiš na mail. Vpišeš ga v kodo." }
-      ],
-      "trener-3": [
-        { who: "Udeleženka", date: "2025-07-22", text: "Dodaj komentar, ko ga dobiš na mail. Vpišeš ga v kodo." }
-      ]
-    };
-
-    function fmtDate(iso){
-      try{
-        const d = new Date(iso);
-        return d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"2-digit" });
-      }catch(e){ return ""; }
-    }
-
-    function getLangPack(){
-      const lang = (typeof window.currentLang === "string" ? window.currentLang : (document.documentElement.lang || "sl"));
-      const packs = (typeof window.i18n !== "undefined" ? window.i18n : null);
-      if (packs && packs[lang]) return packs[lang];
-      if (packs && packs.sl) return packs.sl;
-      return {};
-    }
-
-    function render(slide, expanded){
-      const trainerId = slide.getAttribute("data-trainer-id");
-      const root = slide.querySelector(".trainer-comments");
-      if (!trainerId || !root) return;
-
-      const listEl = root.querySelector(".trainer-comments-list");
-      const countEl = root.querySelector(".trainer-comments-head .count");
-      const btn = root.querySelector(".comments-toggle");
-
-      const all = Array.isArray(COMMENTS[trainerId]) ? COMMENTS[trainerId] : [];
-      const total = all.length;
-
-      if (countEl) countEl.textContent = total ? "(" + total + ")" : "(0)";
-
-      if (!listEl) return;
-      listEl.innerHTML = "";
-
-      const shown = expanded ? all : all.slice(0, 2);
-
-      shown.forEach(c => {
-        const item = document.createElement("div");
-        item.className = "trainer-comment-item";
-        item.innerHTML = `
-          <div class="row">
-            <div class="who"></div>
-            <div class="date"></div>
-          </div>
-          <div class="text"></div>
-        `;
-        item.querySelector(".who").textContent = c.who || "";
-        item.querySelector(".date").textContent = c.date ? fmtDate(c.date) : "";
-        item.querySelector(".text").textContent = c.text || "";
-        listEl.appendChild(item);
-      });
-
-      if (!btn) return;
-
-      const t = getLangPack();
-      const readAll = t.commentsReadAll || "PREBERI VSE";
-      const hide = t.commentsHide || "ZAPRI";
-
-      if (total <= 2){
-        btn.style.display = "none";
-        return;
-      }
-
-      btn.style.display = "inline-flex";
-      btn.textContent = expanded ? hide : readAll;
-      btn.dataset.state = expanded ? "expanded" : "collapsed";
-    }
-
-    function bind(){
-      document.querySelectorAll(".trainer-slide").forEach(slide => {
-        const root = slide.querySelector(".trainer-comments");
-        if (!root) return;
-
-        render(slide, false);
-
-        const btn = root.querySelector(".comments-toggle");
-        if (btn && !btn.dataset.bound){
-          btn.dataset.bound = "1";
-          btn.addEventListener("click", () => {
-            const expanded = btn.dataset.state !== "expanded";
-            render(slide, expanded);
-          });
-        }
-      });
-    }
-
-    bind();
-    window.refreshComments = () => bind();
-  }
-  document.addEventListener('DOMContentLoaded', initComments);
-
 </script>
 </body>
 </html>
