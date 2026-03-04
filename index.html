@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="sl">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -141,7 +141,7 @@
       inset: 0;
       background:
         linear-gradient(180deg, rgba(244,239,230,0.08) 0%, rgba(244,239,230,0.78) 64%, rgba(244,239,230,0.98) 100%),
-        url("igrisce.jpg");
+        url("igrisce.png");
       background-size: cover;
       background-position: center;
       filter: saturate(1.05);
@@ -618,6 +618,27 @@
        flex-shrink: 0 !important;
         display: block !important;
      }
+
+      .hero-logo-big img{
+        width: 94vw !important;
+        max-width: 94vw !important;
+        height: 220px !important;
+        max-height: none !important;
+        display: block !important;
+        object-fit: contain !important;
+      }
+     .hero-logo-big{
+      width: 85vw;
+      max-width: none;
+     }
+     .hero-logo img{
+      width: 85vw;
+      max-width: none;
+     }
+     .logo-main img{
+      width: 85vw;
+      max-width: none;
+     }
 }
 
       .brand div{
@@ -925,6 +946,184 @@
       }
     
     }
+  
+  .program-tiles{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  }
+
+  .program-tile{
+    position: relative;
+    display: block;
+    border-radius: 14px;
+    overflow: hidden;
+    min-height: 220px;
+    border: 1px solid rgba(12,27,43,0.10);
+    box-shadow: var(--shadow2);
+    text-decoration: none;
+  }
+
+  .program-bg{
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+  }
+
+  .program-overlay{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,0.10) 0%,
+      rgba(0,0,0,0.35) 60%,
+      rgba(0,0,0,0.55) 100%
+    );
+    transition: background 0.35s ease;
+  }
+
+  .program-text{
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 14px;
+    color: #fff;
+  }
+
+  .program-title{
+    font-weight: 950;
+    font-size: 1.45rem;
+    line-height: 1.1;
+  }
+
+  .program-sub{
+    margin-top: 8px;
+    font-weight: 800;
+    opacity: 0.95;
+  }
+
+  .program-bg{
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+    transition: transform 0.45s ease;
+  }
+  .program-tile{
+    cursor: pointer;
+  }
+
+  .program-tile:hover .program-bg{
+    transform: scale(1.08);
+  }
+
+  .program-tile:hover .program-overlay{
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,0.15) 0%,
+      rgba(255,255,255,0.25) 60%,
+      rgba(255,255,255,0.35) 100%
+    );
+  }
+
+  @media (max-width: 980px){
+    .program-tiles{
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Locations 3-up carousel, stable translate in % */
+  .loc-carousel{
+    margin-top: 16px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid rgba(12,27,43,0.10);
+    background: rgba(255,255,255,0.40);
+    box-shadow: var(--shadow2);
+  }
+
+  .loc-window{
+    overflow: hidden;
+  }
+
+  .loc-track{
+    display: flex;
+    width: 100%;
+    transform: translateX(0%);
+    transition: transform 420ms ease;
+    will-change: transform;
+  }
+
+  .loc-slide{
+    flex: 0 0 calc(100% / 3);
+    padding: 12px 6px;
+    box-sizing: border-box;
+  }
+
+  .loc-slide-inner{
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(12,27,43,0.10);
+    background: rgba(255,255,255,0.55);
+  }
+
+  .loc-slide-inner img{
+    width: 100%;
+    height: 190px;
+    display: block;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px){
+    .loc-slide{
+      flex: 0 0 100%;
+      padding: 12px;
+    }
+    .loc-slide-inner img{
+      height: 220px;
+    }
+  }
+
+    footer{
+    background: rgba(12,27,43,0.95);
+    color: rgba(255,255,255,0.9);
+    padding: 10px 0 8px;
+    margin-top: 24px;
+    width: 100%;
+    }
+
+    footer .footer-inner{
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    text-align: center;
+    display: grid;
+    gap: 2px;
+    }
+
+    footer p{
+    margin: 0;
+    line-height: 1.3;
+    }
+
+    footer a{
+    color: white;
+    text-decoration: underline;
+    }
+
+    .credit{
+    margin-top: 4px;
+    font-size: 0.75rem;
+    color: rgba(40,90,160,0.35);
+    }
+
+    .credit a{
+    color: rgba(40,90,160,0.35);
+    text-decoration: none;
+    }
  </style>
 </head>
 <body>
@@ -940,8 +1139,8 @@
 <nav aria-label="Navigacija" class="nav">
 <a href="#o-nas" id="navAbout">About us</a>
 <a href="#lokacije" id="navLocations">Locations</a>
-<a href="#weeks" id="navWeeks">Weeks</a>
-<a class="cta" href="#prijava" id="navSignup">Apply</a>
+<a href="#weeks" id="navWeeks">BOOK A CAMP</a>
+<a href="#questions" id="navSignup">Terms & conditions</a>
 </nav>
 <div class="lang-switch">
 <img alt="Slovenščina" id="currentLang" src="27111.jpg"/>
@@ -961,7 +1160,7 @@
 <h1 id="heroTitle">Treniraj. Poveži se.<br/>Doživi odbojko na mivki.</h1>
 <p id="heroText">Butični campi odbojke na mivki. Fokus na kakovostnem treningu, dobri družbi in nepozabnih dnevih na slovenski obali.</p>
 <div class="actions">
-<a class="btn primary" href="#prijava" id="heroJoin">Pridruži se campu</a>
+<a class="btn primary" href="#questions" id="heroJoin">Pridruži se campu</a>
 <a class="btn ghost" href="#weeks" id="heroScroll">Pomakni se do terminov</a>
 </div>
 </div>
@@ -1015,10 +1214,16 @@
         <li id="locationsLi2">Historic seaside towns in close proximity</li>
         <li id="locationsLi3">4 pro level beach volleyball courts right by the sea</li>
         <li id="locationsLi4">A relaxing mediterranean atmosphere</li>
+        <li id="locationsLi5">Great mediteranian cuisine</li>
       </ul>
 
       <div style="margin-top:14px;">
         <a class="btn primary" href="#" id="locationsReadMore">READ MORE</a>
+      </div>
+      <div class="loc-carousel" id="locCarousel" aria-label="Location photos">
+        <div class="loc-window">
+          <div class="loc-track" id="locTrack"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1026,124 +1231,61 @@
 <section id="weeks">
   <div class="section-head">
     <div>
-      <h2 id="weeksTitle">Weeks</h2>
-      <p id="weeksLead">Choose a program. Then pick a package.</p>
+      <h2 id="weeksTitle">Programs</h2>
+      <p id="weeksLead">Choose a program.</p>
     </div>
   </div>
 
-    <div class="program-carousel" id="programCarousel" aria-label="Programs">
-    <div class="program-view">
-      <button class="program-arrow" type="button" data-dir="-1" aria-label="Previous program">‹</button>
-
-      <div class="program-window">
-        <div class="program-track" id="programTrack">
-
-          <div class="program-slide" data-program="pp">
-            <div class="card" style="margin-bottom:16px;">
-              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-                <div>
-                  <h3 id="ppTitle" style="margin:0 0 6px;">Practice and play</h3>
-                  <p id="ppLead" style="margin:0; color: var(--muted); font-weight:700;">All levels. Structured training. Free play and social time.</p>
-                </div>
-                <a class="btn ghost" href="#" id="ppReadMore">READ MORE</a>
-              </div>
-
-              <ul class="bullets" style="margin-top:12px;">
-                <li id="ppLi1">All levels welcome</li>
-                <li id="ppLi2">Expert coaching</li>
-                <li id="ppLi3">Technical and tactical improvements</li>
-                <li id="ppLi4">Fun tournaments</li>
-                <li id="ppLi5">Free play time</li>
-                <li id="ppLi6">Social activities</li>
-              </ul>
-
-              <div class="pkg-carousel" data-carousel="pp" style="margin-top:14px;"></div>
-            </div>
-          </div>
-
-          <div class="program-slide" data-program="hp">
-            <div class="card">
-              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-                <div>
-                  <h3 id="hpTitle" style="margin:0 0 6px;">High performance camp</h3>
-                  <p id="hpLead" style="margin:0; color: var(--muted); font-weight:700;">Advanced players. Pro level sessions and tournaments.</p>
-                </div>
-                <a class="btn ghost" href="#" id="hpReadMore">READ MORE</a>
-              </div>
-
-              <ul class="bullets" style="margin-top:12px;">
-                <li id="hpLi1">Advanced players only</li>
-                <li id="hpLi2">PRO level training sessions</li>
-                <li id="hpLi3">Advanced tactics</li>
-                <li id="hpLi4">Modern play styles</li>
-                <li id="hpLi5">High level tournaments</li>
-                <li id="hpLi6">Fun social activities</li>
-              </ul>
-
-              <div class="pkg-carousel" data-carousel="hp" style="margin-top:14px;"></div>
-            </div>
-          </div>
-
-        </div>
+  <div class="program-tiles">
+    <a class="program-tile" href="pp.html" aria-label="Practice and Play">
+      <div class="program-bg" style="background-image:url('pp.jpeg');"></div>
+      <div class="program-overlay"></div>
+      <div class="program-text">
+        <div class="program-title" id="ppTileTitle">Practice &amp; Play</div>
+        <div class="program-sub" id="ppTileSub">All levels. Structured training. Free play and social time.</div>
       </div>
+    </a>
 
-      <button class="program-arrow" type="button" data-dir="1" aria-label="Next program">›</button>
-    </div>
-
-    <div class="program-dots" id="programDots" aria-label="Program selector"></div>
+    <a class="program-tile" href="hp.html" aria-label="High Performance Camp">
+      <div class="program-bg" style="background-image:url('hp.jpeg');"></div>
+      <div class="program-overlay"></div>
+      <div class="program-text">
+        <div class="program-title" id="hpTileTitle">High performance camp</div>
+        <div class="program-sub" id="hpTileSub">Advanced players. Pro level sessions and tournaments.</div>
+      </div>
+    </a>
   </div>
 </section>
-<section id="prijava">
-<div class="section-head">
-<div>
-<h2 id="signupTitle">Prijava</h2>
-<p id="signupLead">Izpolni obrazec. Odgovor dobiš po emailu.</p>
-</div>
-</div>
-<div class="card">
-<form id="signupForm">
-<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-<div style="display:flex; flex-direction:column; gap: 8px;">
-<label for="name" id="lblName">Ime in priimek</label>
-<input autocomplete="name" id="name" name="name" required=""/>
-</div>
-<div style="display:flex; flex-direction:column; gap: 8px;">
-<label for="email" id="lblEmail">Email</label>
-<input autocomplete="email" id="email" name="email" required="" type="email"/>
-</div>
-<div style="display:flex; flex-direction:column; gap: 8px;">
-<label for="phone" id="lblPhone">Telefon</label>
-<input autocomplete="tel" id="phone" name="phone"/>
-</div>
-<div style="display:flex; flex-direction:column; gap: 8px;">
-  <label for="program" id="lblProgram">Program</label>
-  <select id="program" name="program" required="">
-    <option id="optProgramChoose" value="">Choose</option>
-    <option id="optProgramPP" value="Practice and play">Practice and play</option>
-    <option id="optProgramHP" value="High performance camp">High performance camp</option>
-  </select>
-</div>
-<div style="display:flex; flex-direction:column; gap: 8px;">
-  <label for="package" id="lblPackage">Package</label>
-  <select id="package" name="package" required="">
-    <option id="optPackageChoose" value="">Choose</option>
-    <option id="optPackageGold" value="Gold">Gold</option>
-    <option id="optPackageSilver" value="Silver">Silver</option>
-    <option id="optPackageBronze" value="Bronze">Bronze</option>
-  </select>
-</div>
-<div style="display:flex; flex-direction:column; gap: 8px; grid-column: 1 / -1;">
-<label for="msg" id="lblMsg">Sporočilo</label>
-<textarea id="msg" name="msg" placeholder="Nivo, izkušnje, cilji."></textarea>
-</div>
-</div>
-<div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-top: 12px;">
-<button class="btn primary" id="btnSend" type="submit">Pošlji</button>
-<div id="status" style="font-weight:900; color: var(--muted);"></div>
-</div>
-</form>
-</div>
+<section id="questions" aria-label="Questions">
+  <div class="section-head">
+    <div>
+      <h2 id="questionsTitle">Questions</h2>
+      <p id="questionsLead">Read terms or send us an email.</p>
+    </div>
+  </div>
+
+    <div class="actions">
+      <a class="btn primary" href="#" id="btnTerms">TERMS &amp; CONDITIONS</a>
+
+      <a class="btn primary"
+         href="mailto:akosenina@gmail.com?subject=POVPRA%C5%A0EVANJE"
+         id="btnInquiry">
+        EMAIL US
+      </a>
+    </div>
 </section>
+
+<div aria-hidden="true" class="modal-overlay" id="termsModalOverlay">
+  <div aria-labelledby="termsModalTitle" aria-modal="true" class="modal" id="termsModal" role="dialog" tabindex="-1">
+    <div class="modal-header">
+      <div class="modal-title" id="termsModalTitle">Terms &amp; conditions</div>
+      <button aria-label="Close" class="modal-close" id="termsModalClose" type="button">×</button>
+    </div>
+    <div class="modal-body" id="termsModalBody">
+      <p>Placeholder. Terms &amp; conditions will be added later.</p>
+    </div>
+  </div>
+</div>
 <!-- Modals -->
 <div aria-hidden="true" class="modal-overlay" id="aboutModalOverlay">
   <div aria-labelledby="aboutModalTitle" aria-modal="true" class="modal" id="aboutModal" role="dialog" tabindex="-1">
@@ -1230,7 +1372,7 @@
   const form = document.getElementById("signupForm");
   const statusEl = document.getElementById("status");
 
-  let currentLang = "sl";
+  let currentLang = "en";
 
   const SIGNUP_REST = "https://dniqxnmmenjosbhtembc.supabase.co".replace(/\/+$/,"") + "/rest/v1/signups";
   const SIGNUP_HEADERS = {
@@ -1669,10 +1811,11 @@
   bindModal("locationsReadMore", "locationsModalOverlay", "locationsModalClose");
   bindModal("ppReadMore", "ppModalOverlay", "ppModalClose");
   bindModal("hpReadMore", "hpModalOverlay", "hpModalClose");
+  bindModal("btnTerms", "termsModalOverlay", "termsModalClose");
 
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
-    ["aboutModalOverlay","locationsModalOverlay","ppModalOverlay","hpModalOverlay"].forEach(id => {
+    ["aboutModalOverlay","locationsModalOverlay","ppModalOverlay","hpModalOverlay","termsModalOverlay"].forEach(id => {
       const ov = document.getElementById(id);
       if (ov && ov.classList.contains("open")) closeModal(id);
     });
@@ -1771,8 +1914,8 @@
       brandTagline: "Beach volleyball",
       navAbout: "About us",
       navLocations: "Locations",
-      navWeeks: "Weeks",
-      navSignup: "Apply",
+      navWeeks: "BOOK A CAMP",
+      navSignup: "Terms & conditions",
 
       heroTitle: "Train. Connect.<br>Experience beach volleyball.",
       heroText: "Boutique beach volleyball camps. Focus on quality training, good people, and great days by the sea.",
@@ -1794,17 +1937,18 @@
       aboutModalTitle: "About us",
 
       locationsTitle: "Locations",
-      locationsLead: "Portorož. Pro courts by the sea. Calm time off the sand.",
+      locationsLead: "",
       locationsName: "Portorož",
       locationsShort: "One of Slovenia's most beautiful and lively seaside towns. Nestled between the Adriatic sea and lush Mediterranean hills Portorož offers:",
       locationsLi1: "Scenic seaside walks and golden sunsets",
       locationsLi2: "Historic seaside towns in close proximity",
       locationsLi3: "4 pro level beach volleyball courts right by the sea",
       locationsLi4: "A relaxing mediterranean atmosphere",
+      locationsLi5: "Great mediteranian cuisine",
       locationsReadMore: "READ MORE",
       locationsModalTitle: "Portorož",
 
-      weeksTitle: "Weeks",
+      weeksTitle: "Book a camp",
       weeksLead: "Choose a program. Then pick a package.",
       ppTitle: "Practice and play",
       ppLead: "All levels. Structured training. Free play and social time.",
@@ -1953,7 +2097,7 @@
       "aboutLi1","aboutLi2","aboutLi3","aboutLi4","aboutLi5","aboutLi6","aboutLi7","aboutLi8",
       "aboutReadMore","aboutModalTitle",
       "locationsTitle","locationsLead","locationsName","locationsShort",
-      "locationsLi1","locationsLi2","locationsLi3","locationsLi4",
+      "locationsLi1","locationsLi2","locationsLi3","locationsLi4", "locationsLi5",
       "locationsReadMore","locationsModalTitle",
       "weeksTitle","weeksLead",
       "ppTitle","ppLead","ppReadMore","ppLi1","ppLi2","ppLi3","ppLi4","ppLi5","ppLi6","ppModalTitle",
@@ -2066,10 +2210,93 @@
                            "Napaka pri pošiljanju. Poskusi znova.";
     }
   });
+  // Locations 3-up carousel (stable, no drift), auto every 2s
+  const LOC_IMAGES = [
+    "loc_1.jpg",
+    "loc_2.jpg",
+    "loc_3.jpg",
+    "loc_4.jpg",
+    "loc_5.jpg"
+  ];
+
+  const locTrack = document.getElementById("locTrack");
+  let locIndex = 0;
+  let locTimer = null;
+
+  function locPerView(){
+    return window.matchMedia && window.matchMedia("(max-width: 768px)").matches ? 1 : 3;
+  }
+
+  function buildLocCarousel(){
+    if (!locTrack) return;
+
+    const perView = locPerView();
+
+    const clones = LOC_IMAGES.concat(LOC_IMAGES.slice(0, perView));
+    locTrack.innerHTML = clones.map(src => (
+      '<div class="loc-slide"><div class="loc-slide-inner"><img src="' + src + '" alt="Location photo"></div></div>'
+    )).join("");
+
+    locIndex = 0;
+    renderLocCarousel(true);
+  }
+
+  function renderLocCarousel(skipAnim){
+    if (!locTrack) return;
+
+    const perView = locPerView();
+    const stepPct = 100 / perView;
+
+    if (skipAnim) locTrack.style.transition = "none";
+    locTrack.style.transform = "translateX(-" + (locIndex * stepPct) + "%)";
+    if (skipAnim){
+      locTrack.offsetHeight;
+      locTrack.style.transition = "transform 420ms ease";
+    }
+  }
+
+  function stepLocCarousel(){
+    if (!locTrack) return;
+
+    const perView = locPerView();
+    const max = LOC_IMAGES.length;
+
+    locIndex += 1;
+    renderLocCarousel(false);
+
+    if (locIndex === max + 1){
+      setTimeout(() => {
+        locIndex = 0;
+        renderLocCarousel(true);
+      }, 430);
+    }
+  }
+
+  function startLocCarousel(){
+    stopLocCarousel();
+    locTimer = setInterval(stepLocCarousel, 3000);
+  }
+
+  function stopLocCarousel(){
+    if (locTimer) clearInterval(locTimer);
+    locTimer = null;
+  }
+
+  buildLocCarousel();
+  startLocCarousel();
+
+  window.addEventListener("resize", () => {
+    buildLocCarousel();
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopLocCarousel();
+    else startLocCarousel();
+  });
 
   // Init
-  setLangImage("sl");
-  applyLang("sl");
+  setLangImage("en");
+  applyLang("en");
 </script>
 </body>
 </html>
