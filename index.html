@@ -1124,6 +1124,45 @@
     color: rgba(40,90,160,0.35);
     text-decoration: none;
     }
+  
+  .program-date{
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    background: rgba(255,255,255,0.92);
+    color: var(--text);
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 0.92rem;
+    line-height: 1;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.14);
+  }
+  @media (max-width: 768px){
+    .program-date{
+      top: 12px;
+      right: 12px;
+      font-size: 0.82rem;
+      padding: 6px 10px;
+    }
+
+    .program-text{
+      left: 14px;
+      right: 14px;
+      bottom: 12px;
+    }
+
+    .program-title{
+      font-size: 1.15rem;
+    }
+
+    .program-sub{
+      margin-top: 6px;
+      font-size: 0.95rem;
+      line-height: 1.25;
+    }
+  }
  </style>
 </head>
 <body>
@@ -1240,6 +1279,8 @@
     <a class="program-tile" href="pp.html" aria-label="Practice and Play">
       <div class="program-bg" style="background-image:url('pp.jpeg');"></div>
       <div class="program-overlay"></div>
+      <div class="program-date">30.8. - 4.9.</div>
+
       <div class="program-text">
         <div class="program-title" id="ppTileTitle">Practice &amp; Play</div>
         <div class="program-sub" id="ppTileSub">All levels. Structured training. Free play and social time.</div>
@@ -1249,6 +1290,8 @@
     <a class="program-tile" href="hp.html" aria-label="High Performance Camp">
       <div class="program-bg" style="background-image:url('hp.jpeg');"></div>
       <div class="program-overlay"></div>
+      <div class="program-date">6.9. - 11.9.</div>
+
       <div class="program-text">
         <div class="program-title" id="hpTileTitle">High performance camp</div>
         <div class="program-sub" id="hpTileSub">Advanced players. Pro level sessions and tournaments.</div>
