@@ -633,6 +633,285 @@
 
       background: rgba(255,255,255,0.7);
     }
+      .menu-btn{
+      display: none;
+      appearance: none;
+      border: 1px solid rgba(12,27,43,0.12);
+      background: rgba(255,255,255,0.72);
+      color: var(--text);
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      cursor: pointer;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: var(--shadow2);
+    }
+
+    .menu-btn span{
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 999px;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+    }
+
+    .menu-btn[aria-expanded="true"] span:nth-child(1){
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-btn[aria-expanded="true"] span:nth-child(2){
+      opacity: 0;
+    }
+
+    .menu-btn[aria-expanded="true"] span:nth-child(3){
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    @media (max-width: 768px){
+      .topbar-inner{
+        position: relative;
+      }
+
+      .menu-btn{
+        display: inline-flex;
+      }
+
+      .nav{
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        min-width: 200px;
+        background: rgba(244,239,230,0.98);
+        border: 1px solid rgba(12,27,43,0.10);
+        border-radius: 16px;
+        box-shadow: 0 18px 40px rgba(0,0,0,0.16);
+        padding: 8px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        z-index: 100;
+      }
+
+      .nav.open{
+        display: flex;
+      }
+
+      .nav a{
+        display: block;
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 10px;
+      }
+    }
+
+   .booking-form{
+      display: grid;
+      gap: 16px;
+    }
+
+    .booking-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field{
+      display: grid;
+      gap: 6px;
+    }
+
+    .field.full{
+      grid-column: 1 / -1;
+    }
+
+    .field label{
+      font-weight: 900;
+      color: var(--text);
+    }
+
+    .field input,
+    .field select{
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid rgba(12,27,43,0.14);
+      background: rgba(255,255,255,0.88);
+      border-radius: 12px;
+      padding: 11px 12px;
+      color: var(--text);
+      font: inherit;
+    }
+
+    .field input[readonly]{
+      background: rgba(12,27,43,0.04);
+      color: rgba(12,27,43,0.84);
+    }
+
+    .phone-wrap{
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 10px;
+    }
+
+    .field-note{
+      margin-top: 4px;
+      font-size: 0.94rem;
+      color: rgba(12,27,43,0.72);
+      font-weight: 700;
+    }
+
+    .check-row{
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-weight: 700;
+      color: rgba(12,27,43,0.80);
+    }
+
+    .check-row input{
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      min-height: auto;
+    }
+
+    .check-row a{
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .booking-actions{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .pay-btn{
+      min-height: 50px;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 950;
+      letter-spacing: 0.2px;
+      padding: 12px 16px;
+      font: inherit;
+    }
+
+    .pay-btn.primary{
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(11,74,162,0.18);
+    }
+
+    .pay-btn.primary:hover{
+      background: var(--blue2);
+    }
+
+    .pay-btn.paypal{
+      background: #fff;
+      color: #111;
+      border: 1px solid rgba(12,27,43,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .paypal-mark{
+      font-weight: 950;
+      color: #003087;
+    }
+
+    .booking-status{
+      min-height: 20px;
+      color: rgba(12,27,43,0.78);
+      font-weight: 800;
+    }
+
+    .mini-modal{
+      width: min(640px, 100%);
+    }
+
+    @media (max-width: 980px){
+      .booking-grid{
+        grid-template-columns: 1fr;
+      }
+
+      .phone-wrap{
+        grid-template-columns: 1fr;
+      }
+
+      .booking-actions{
+        grid-template-columns: 1fr;
+      }
+    }  
+
+  .book-modal{
+    width: min(640px, 100%);
+    max-height: min(88vh, 900px);
+    background: rgba(244,239,230,0.98);
+    border: 1px solid rgba(12,27,43,0.12);
+    border-radius: 18px;
+    box-shadow: 0 18px 48px rgba(0,0,0,0.28);
+    overflow: hidden;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .book-body{
+    padding: 16px;
+    color: rgba(12,27,43,0.80);
+    font-weight: 700;
+    overflow: auto;
+  }
+
+  .google-form-wrap{
+    width: 100%;
+    border: 1px solid rgba(12,27,43,0.10);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .google-form-frame{
+    display: block;
+    width: 100%;
+    height: 520px;
+    border: 0;
+  }
+
+  .booking-bottom{
+    margin-top: 14px;
+    display: grid;
+    gap: 14px;
+  }
+
+  .booking-actions{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 980px){
+    .book-modal{
+      width: min(560px, 100%);
+      max-height: 90vh;
+    }
+
+    .google-form-frame{
+      height: 460px;
+    }
+
+    .booking-actions{
+      grid-template-columns: 1fr, 1fr;
+    }
+  }
   </style>
 </head>
 <body>
@@ -642,8 +921,16 @@
         <img alt="Logo" src="favicon.png"/>
         <div>Skyball beach camps</div>
       </div>
-      <nav class="nav" aria-label="Navigation">
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-controls="siteNav" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="siteNav" aria-label="Navigation">
         <a href="index.html#weeks">Back</a>
+        <a href="#pricing">Pricing</a>
+        <a href="mailto:akosenina@gmail.com?subject=Practice%20%26%20Play">Email us</a>
       </nav>
     </div>
   </div>
@@ -776,15 +1063,79 @@
         </div>
      </div>
  </footer>
- <div class="modal-overlay" id="bookOverlay" aria-hidden="true">
-  <div class="book-modal" role="dialog" aria-modal="true" tabindex="-1">
-    <div class="book-head">
-      <div class="book-title">Booking</div>
-      <button class="book-close" id="bookClose" type="button" aria-label="Close">×</button>
+  <div class="modal-overlay" id="bookOverlay" aria-hidden="true">
+    <div class="book-modal" role="dialog" aria-modal="true" tabindex="-1">
+      <div class="book-head">
+        <div class="book-title" id="bookModalTitle">Camp booking</div>
+        <button class="book-close" id="bookClose" type="button" aria-label="Close">×</button>
+      </div>
+
+      <div class="book-body">
+        <form id="bookingForm" class="booking-form" novalidate>
+          <div class="google-form-wrap">
+            <iframe
+              id="googleFormFrame"
+              class="google-form-frame"
+              src="https://forms.gle/HTr1CDkUesyKm3GAA"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Camp booking form">
+            </iframe>
+          </div>
+
+          <div class="booking-bottom">
+            <div class="field full">
+              <label class="check-row">
+                <input id="agreeTerms" name="agreeTerms" type="checkbox" required />
+                <span>
+                  I agree with the
+                  <a href="#" id="openTerms">Terms of service</a>
+                  and
+                  <a href="#" id="openPrivacy">Privacy policy</a>.
+                </span>
+              </label>
+            </div>
+
+            <div class="booking-actions">
+              <button class="pay-btn primary" id="proceedPayment" type="submit">
+                PROCEED TO PAYMENT
+              </button>
+
+              <button class="pay-btn paypal" id="paypalPayment" type="button">
+                <span>PAY WITH PAYPAL</span>
+              </button>
+            </div>
+
+            <div class="booking-status" id="bookingStatus"></div>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="book-body" id="bookBody"></div>
   </div>
- </div>
+
+  <div class="modal-overlay" id="termsOverlay" aria-hidden="true">
+    <div class="book-modal mini-modal" role="dialog" aria-modal="true" tabindex="-1">
+      <div class="book-head">
+        <div class="book-title">Terms of service</div>
+        <button class="book-close" id="termsClose" type="button" aria-label="Close">×</button>
+      </div>
+      <div class="book-body">
+        <p>Terms of service placeholder. You will add this later.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="privacyOverlay" aria-hidden="true">
+    <div class="book-modal mini-modal" role="dialog" aria-modal="true" tabindex="-1">
+      <div class="book-head">
+        <div class="book-title">Privacy policy</div>
+        <button class="book-close" id="privacyClose" type="button" aria-label="Close">×</button>
+      </div>
+      <div class="book-body">
+        <p>Privacy policy placeholder. You will add this later.</p>
+      </div>
+    </div>
+  </div>
   <script>
     // Simple auto slider (no dependencies)
     const PP_IMAGES = [
@@ -847,39 +1198,136 @@
       else start();
     });
 
-    
+        
     const bookOverlay = document.getElementById("bookOverlay");
     const bookClose = document.getElementById("bookClose");
-    const bookBody = document.getElementById("bookBody");
+    const bookingForm = document.getElementById("bookingForm");
+    const bookingStatus = document.getElementById("bookingStatus");
+
+    const programInput = document.getElementById("program");
+    const packageInput = document.getElementById("package");
+    const campDatesInput = document.getElementById("campDates");
+
+    const termsOverlay = document.getElementById("termsOverlay");
+    const privacyOverlay = document.getElementById("privacyOverlay");
+    const termsClose = document.getElementById("termsClose");
+    const privacyClose = document.getElementById("privacyClose");
+    const openTerms = document.getElementById("openTerms");
+    const openPrivacy = document.getElementById("openPrivacy");
+
+    const PP_PROGRAM_NAME = "Practice & Play";
+    const PP_DATES = ["30.8. – 4.9."];
+
+    function normalizePackageName(pkg){
+      const map = {
+        bronze: "BRONZE",
+        silver: "SILVER",
+        gold: "GOLD"
+      };
+      return map[pkg] || String(pkg || "").toUpperCase();
+    }
+
+    function fillCampDates(){
+      if (!campDatesInput) return;
+      campDatesInput.innerHTML = PP_DATES.map((date, index) => (
+        '<option value="' + date + '"' + (index === 0 ? ' selected' : '') + '>' + date + '</option>'
+      )).join("");
+    }
 
     function openBook(pkg){
-        if (!bookOverlay) return;
-        bookOverlay.classList.add("open");
-        bookOverlay.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-        if (bookBody) bookBody.textContent = "Popup placeholder for " + pkg.toUpperCase() + ". We will build this later.";
+      if (!bookOverlay) return;
+
+      if (programInput) programInput.value = PP_PROGRAM_NAME;
+      if (packageInput) packageInput.value = normalizePackageName(pkg);
+      fillCampDates();
+
+      if (bookingStatus) bookingStatus.textContent = "";
+
+      bookOverlay.classList.add("open");
+      bookOverlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
     }
 
     function closeBook(){
-        if (!bookOverlay) return;
-        bookOverlay.classList.remove("open");
-        bookOverlay.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
+      if (!bookOverlay) return;
+      bookOverlay.classList.remove("open");
+      bookOverlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function openMiniModal(overlay){
+      if (!overlay) return;
+      overlay.classList.add("open");
+      overlay.setAttribute("aria-hidden", "false");
+    }
+
+    function closeMiniModal(overlay){
+      if (!overlay) return;
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden", "true");
     }
 
     document.querySelectorAll("[data-book]").forEach(btn => {
-        btn.addEventListener("click", () => openBook(btn.getAttribute("data-book") || "package"));
+      btn.addEventListener("click", () => openBook(btn.getAttribute("data-book") || "package"));
     });
 
     bookClose && bookClose.addEventListener("click", closeBook);
 
     bookOverlay && bookOverlay.addEventListener("click", (e) => {
-        if (e.target === bookOverlay) closeBook();
+      if (e.target === bookOverlay) closeBook();
+    });
+
+    openTerms && openTerms.addEventListener("click", (e) => {
+      e.preventDefault();
+      openMiniModal(termsOverlay);
+    });
+
+    openPrivacy && openPrivacy.addEventListener("click", (e) => {
+      e.preventDefault();
+      openMiniModal(privacyOverlay);
+    });
+
+    termsClose && termsClose.addEventListener("click", () => closeMiniModal(termsOverlay));
+    privacyClose && privacyClose.addEventListener("click", () => closeMiniModal(privacyOverlay));
+
+    termsOverlay && termsOverlay.addEventListener("click", (e) => {
+      if (e.target === termsOverlay) closeMiniModal(termsOverlay);
+    });
+
+    privacyOverlay && privacyOverlay.addEventListener("click", (e) => {
+      if (e.target === privacyOverlay) closeMiniModal(privacyOverlay);
+    });
+
+    bookingForm && bookingForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const fullName = document.getElementById("fullName")?.value.trim();
+      const birthDate = document.getElementById("birthDate")?.value;
+      const email = document.getElementById("email")?.value.trim();
+      const phoneCode = document.getElementById("phoneCode")?.value;
+      const phoneNumber = document.getElementById("phoneNumber")?.value.trim();
+      const agreeTerms = document.getElementById("agreeTerms")?.checked;
+
+      if (!fullName || !birthDate || !email || !phoneCode || !phoneNumber || !agreeTerms){
+        if (bookingStatus) bookingStatus.textContent = "Please fill in all required fields and accept the terms.";
+        return;
+      }
+
+      if (bookingStatus) bookingStatus.textContent = "Proceed to payment redirect will be added later.";
+    });
+
+    document.getElementById("paypalPayment")?.addEventListener("click", () => {
+      if (bookingStatus) bookingStatus.textContent = "PayPal redirect will be added later.";
     });
 
     document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeBook();
+      if (e.key !== "Escape") return;
+      closeBook();
+      closeMiniModal(termsOverlay);
+      closeMiniModal(privacyOverlay);
     });
+
+    fillCampDates();
 
   </script>
   <script>

@@ -632,7 +632,84 @@
       font-weight: 900;
       font-size: 0.95rem;
 
-      background: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.7)
+    }
+    
+      .menu-btn{
+      display: none;
+      appearance: none;
+      border: 1px solid rgba(12,27,43,0.12);
+      background: rgba(255,255,255,0.72);
+      color: var(--text);
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      cursor: pointer;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: var(--shadow2);
+    }
+
+    .menu-btn span{
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 999px;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+    }
+
+    .menu-btn[aria-expanded="true"] span:nth-child(1){
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-btn[aria-expanded="true"] span:nth-child(2){
+      opacity: 0;
+    }
+
+    .menu-btn[aria-expanded="true"] span:nth-child(3){
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    @media (max-width: 768px){
+      .topbar-inner{
+        position: relative;
+      }
+
+      .menu-btn{
+        display: inline-flex;
+      }
+
+      .nav{
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        min-width: 200px;
+        background: rgba(244,239,230,0.98);
+        border: 1px solid rgba(12,27,43,0.10);
+        border-radius: 16px;
+        box-shadow: 0 18px 40px rgba(0,0,0,0.16);
+        padding: 8px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        z-index: 100;
+      }
+
+      .nav.open{
+        display: flex;
+      }
+
+      .nav a{
+        display: block;
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 10px;
+      }
     }
   </style>
 </head>
@@ -643,8 +720,16 @@
         <img alt="Logo" src="favicon.png"/>
         <div>Skyball beach camps</div>
       </div>
-      <nav class="nav" aria-label="Navigation">
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-controls="siteNav" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="siteNav" aria-label="Navigation">
         <a href="index.html#weeks">Back</a>
+        <a href="#pricing">Pricing</a>
+        <a href="mailto:akosenina@gmail.com?subject=High%20Performance%20Camp">Email us</a>
       </nav>
     </div>
   </div>
@@ -973,6 +1058,38 @@
 
     syncPricingMode();
     window.addEventListener("resize", syncPricingMode);
+  
+    const menuBtn = document.getElementById("menuBtn");
+    const siteNav = document.getElementById("siteNav");
+
+    function closeMenu(){
+      if (!menuBtn || !siteNav) return;
+      siteNav.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    }
+
+    menuBtn && menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = siteNav.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!siteNav || !menuBtn) return;
+      if (!siteNav.contains(e.target) && !menuBtn.contains(e.target)){
+        closeMenu();
+      }
+    });
+
+    siteNav && siteNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 768) closeMenu();
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768) closeMenu();
+    });
   </script>
 </body>
 </html
